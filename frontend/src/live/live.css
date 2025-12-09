@@ -1,0 +1,47 @@
+.live-host-box {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  background: #1f2b45;
+  color: white;
+  border-radius: 12px;
+  text-align: center;
+}
+
+.live-room-info {
+  background: #324c7a;
+  padding: 10px;
+  border-radius: 8px;
+  margin-bottom: 20px;
+}
+
+.question-preview {
+  background: #263657;
+  padding: 15px;
+  border-radius: 10px;
+  margin: 15px 0;
+  text-align: left;
+}
+
+.question-preview ul {
+  padding-left: 20px;
+}
+
+.live-buttons button,
+.send-btn,
+.finish-btn {
+  padding: 12px 25px;
+  margin: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.send-btn {
+  background: orange;
+}
+
+.finish-btn {
+  background: red;
+  color: white;
+}

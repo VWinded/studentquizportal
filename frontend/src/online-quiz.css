@@ -1,0 +1,55 @@
+.online-container {
+  max-width: 700px;
+  margin: auto;
+  padding: 20px;
+  text-align: center;
+}
+
+.online-title {
+  font-size: 28px;
+  margin-bottom: 20px;
+}
+
+.online-category-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.online-cat {
+  padding: 12px;
+  border-radius: 10px;
+  background: #324c7a;
+  color: white;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.online-cat:hover {
+  background: #4464a8;
+}
+
+.online-cat.selected {
+  background: #ff9800;
+  color: #000;
+  font-weight: bold;
+}
+
+.online-select,
+.online-input {
+  padding: 10px;
+  width: 80%;
+  border-radius: 8px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+}
+
+.online-start-btn {
+  padding: 12px 25px;
+  background: orange;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+}

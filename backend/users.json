@@ -1,0 +1,16 @@
+[
+    {
+        "name": "Raj",
+        "email": "raj09@gmail.com",
+        "password": "$2y$10$0BmhjbONqzr8WQUYg1exaeQFA/8iEI2Mzbxi88ywvsnQ.0QBd37JC",
+        "role": "student"
+    },
+    
+  {
+    "id": 1,
+    "name": "Admin",
+    "email": "admin@gmail.com",
+    "password": "$2y$10$39HbbwtXW6issXVGBp3nQOKCMPxMFrwrC5tcNTpsA3drbtp1mIErG",
+    "role": "admin"
+  }
+]

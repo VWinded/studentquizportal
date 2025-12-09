@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "category": "Science",
+        "image": "https:\/\/example.com\/science.jpg",
+        "question": "What is H2O?",
+        "options": [
+            "Oxygen",
+            "Water",
+            "Hydrogen",
+            "Salt"
+        ],
+        "answerIndex": 1,
+        "difficulty": "Easy"
+    },
+    {
+        "id": 2,
+        "category": "Math",
+        "image": "https:\/\/example.com\/math.jpg",
+        "question": "2 + 2 = ?",
+        "options": [
+            "3",
+            "4",
+            "5",
+            "6"
+        ],
+        "answerIndex": 1
+    }
+]
