@@ -2,46 +2,53 @@ import React, { useEffect, useState } from "react";
 import { API } from "./api";
 
 export default function Leaderboard({ setPage }) {
-
   const [practiceRows, setPracticeRows] = useState([]);
   const [competitionRows, setCompetitionRows] = useState([]);
   const [onlineRows, setOnlineRows] = useState([]);
-
-  // ⭐ NEW — LIVE QUIZ TABLE
   const [liveRows, setLiveRows] = useState([]);
 
   const [activeTab, setActiveTab] = useState("practice");
 
-  useEffect(() => {
+  // ⭐ Medal Logic (NO ❌ ever shown)
+  const getMedal = (score, total) => {
+    if (!total || total === 0) total = score; // competition fix
+    const percent = Math.round((score / total) * 100);
 
-    // ⭐ PRACTICE + COMPETITION (submit.php)
+    if (percent >= 90) return "🥇";
+    if (percent >= 75) return "🥈";
+    if (percent >= 50) return "🥉";
+
+    return ""; // no symbol instead of ❌
+  };
+
+  useEffect(() => {
     fetch(API + "/leaderboard.php")
-      .then(res => res.json())
-      .then(data => {
-        const p = data.filter(r => (r.mode || "practice") === "practice");
-        const c = data.filter(r => (r.mode || "practice") === "competition");
+      .then((res) => res.json())
+      .then((data) => {
+        const p = data.filter((r) => (r.mode || "practice") === "practice");
+        const c = data.filter((r) => (r.mode || "practice") === "competition");
+
         setPracticeRows(p);
         setCompetitionRows(c);
       })
       .catch(() => {});
 
-    // ⭐ ONLINE QUIZ
     fetch(API + "/leaderboard_online.php")
-      .then(res => res.json())
-      .then(data => setOnlineRows(data || []))
+      .then((res) => res.json())
+      .then((data) => setOnlineRows(data || []))
       .catch(() => {});
-
   }, []);
 
-  // ⭐ NEW — FETCH LIVE QUIZ ATTEMPTS
   useEffect(() => {
     fetch(API + "/live_get_attempts.php")
-      .then(res => res.json())
-      .then(data => setLiveRows(data.reverse()))   // latest first
+      .then((res) => res.json())
+      .then((data) => {
+        const approved = data.filter((x) => x.status === "approved");
+        setLiveRows(approved.reverse());
+      })
       .catch(() => {});
   }, []);
 
-  // ⭐ COMMON RENDER FUNCTION
   const renderTable = (rows, type) => {
     if (!rows || rows.length === 0) {
       return <p>No {type} scores yet.</p>;
@@ -52,12 +59,14 @@ export default function Leaderboard({ setPage }) {
         <thead>
           <tr>
             <th>#</th>
+
+            {/* Medal column ONLY for competition + online */}
+            {(type === "competition" || type === "online") && <th>Medal</th>}
+
             <th>Name</th>
 
-            {/* Practice → Score only */}
             {type === "practice" && <th>Score</th>}
 
-            {/* Competition → Score + timeTaken */}
             {type === "competition" && (
               <>
                 <th>Score</th>
@@ -65,7 +74,6 @@ export default function Leaderboard({ setPage }) {
               </>
             )}
 
-            {/* Online quiz → Score/Total + category + difficulty + time */}
             {type === "online" && (
               <>
                 <th>Score</th>
@@ -75,7 +83,6 @@ export default function Leaderboard({ setPage }) {
               </>
             )}
 
-            {/* ⭐ LIVE QUIZ → Score + Platform */}
             {type === "live" && (
               <>
                 <th>Score</th>
@@ -88,53 +95,60 @@ export default function Leaderboard({ setPage }) {
         </thead>
 
         <tbody>
-          {rows.map((r, i) => (
-            <tr key={i} className={i === 0 ? "top-rank" : ""}>
-              <td>{i + 1}</td>
-              <td>{r.user || r.name}</td>
+          {rows.map((r, i) => {
+            const totalQuestions = r.total || r.totalQuestions || r.totalQ || r.score;
 
-              {/* ⭐ PRACTICE */}
-              {type === "practice" && <td>{r.score}</td>}
+            const medal =
+              type === "competition" || type === "online"
+                ? getMedal(r.score, totalQuestions)
+                : "";
 
-              {/* ⭐ COMPETITION */}
-              {type === "competition" && (
-                <>
-                  <td>{r.score}</td>
-                  <td>{r.timeTaken ?? "-"}</td>
-                </>
-              )}
+            return (
+              <tr key={i} className={i === 0 ? "top-rank" : ""}>
+                <td>{i + 1}</td>
 
-              {/* ⭐ ONLINE */}
-              {type === "online" && (
-                <>
-                  <td>{r.score} / {r.total}</td>
-                  <td>{r.category}</td>
-                  <td>{r.difficulty}</td>
-                  <td>{r.time}</td>
-                </>
-              )}
+                {(type === "competition" || type === "online") && (
+                  <td style={{ fontSize: "22px" }}>{medal}</td>
+                )}
 
-              {/* ⭐ LIVE QUIZ */}
-              {type === "live" && (
-                <>
-                  <td>{r.score}</td>
-                  <td>{r.platform}</td>
-                </>
-              )}
+                <td>{r.user || r.name}</td>
 
-              {/* ⭐ DATE */}
-              <td>{r.date || r.time || "-"}</td>
-            </tr>
-          ))}
+                {type === "practice" && <td>{r.score}</td>}
+
+                {type === "competition" && (
+                  <>
+                    <td>{r.score}</td>
+                    <td>{r.timeTaken ?? "-"}</td>
+                  </>
+                )}
+
+                {type === "online" && (
+                  <>
+                    <td>{r.score} / {r.total}</td>
+                    <td>{r.category}</td>
+                    <td>{r.difficulty}</td>
+                    <td>{r.time}</td>
+                  </>
+                )}
+
+                {type === "live" && (
+                  <>
+                    <td>{r.score}</td>
+                    <td>{r.platform}</td>
+                  </>
+                )}
+
+                <td>{r.date || r.time || "-"}</td>
+              </tr>
+            );
+          })}
         </tbody>
-
       </table>
     );
   };
 
   return (
     <div className="leaderboard-card">
-
       <button className="back-btn" onClick={() => setPage("home")}>
         ⬅ Back to Home
       </button>
@@ -142,7 +156,6 @@ export default function Leaderboard({ setPage }) {
       <h2>🏆 Leaderboard</h2>
 
       <div className="lb-tabs">
-
         <button
           className={`lb-tab ${activeTab === "practice" ? "active" : ""}`}
           onClick={() => setActiveTab("practice")}
@@ -164,22 +177,18 @@ export default function Leaderboard({ setPage }) {
           Online Quiz 🌍
         </button>
 
-        {/* ⭐ NEW — LIVE TAB */}
         <button
           className={`lb-tab ${activeTab === "live" ? "active" : ""}`}
           onClick={() => setActiveTab("live")}
         >
           Live Quiz 🎯
         </button>
-
       </div>
 
-      {/* RENDER TABS */}
-      {activeTab === "practice"     && renderTable(practiceRows, "practice")}
+      {activeTab === "practice" && renderTable(practiceRows, "practice")}
       {activeTab === "competition" && renderTable(competitionRows, "competition")}
-      {activeTab === "online"      && renderTable(onlineRows, "online")}
-      {activeTab === "live"        && renderTable(liveRows, "live")}
-
+      {activeTab === "online" && renderTable(onlineRows, "online")}
+      {activeTab === "live" && renderTable(liveRows, "live")}
     </div>
   );
 }

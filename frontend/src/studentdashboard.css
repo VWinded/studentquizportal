@@ -1,0 +1,418 @@
+/* ===== MAIN CONTAINER ===== */
+.sd-container {
+  padding: 40px 20px;
+  max-width: 900px;
+  margin: auto;
+  text-align: center;
+  color: white;
+}
+
+/* ===== BACK BUTTON ===== */
+.sd-back-btn {
+  background: transparent;
+  border: 2px solid orange;
+  color: orange;
+  padding: 6px 14px;
+  border-radius: 10px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-bottom: 20px;
+  transition: 0.2s;
+}
+
+.sd-back-btn:hover {
+  background: orange;
+  color: black;
+}
+
+/* ===== PAGE TITLE ===== */
+.sd-title {
+  font-size: 32px;
+  margin-bottom: 25px;
+  font-weight: bold;
+}
+
+/* ===== DASHBOARD CARD BOX ===== */
+.sd-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 18px;
+  padding: 30px 25px;
+  max-width: 650px;
+  margin: auto;
+  box-shadow: 0 4px 22px rgba(0,0,0,0.25);
+  backdrop-filter: blur(6px);
+}
+
+/* ===== TEXT STYLING ===== */
+.sd-hello {
+  font-size: 24px;
+  margin-bottom: 5px;
+}
+
+.sd-role {
+  font-size: 16px;
+  opacity: 0.8;
+  margin-bottom: 20px;
+}
+
+.sd-subtitle {
+  margin-top: 15px;
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.sd-empty {
+  opacity: 0.8;
+}
+
+/* ===== ATTEMPT LIST ===== */
+.sd-attempt-list {
+  list-style: none;
+  padding: 0;
+  margin: 15px 0 25px 0;
+}
+
+.sd-attempt-item {
+  background: rgba(255, 255, 255, 0.15);
+  padding: 10px 14px;
+  margin-bottom: 8px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+}
+
+/* ===== BUTTON ROW ===== */
+.sd-btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.sd-btn {
+  background: orange;
+  padding: 10px 18px;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: bold;
+  color: black;
+  transition: 0.2s;
+}
+
+.sd-btn:hover {
+  background: #ff8c00;
+}
+.sd-container {
+  padding: 30px;
+  text-align: center;
+}
+
+.sd-back-btn {
+  background: #ff9800;
+  padding: 8px 18px;
+  border-radius: 25px;
+  border: none;
+  color: #fff;
+  margin-bottom: 15px;
+  cursor: pointer;
+}
+
+.sd-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: #fff;
+  margin-bottom: 20px;
+}
+
+.sd-box {
+  background: rgba(255, 255, 255, 0.1);
+  padding: 25px;
+  border-radius: 20px;
+  width: 70%;
+  margin: auto;
+  margin-bottom: 25px;
+  color: #fff;
+}
+
+.sd-stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 25px;
+}
+
+.sd-stat-card {
+  width: 180px;
+  padding: 20px;
+  border-radius: 18px;
+  color: #fff;
+  font-weight: bold;
+}
+
+.sd-blue {
+  background: #2962ff;
+}
+
+.sd-green {
+  background: #009688;
+}
+
+.sd-orange {
+  background: #8d6e63;
+}
+
+.attempts-box {
+  background: rgba(255, 255, 255, 0.08);
+  padding: 25px;
+  border-radius: 20px;
+  width: 85%;
+  margin: auto;
+  color: white;
+}
+
+.sd-table {
+  width: 100%;
+  margin-top: 15px;
+  border-collapse: collapse;
+}
+
+.sd-table th {
+  text-align: left;
+  padding: 10px;
+  background: rgba(0,0,0,0.4);
+}
+
+.sd-table td {
+  padding: 10px;
+  background: rgba(255,255,255,0.05);
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.sd-btn-row {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.sd-btn {
+  background: #ff9800;
+  padding: 10px 22px;
+  border-radius: 25px;
+  color: white;
+  font-weight: bold;
+  border: none;
+  cursor: pointer;
+}
+.sd-container {
+  padding: 40px;
+  color: white;
+  text-align: center;
+}
+
+/* Back button */
+.sd-back-btn {
+  background: #ff9800;
+  padding: 10px 25px;
+  border-radius: 25px;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 20px;
+}
+
+.sd-title {
+  font-size: 34px;
+  margin-bottom: 20px;
+}
+
+/* ⭐ UNIVERSAL GLASS CARD */
+.sd-glass-card {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  padding: 25px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 0 25px rgba(0,0,0,0.25);
+  margin: 20px auto;
+}
+
+/* Wide welcome box */
+.sd-glass-card.wide {
+  width: 70%;
+}
+
+/* Stats row */
+.sd-stats-row {
+  display: flex;
+  justify-content: center;
+  gap: 25px;
+  margin-top: 20px;
+}
+
+.sd-glass-card.stat {
+  width: 200px;
+}
+
+.sd-glass-card.stat h3 {
+  font-size: 32px;
+  margin: 0;
+}
+
+.sd-glass-card.stat p {
+  opacity: 0.9;
+}
+
+/* Attempts Table */
+.table-card {
+  width: 80%;
+}
+
+.sd-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+}
+
+.sd-table th,
+.sd-table td {
+  padding: 12px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.sd-table th {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* ⭐ Buttons in separate cards */
+.sd-actions {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.sd-glass-card.action {
+  width: 220px;
+}
+
+.sd-btn-big {
+  width: 100%;
+  background: #ff9800;
+  padding: 15px;
+  border: none;
+  border-radius: 25px;
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  font-size: 17px;
+  transition: 0.2s;
+}
+
+.sd-btn-big:hover {
+  background: #ffa726;
+  transform: scale(1.05);
+}
+/* BASE GLASS CARD */
+.sd-glass-card {
+  border-radius: 22px;
+  padding: 25px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 25px rgba(0,0,0,0.25);
+  margin: 20px auto;
+  color: white;
+}
+
+/* ⭐ WELCOME CARD */
+.sd-glass-card.wide {
+  width: 70%;
+  background: rgba(90, 130, 200, 0.35); /* Blue glass */
+}
+
+/* ⭐ STATS CARDS */
+.sd-glass-card.stat:nth-child(1) {
+  background: rgba(60, 120, 255, 0.35); /* Bright blue */
+}
+
+.sd-glass-card.stat:nth-child(2) {
+  background: rgba(0, 170, 120, 0.35); /* Green glass */
+}
+
+.sd-glass-card.stat:nth-child(3) {
+  background: rgba(180, 120, 90, 0.35); /* Bronze theme */
+}
+
+/* ⭐ QUIZ ATTEMPTS TABLE CARD */
+.sd-glass-card.table-card {
+  width: 80%;
+  background: rgba(100, 120, 160, 0.35); /* Slate blue glass */
+}
+
+/* Table header */
+.sd-table th {
+  background: rgba(255, 255, 255, 0.18);
+}
+
+/* ⭐ ACTION BUTTON CARDS */
+.sd-glass-card.action:nth-child(1) {
+  background: rgba(255, 200, 50, 0.35); /* Yellow glass */
+}
+
+.sd-glass-card.action:nth-child(2) {
+  background: rgba(255, 130, 40, 0.35); /* Orange glass */
+}
+
+/* Big Button */
+.sd-btn-big {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 17px;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(0, 0, 0, 0.35);
+  transition: 0.2s;
+}
+
+.sd-btn-big:hover {
+  transform: scale(1.05);
+  background: rgba(0,0,0,0.45);
+}
+/* 🔷 VIEW ANALYTICS – Aqua Glass */
+.sd-glass-card.action.analytics {
+  background: rgba(0, 180, 190, 0.35);   /* Aqua Teal */
+  border-radius: 22px;
+  padding: 25px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 25px rgba(0,0,0,0.25);
+}
+
+/* 🔶 TAKE A QUIZ – Sunset Orange Glass */
+.sd-glass-card.action.quiz {
+  background: rgba(255, 120, 60, 0.35);   /* Soft Orange */
+  border-radius: 22px;
+  padding: 25px;
+  backdrop-filter: blur(12px);
+  box-shadow: 0 0 25px rgba(0,0,0,0.25);
+}
+
+/* Inside button styling stays same */
+.sd-btn-big {
+  width: 100%;
+  padding: 15px;
+  border: none;
+  border-radius: 20px;
+  font-weight: bold;
+  font-size: 17px;
+  cursor: pointer;
+  color: #fff;
+  background: rgba(20, 20, 20, 0.35);
+  transition: 0.2s;
+}
+
+.sd-btn-big:hover {
+  transform: scale(1.05);
+  background: rgba(20,20,20,0.55);
+}

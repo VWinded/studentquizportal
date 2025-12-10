@@ -285,43 +285,45 @@ export default function Quiz({ user }) {
         localStorage.getItem("quiz_settings") || "{}"
       );
 
-      // Common payload for all endpoints
       const payload = {
         name: user.name,
-        email: user.email, // ⭐ NEW: identify user
+        email: user.email,
         score: correct,
         total: questions.length,
         correct: correct,
         timeTaken: timeTaken,
-        mode: settings.mode || "practice",
+
+        // ⭐ FIXED MODE SAVING (the only fix you asked)
+        mode:
+          settings.mode === "competition"
+            ? "competition"
+            : settings.mode === "online"
+            ? "online"
+            : "practice",
+
         category:
           settings.mode === "online"
             ? settings.categoryName
             : questions[0]?.category || "General",
+
         difficulty:
           settings.mode === "online" ? settings.difficulty : undefined,
       };
 
       if (settings.mode === "online") {
-        
-        // 1️⃣ Online leaderboard
         await fetch(API + "/leaderboard_online.php", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
         });
 
-        // 2️⃣ ALSO save into main submit.php (for attempts + analytics)
         await fetch(API + "/submit.php", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(payload),
         });
       } else {
-        const endpoint =
-          settings.mode === "competition"
-            ? "/leaderboard_competition.php"
-            : "/submit.php";
+        const endpoint = "/submit.php";
 
         await fetch(API + endpoint, {
           method: "POST",
@@ -354,7 +356,6 @@ export default function Quiz({ user }) {
           <b>Percentage:</b> {result.percent}%
         </p>
 
-        {/* ⭐ EMOJI MEDAL */}
         <h3 style={{ marginTop: "10px" }}>{result.medal}</h3>
 
         {mode === "competition" && (
@@ -391,8 +392,6 @@ export default function Quiz({ user }) {
         >
           ⬅ Back to Home
         </button>
-
-        
       </div>
     );
 

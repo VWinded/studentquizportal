@@ -3,6 +3,7 @@ import React from "react";
 export default function AdminDashboard({ user, stats, setPage }) {
   return (
     <div className="admin-dashboard">
+
       <button className="back-btn" onClick={() => setPage("home")}>
         ⬅ Back to Home
       </button>
@@ -33,10 +34,20 @@ export default function AdminDashboard({ user, stats, setPage }) {
         </div>
       </div>
 
+      {/* Center – Live Approvals */}
+      <div className="admin-actions-row" style={{ justifyContent: "center" }}>
+        <div
+          className="admin-action-card action-teal"
+          onClick={() => setPage("live-approvals")}
+        >
+          <h3>📄 Live Quiz Approvals</h3>
+          <p>Approve / Reject / Upload CSV</p>
+        </div>
+      </div>
+
       {/* ACTION ROW 1 */}
       <div className="admin-actions-row">
 
-        {/* Add Question */}
         <div
           className="admin-action-card action-purple"
           onClick={() => setPage("add-question")}
@@ -45,7 +56,6 @@ export default function AdminDashboard({ user, stats, setPage }) {
           <p>Create new quiz questions.</p>
         </div>
 
-        {/* Manage Questions */}
         <div
           className="admin-action-card action-blue"
           onClick={() => setPage("manage-questions")}
@@ -71,6 +81,7 @@ export default function AdminDashboard({ user, stats, setPage }) {
           <h3>🏆 View Leaderboard</h3>
         </div>
       </div>
+
     </div>
   );
 }

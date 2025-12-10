@@ -1,0 +1,363 @@
+/* ===========================================================
+   UNIVERSAL THEME OVERRIDE (applies to entire website)
+   This file uses !important to override your styles.css
+=========================================================== */
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   DEFAULT THEME (Your current design)
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+body.OceanDefault {
+  --bg-main: linear-gradient(135deg, #4b6cb7, #182848);
+  --card-bg: rgba(255,255,255,0.12);
+  --card-bg-strong: rgba(255,255,255,0.18);
+  --text-main: #ffffff;
+  --accent: #ff9800;
+  --accent-hover: #ffa726;
+  --navbar-bg: rgba(0,0,0,0.3);
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   DARK THEME 1 — NEOBLUE DARK
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+body.NeoBlueDark {
+  --bg-main: linear-gradient(135deg, #0a1a33, #001e3c);
+  --card-bg: rgba(8, 33, 66, 0.40);
+  --card-bg-strong: rgba(15, 55, 99, 0.55);
+  --text-main: #e8f1ff;
+  --accent: #4dabff;
+  --accent-hover: #76c7ff;
+  --navbar-bg: rgba(0,0,0,0.45);
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   DARK THEME 2 — CYBER PURPLE
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+body.CyberPurpleDark {
+  --bg-main: linear-gradient(135deg, #1a0030, #490077);
+  --card-bg: rgba(120, 0, 255, 0.25);
+  --card-bg-strong: rgba(165, 70, 255, 0.45);
+  --text-main: #f2d9ff;
+  --accent: #ff2fd4;
+  --accent-hover: #ff5ee4;
+  --navbar-bg: rgba(0,0,0,0.50);
+}
+
+/* ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+   DARK THEME 3 — MATRIX GREEN
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ */
+body.MatrixGreenDark {
+  --bg-main: linear-gradient(135deg, #001d11, #003d2b);
+  --card-bg: rgba(0,255,130,0.20);
+  --card-bg-strong: rgba(0,255,130,0.35);
+  --text-main: #d4ffe4;
+  --accent: #00ff95;
+  --accent-hover: #33ffc0;
+  --navbar-bg: rgba(0,0,0,0.45);
+}
+
+
+
+/* ===========================================================
+   OVERRIDE ALL MAIN UI USING THEME VARIABLES
+=========================================================== */
+
+/* BACKGROUND */
+body {
+  background: var(--bg-main) !important;
+  color: var(--text-main) !important;
+}
+
+/* NAVBAR */
+.navbar {
+  background: var(--navbar-bg) !important;
+}
+
+.navbar button {
+  background: var(--accent) !important;
+  color: var(--text-main) !important;
+}
+
+.navbar button:hover {
+  background: var(--accent-hover) !important;
+}
+
+/* CARDS */
+.hero-main-card,
+.dashboard-card,
+.quiz-card,
+.leaderboard-card,
+.crud-card,
+.form-card,
+.action-card,
+.stat-box,
+.leader-card,
+.analytics-card,
+.analytics-chart,
+.action-card-pro {
+  background: var(--card-bg) !important;
+  color: var(--text-main) !important;
+  border-color: var(--card-bg-strong) !important;
+}
+
+.action-card:hover,
+.analytics-chart:hover {
+  background: var(--card-bg-strong) !important;
+}
+
+/* BUTTONS */
+button,
+.button,
+.main-btn,
+.primary-btn,
+.home-btn,
+.mode-big-btn,
+.dash-btn {
+  background: var(--accent) !important;
+  color: var(--accent-text, white) !important;
+}
+
+button:hover,
+.main-btn:hover,
+.primary-btn:hover,
+.mode-big-btn:hover,
+.dash-btn:hover {
+  background: var(--accent-hover) !important;
+}
+
+/* INPUTS */
+input,
+.input-box,
+.form-card input,
+.dropdown,
+.timer-input {
+  background: var(--card-bg-strong) !important;
+  color: var(--text-main) !important;
+}
+
+/* TABLES */
+.lb-table {
+  background: var(--card-bg) !important;
+}
+
+.lb-table th {
+  background: var(--card-bg-strong) !important;
+}
+
+.lb-table td {
+  color: var(--text-main) !important;
+}
+
+/* TIMER */
+.timer {
+  color: var(--text-main) !important;
+}
+/* ========================================================
+   PREMIUM HOMEPAGE OVERRIDES FOR THEMES
+   Fixes your home-wrapper, glows, hero-box etc.
+======================================================== */
+
+/* Default */
+body.OceanDefault .home-wrapper {
+  background: linear-gradient(135deg, #203a72, #1e2e59 40%, #18305e) !important;
+}
+body.OceanDefault .circle {
+  background: rgba(255, 255, 255, 0.08) !important;
+}
+body.OceanDefault .hero-box {
+  background: rgba(255,165,0,0.05) !important;
+  border-color: rgba(255,165,0,0.8) !important;
+}
+
+/* NEO BLUE DARK */
+body.NeoBlueDark .home-wrapper {
+  background: linear-gradient(135deg, #051427, #06203b 40%, #02182d) !important;
+}
+body.NeoBlueDark .circle {
+  background: rgba(0, 100, 255, 0.15) !important;
+}
+body.NeoBlueDark .hero-box {
+  background: rgba(20, 80, 180, 0.10) !important;
+  border-color: #4dabff !important;
+}
+
+/* CYBER PURPLE */
+body.CyberPurpleDark .home-wrapper {
+  background: linear-gradient(135deg, #1b0030, #390067 45%, #260040) !important;
+}
+body.CyberPurpleDark .circle {
+  background: rgba(150, 0, 255, 0.15) !important;
+}
+body.CyberPurpleDark .hero-box {
+  background: rgba(255, 0, 200, 0.10) !important;
+  border-color: #ff2fd4 !important;
+}
+
+/* MATRIX GREEN */
+body.MatrixGreenDark .home-wrapper {
+  background: linear-gradient(135deg, #00140e, #003d2b 40%, #00261b) !important;
+}
+body.MatrixGreenDark .circle {
+  background: rgba(0,255,120,0.15) !important;
+}
+body.MatrixGreenDark .hero-box {
+  background: rgba(0,255,100,0.10) !important;
+  border-color: #00ff95 !important;
+}
+
+/* CRYSTAL LIGHT */
+body.CrystalLight .home-wrapper {
+  background: linear-gradient(135deg, #eef6ff, #dde9ff 40%, #cedfff) !important;
+}
+body.CrystalLight .circle {
+  background: rgba(0,0,0,0.05) !important;
+}
+body.CrystalLight .hero-box {
+  background: rgba(255,255,255,0.85) !important;
+  border-color: #006eff !important;
+}
+
+/* SUNRISE LIGHT */
+body.SunriseLight .home-wrapper {
+  background: linear-gradient(135deg, #fff4e0, #ffe2bd 40%, #ffd8a6) !important;
+}
+body.SunriseLight .circle {
+  background: rgba(255,180,0,0.15) !important;
+}
+body.SunriseLight .hero-box {
+  background: rgba(255,200,120,0.20) !important;
+  border-color: #ff7b00 !important;
+}
+
+/* AQUA MINIMAL */
+body.AquaMinimalLight .home-wrapper {
+  background: linear-gradient(135deg, #eef2f3, #dbe3e3 40%, #cfdada) !important;
+}
+body.AquaMinimalLight .circle {
+  background: rgba(0,150,130,0.15) !important;
+}
+body.AquaMinimalLight .hero-box {
+  background: rgba(255,255,255,0.85) !important;
+  border-color: #009688 !important;
+}
+/* ============================================================
+   IMPROVED LIGHT THEMES – PREMIUM & READABLE
+   Fixes: text contrast, card colors, button visibility
+=========================================================== */
+
+/* ------------------------------------------------------------
+   1️⃣ CRYSTAL LIGHT (Cool Blue Premium)
+------------------------------------------------------------ */
+body.CrystalLight {
+  --text-main: #1a1a1a !important;
+  --card-bg: rgba(255,255,255,0.85) !important;
+  --card-bg-strong: rgba(240,240,255,0.95) !important;
+  --accent: #006eff !important;
+  --accent-hover: #0055d4 !important;
+}
+
+body.CrystalLight .stat-box,
+body.CrystalLight .quiz-card,
+body.CrystalLight .dashboard-card,
+body.CrystalLight .leaderboard-card,
+body.CrystalLight .form-card {
+  background: #e3ecff !important;
+  border: 1px solid #c6d7ff !important;
+  color: #1a1a1a !important;
+}
+
+body.CrystalLight .hero-box {
+  background: #dce7ff !important;
+  border: 2px solid #006eff !important;
+}
+
+/* Buttons */
+body.CrystalLight button,
+body.CrystalLight .main-btn,
+body.CrystalLight .primary-btn {
+  background: #006eff !important;
+  color: white !important;
+}
+body.CrystalLight button:hover {
+  background: #0055d4 !important;
+}
+
+/* ------------------------------------------------------------
+   2️⃣ SUNRISE LIGHT (Warm Orange Premium)
+------------------------------------------------------------ */
+body.SunriseLight {
+  --text-main: #4a2c00 !important;
+  --card-bg: rgba(255,245,225,0.95) !important;
+  --card-bg-strong: #ffe8c6 !important;
+  --accent: #ff7b00 !important;
+  --accent-hover: #e86d00 !important;
+}
+
+body.SunriseLight .stat-box,
+body.SunriseLight .quiz-card,
+body.SunriseLight .dashboard-card,
+body.SunriseLight .leaderboard-card,
+body.SunriseLight .form-card {
+  background: #ffe7c2 !important;
+  border: 1px solid #e6c99a !important;
+  color: #4a2c00 !important;
+}
+
+body.SunriseLight .hero-box {
+  background: #ffe2bb !important;
+  border: 2px solid #ff7b00 !important;
+}
+
+/* Buttons */
+body.SunriseLight button,
+body.SunriseLight .main-btn,
+body.SunriseLight .primary-btn {
+  background: #ff7b00 !important;
+  color: white !important;
+}
+body.SunriseLight button:hover {
+  background: #e86d00 !important;
+}
+
+/* ------------------------------------------------------------
+   3️⃣ AQUA MINIMAL (Clean Green Premium)
+------------------------------------------------------------ */
+body.AquaMinimalLight {
+  --text-main: #1a1a1a !important;
+  --card-bg: rgba(255,255,255,0.90) !important;
+  --card-bg-strong: #edf7f7 !important;
+  --accent: #009688 !important;
+  --accent-hover: #007e72 !important;
+}
+
+body.AquaMinimalLight .stat-box,
+body.AquaMinimalLight .quiz-card,
+body.AquaMinimalLight .dashboard-card,
+body.AquaMinimalLight .leaderboard-card,
+body.AquaMinimalLight .form-card {
+  background: #e7f3f3 !important;
+  border: 1px solid #c2dddd !important;
+  color: #1a1a1a !important;
+}
+
+body.AquaMinimalLight .hero-box {
+  background: #e0f0f0 !important;
+  border: 2px solid #009688 !important;
+}
+
+/* Buttons */
+body.AquaMinimalLight button,
+body.AquaMinimalLight .main-btn,
+body.AquaMinimalLight .primary-btn {
+  background: #009688 !important;
+  color: white !important;
+}
+body.AquaMinimalLight button:hover {
+  background: #007e72 !important;
+}
+body.CleanWhite {
+  --bg-main: #f5f7fa;
+  --card-bg: #ffffff;
+  --text-main: #1a1a1a;
+  --accent: #0068ff;
+  --navbar-bg: #ffffff;
+}

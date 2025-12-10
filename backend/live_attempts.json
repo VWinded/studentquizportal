@@ -1,1 +1,22 @@
-[]
+[
+    {
+        "id": 1765372635,
+        "user": "Admin",
+        "email": "admin@gmail.com",
+        "platform": "Mentimeter",
+        "score": 10,
+        "proof": null,
+        "status": "approved",
+        "date": "2025-12-10 13:17"
+    },
+    {
+        "id": 1765377767,
+        "user": "Admin",
+        "email": "admin@gmail.com",
+        "platform": "Mentimeter",
+        "score": "10",
+        "proof": "proof_1765377767_4153.pdf",
+        "status": "rejected",
+        "date": "2025-12-10 14:42"
+    }
+]

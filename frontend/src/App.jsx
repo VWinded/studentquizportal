@@ -15,12 +15,17 @@ import { API } from "./api";
 import OnlineQuizTopics from "./OnlineQuizTopics";
 import OnlineLeaderboard from "./OnlineLeaderboard";
 import LiveQuizPlatforms from "./LiveQuizPlatforms";
+import AdminLiveApprovals from "./AdminLiveApprovals";
+import SubmitLiveAttendance from "./SubmitLiveAttendance";
+import ThemeSwitcher from "./ThemeSwitcher";
+import "./theme-override.css";
 
 export default function App() {
-
   const [page, setPage] = useState("home");
-  const [editId, setEditId] = useState(null);   // ✅ NEW
+  const [editId, setEditId] = useState(null);
   const [user, setUser] = useState(null);
+
+  const [themeOpen, setThemeOpen] = useState(false); // Panel toggle
 
   const [stats, setStats] = useState({
     totalUsers: 0,
@@ -28,6 +33,9 @@ export default function App() {
     totalAttempts: 0,
   });
 
+  // -------------------------------------------------------
+  // LOAD USER + PLATFORM STATS
+  // -------------------------------------------------------
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     const storedToken = localStorage.getItem("token");
@@ -46,7 +54,7 @@ export default function App() {
             totalAttempts: data.totalAttempts,
           });
         })
-        .catch(() => { });
+        .catch(() => {});
     };
 
     fetchStats();
@@ -57,137 +65,176 @@ export default function App() {
     return () => window.removeEventListener("quiz_submitted", handler);
   }, []);
 
+  // -------------------------------------------------------
+  // LOGIN HANDLER
+  // -------------------------------------------------------
   const handleLogin = (data) => {
     setUser(data.user);
-
-    if (data.user.role === "admin") {
-      setPage("dashboard");
-    } else {
-      setPage("student-dashboard");
-    }
+    if (data.user.role === "admin") setPage("dashboard");
+    else setPage("student-dashboard");
   };
 
+  // -------------------------------------------------------
+  // LOGOUT
+  // -------------------------------------------------------
   const logout = () => {
     localStorage.clear();
     setUser(null);
     setPage("home");
   };
 
+  // -------------------------------------------------------
+  // PAGE NAVIGATION EVENTS
+  // -------------------------------------------------------
   useEffect(() => {
     const handler = (e) => {
       setPage(e.detail);
     };
-
     window.addEventListener("navigate", handler);
-
     return () => window.removeEventListener("navigate", handler);
   }, []);
 
+  // -------------------------------------------------------
+  // ⭐ AUTO-CLOSE THEME PANEL WHEN THEME IS SELECTED
+  // -------------------------------------------------------
+  useEffect(() => {
+    const closeHandler = () => setThemeOpen(false);
+    window.addEventListener("close_theme_panel", closeHandler);
+    return () => window.removeEventListener("close_theme_panel", closeHandler);
+  }, []);
+
+  // -------------------------------------------------------
+  // RENDER
+  // -------------------------------------------------------
   return (
-    <div>
-      <nav className="navbar">
-        <h1 className="logo">🎓 Student Quiz Portal</h1>
+    <>
+      <div>
+        <nav className="navbar">
+          <h1 className="logo">🎓 Student Quiz Portal</h1>
 
-        <div className="nav-links">
-          <button onClick={() => setPage("home")}>Home</button>
+          <div className="nav-links">
+            <button onClick={() => setPage("home")}>Home</button>
 
-          {!user && (
-            <>
-              <button onClick={() => setPage("login")}>Login</button>
-              <button onClick={() => setPage("register")}>Register</button>
-            </>
-          )}
+            {!user && (
+              <>
+                <button onClick={() => setPage("login")}>Login</button>
+                <button onClick={() => setPage("register")}>Register</button>
+              </>
+            )}
 
-          {user && (
-            <>
-              <button onClick={() => setPage("leaderboard")}>Leaderboard</button>
-              <button onClick={() => setPage("analytics")}>Analytics</button>
+            {user && (
+              <>
+                <button onClick={() => setPage("leaderboard")}>Leaderboard</button>
+                <button onClick={() => setPage("analytics")}>Analytics</button>
 
-              {user.role === "admin" && (
-                <button onClick={() => setPage("dashboard")}>Admin</button>
-              )}
+                {user.role === "admin" && (
+                  <button onClick={() => setPage("dashboard")}>Dashboard</button>
+                )}
 
-              {user.role === "student" && (
-                <button onClick={() => setPage("student-dashboard")}>Dashboard</button>
-              )}
+                {user.role === "student" && (
+                  <button onClick={() => setPage("student-dashboard")}>
+                    Dashboard
+                  </button>
+                )}
 
-              <button onClick={logout}>Logout</button>
-            </>
-          )}
-        </div>
-      </nav>
+                {/* THEME BUTTON */}
+                <button onClick={() => setThemeOpen(!themeOpen)}>
+                  Themes
+                </button>
 
-      {/* ROUTES */}
-      {page === "home" && <Home user={user} setPage={setPage} />}
-      {page === "login" && <Login onLogin={handleLogin} />}
-      {page === "register" && <Register onSwitchToLogin={() => setPage("login")} />}
+                <button onClick={logout}>Logout</button>
+              </>
+            )}
+          </div>
+        </nav>
 
-      {/* ⭐ Added setPage to Leaderboard */}
-      {page === "leaderboard" && <Leaderboard setPage={setPage} />}
+        {/* ROUTER */}
+        {page === "home" && <Home user={user} setPage={setPage} />}
+        {page === "login" && <Login onLogin={handleLogin} />}
+        {page === "register" && (
+          <Register onSwitchToLogin={() => setPage("login")} />
+        )}
 
-      {/* ⭐ Added setPage to Analytics */}
-      {page === "analytics" && <Analytics setPage={setPage} />}
+        {page === "leaderboard" && <Leaderboard setPage={setPage} />}
+        {page === "analytics" && <Analytics user={user} setPage={setPage} />}
 
-      {page === "dashboard" && (
-        <ProtectedRoute user={user && user.role === "admin"}>
-          <Dashboard setPage={setPage} user={user} stats={stats} />
-        </ProtectedRoute>
-      )}
+        {page === "dashboard" && (
+          <ProtectedRoute user={user && user.role === "admin"}>
+            <Dashboard setPage={setPage} user={user} stats={stats} />
+          </ProtectedRoute>
+        )}
 
-      {page === "student-dashboard" && (
-        <ProtectedRoute user={user && user.role === "student"}>
-          <StudentDashboard user={user} setPage={setPage} />
-        </ProtectedRoute>
-      )}
+        {page === "student-dashboard" && (
+          <ProtectedRoute user={user && user.role === "student"}>
+            <StudentDashboard user={user} setPage={setPage} />
+          </ProtectedRoute>
+        )}
 
-      {page === "add-question" && (
-        <ProtectedRoute user={user && user.role === "admin"}>
-          <AddQuestion setPage={setPage} />
-        </ProtectedRoute>
-      )}
+        {page === "add-question" && (
+          <ProtectedRoute user={user && user.role === "admin"}>
+            <AddQuestion setPage={setPage} />
+          </ProtectedRoute>
+        )}
 
-      {/* ⭐ EDIT QUESTION ROUTE */}
-      {page === "edit-question" && (
-        <ProtectedRoute user={user && user.role === "admin"}>
-          <AddQuestion setPage={setPage} editId={editId} />
-        </ProtectedRoute>
-      )}
+        {page === "edit-question" && (
+          <ProtectedRoute user={user && user.role === "admin"}>
+            <AddQuestion setPage={setPage} editId={editId} />
+          </ProtectedRoute>
+        )}
 
-      {page === "online-quiz-topics" && (
-        <ProtectedRoute user={user}>
-          <OnlineQuizTopics setPage={setPage} />
-        </ProtectedRoute>
-      )}
+        {page === "submit-live-attendance" && (
+          <ProtectedRoute user={user}>
+            <SubmitLiveAttendance
+              user={user}
+              platform={window.selectedPlatform}
+              setPage={setPage}
+            />
+          </ProtectedRoute>
+        )}
 
-      {page === "online-leaderboard" && (
-        <OnlineLeaderboard setPage={setPage} />
-      )}
-      {page === "live-quizzes" && (
-  <ProtectedRoute user={user}>
-    <LiveQuizPlatforms user={user} setPage={setPage} />
-  </ProtectedRoute>
-)}
+        {page === "online-quiz-topics" && (
+          <ProtectedRoute user={user}>
+            <OnlineQuizTopics setPage={setPage} />
+          </ProtectedRoute>
+        )}
 
+        {page === "online-leaderboard" && (
+          <OnlineLeaderboard setPage={setPage} />
+        )}
 
-      {/* ⭐ LIVE QUIZ ROUTES REMOVED */}
+        {page === "live-quizzes" && (
+          <ProtectedRoute user={user}>
+            <LiveQuizPlatforms user={user} setPage={setPage} />
+          </ProtectedRoute>
+        )}
 
-      {page === "manage-questions" && (
-        <ProtectedRoute user={user && user.role === "admin"}>
-          <ManageQuestions setPage={setPage} setEditId={setEditId} />
-        </ProtectedRoute>
-      )}
+        {page === "manage-questions" && (
+          <ProtectedRoute user={user && user.role === "admin"}>
+            <ManageQuestions setPage={setPage} setEditId={setEditId} />
+          </ProtectedRoute>
+        )}
 
-      {page === "quiz-setup" && (
-        <ProtectedRoute user={user}>
-          <QuizSetup user={user} setPage={setPage} />
-        </ProtectedRoute>
-      )}
+        {page === "live-approvals" && (
+          <ProtectedRoute user={user && user.role === "admin"}>
+            <AdminLiveApprovals setPage={setPage} />
+          </ProtectedRoute>
+        )}
 
-      {page === "quiz" && (
-        <ProtectedRoute user={user}>
-          <Quiz user={user} setPage={setPage} />
-        </ProtectedRoute>
-      )}
-    </div>
+        {page === "quiz-setup" && (
+          <ProtectedRoute user={user}>
+            <QuizSetup user={user} setPage={setPage} />
+          </ProtectedRoute>
+        )}
+
+        {page === "quiz" && (
+          <ProtectedRoute user={user}>
+            <Quiz user={user} setPage={setPage} />
+          </ProtectedRoute>
+        )}
+      </div>
+
+      {/* THEME SWITCHER PANEL */}
+      <ThemeSwitcher open={themeOpen} />
+    </>
   );
 }

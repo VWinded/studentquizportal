@@ -14,23 +14,40 @@ import {
   Bar,
 } from "recharts";
 
-export default function Analytics({ setPage }) {   // ⭐ added setPage
-  const [attempts, setAttempts] = useState([]);
+export default function Analytics({ user, setPage }) {
 
+  const [attempts, setAttempts] = useState([]);
   useEffect(() => {
-    fetch(API + "/analytics.php")
-      .then((res) => res.json())
-      .then((data) => setAttempts(data));
-  }, []);
+  if (!user) return;
+
+  fetch(API + "/analytics.php", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      user: user.email,
+      role: user.role
+    })
+  })
+    .then((res) => res.json())
+    .then((data) => setAttempts(data))
+    .catch(() => setAttempts([]));
+}, [user]);
+
+  
 
   if (attempts.length === 0)
     return (
       <div className="analytics-empty">
+        <button className="back-btn" onClick={() => setPage("home")}>
+          ⬅ Back to Home
+        </button>
+
         <h2>📊 Quiz Analytics</h2>
         <p>No quiz attempts yet.</p>
       </div>
     );
 
+  // Latest attempt
   const latest = attempts[attempts.length - 1];
 
   const summaryData = [
@@ -38,6 +55,7 @@ export default function Analytics({ setPage }) {   // ⭐ added setPage
     { name: "Wrong", value: latest.total - latest.correct },
   ];
 
+  // Group attempts by category
   const categoryPerformance = [];
   const grouped = {};
 
@@ -60,14 +78,14 @@ export default function Analytics({ setPage }) {   // ⭐ added setPage
   return (
     <div className="analytics-wrapper fade-in">
       
-      {/* ⭐ Back to Home Button */}
+      {/* Back button */}
       <button className="back-btn" onClick={() => setPage("home")}>
         ⬅ Back to Home
       </button>
 
       <h2 className="analytics-title">📊 Quiz Analytics</h2>
 
-      {/* SUMMARY */}
+      {/* Latest summary */}
       <div className="analytics-card glass-card">
         <h3>Latest Result</h3>
         <p><b>Score:</b> {latest.correct} / {latest.total}</p>
@@ -76,25 +94,19 @@ export default function Analytics({ setPage }) {   // ⭐ added setPage
         <p><b>Date:</b> {latest.date}</p>
       </div>
 
+      {/* CHARTS */}
       <div className="analytics-grid">
 
-        {/* PIE CHART */}
         <div className="analytics-chart glass-card">
           <h3>Correct vs Wrong</h3>
           <PieChart width={280} height={260}>
-            <Pie
-              data={summaryData}
-              dataKey="value"
-              outerRadius={110}
-              animationDuration={1000}
-            >
+            <Pie data={summaryData} dataKey="value" outerRadius={110}>
               <Cell fill="#4CAF50" />
               <Cell fill="#F44336" />
             </Pie>
           </PieChart>
         </div>
 
-        {/* LINE CHART */}
         <div className="analytics-chart glass-card">
           <h3>Attempt History</h3>
           <LineChart width={320} height={220} data={attempts}>
@@ -102,24 +114,17 @@ export default function Analytics({ setPage }) {   // ⭐ added setPage
             <XAxis dataKey="date" />
             <YAxis />
             <Tooltip />
-            <Line
-              type="monotone"
-              dataKey="percent"
-              stroke="#FFB300"
-              strokeWidth={3}
-              dot={{ r: 5 }}
-            />
+            <Line type="monotone" dataKey="percent" stroke="#FFB300" strokeWidth={3} dot />
           </LineChart>
         </div>
 
-        {/* BAR CHART */}
         <div className="analytics-chart glass-card">
           <h3>Category Performance</h3>
           <BarChart width={320} height={220} data={categoryPerformance}>
             <XAxis dataKey="category" />
             <YAxis />
             <Tooltip />
-            <Bar dataKey="percent" fill="#42A5F5" radius={[6, 6, 0, 0]} />
+            <Bar dataKey="percent" fill="#42A5F5" radius={[6,6,0,0]} />
           </BarChart>
         </div>
 

@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { API } from "./api";
 import "./styles.css";
-
+import "./theme-override.css";
 export default function Home({ user, setPage }) {
   const [stats, setStats] = useState({
     totalUsers: 0,
@@ -10,6 +10,7 @@ export default function Home({ user, setPage }) {
   });
 
   const [topUsers, setTopUsers] = useState([]);
+  const [userAttempts, setUserAttempts] = useState(0);
 
   // Fetch global stats + leaderboard preview
   useEffect(() => {
@@ -27,56 +28,58 @@ export default function Home({ user, setPage }) {
       .catch(() => {});
   }, []);
 
+  // 🔥 Fetch only logged-in user attempts
+  useEffect(() => {
+    if (!user) return;
+
+    fetch(API + "/get_attempts.php")
+      .then((res) => res.json())
+      .then((data) => {
+        const mine = data.filter(
+          (a) => a.user === user.name || a.email === user.email
+        );
+        setUserAttempts(mine.length);
+      })
+      .catch(() => {});
+  }, [user]);
+
   return (
     <div className="home-wrapper">
-      {/* Floating background shapes */}
+      
       <div className="circle circle1"></div>
       <div className="circle circle2"></div>
 
-      {/* HERO SECTION WITH BORDER BOX */}
+      {/* HERO SECTION */}
       <div className="hero-container">
         <div className="hero-box">
-
           <h1 className="title-text">Student Quiz Portal</h1>
 
           <p className="subtitle">
-            Practice quizzes, track your progress, compete with others, and improve everyday!
+            Practice quizzes, track your progress, compete with others, and
+            improve everyday!
           </p>
 
           {!user ? (
             <div className="button-row">
-              <button
-                className="main-btn"
-                onClick={() => setPage("login")}
-              >
+              <button className="main-btn" onClick={() => setPage("login")}>
                 Login
               </button>
 
-              <button
-                className="main-btn"
-                onClick={() => setPage("register")}
-              >
+              <button className="main-btn" onClick={() => setPage("register")}>
                 Register
               </button>
             </div>
           ) : (
             <div className="button-row">
-              <button
-                className="main-btn"
-                onClick={() => setPage("quiz-setup")}
-              >
+              <button className="main-btn" onClick={() => setPage("quiz-setup")}>
                 Start Quiz
               </button>
 
-              <button
-                className="main-btn"
-                onClick={() => setPage("dashboard")}
-              >
+              <button className="main-btn" onClick={() => setPage("dashboard")}>
                 Dashboard
               </button>
             </div>
           )}
-
         </div>
       </div>
 
@@ -98,8 +101,14 @@ export default function Home({ user, setPage }) {
                 <p>Total Questions</p>
               </div>
 
+              {/* ⭐ FIXED → Admin sees total attempts, student sees their attempts */}
               <div className="stat-box">
-                <h3>{stats.totalAttempts}</h3>
+                <h3>
+                  {user.role === "admin"
+                    ? stats.totalAttempts    // Admin → all attempts
+                    : userAttempts           // Student → only his attempts
+                  }
+                </h3>
                 <p>Quizzes Attempted</p>
               </div>
             </div>
@@ -128,7 +137,7 @@ export default function Home({ user, setPage }) {
             </div>
           </div>
 
-          {/* TOP USERS SECTION */}
+          {/* TOP USERS */}
           <div className="leader-preview">
             <h2>Top Performers</h2>
 
