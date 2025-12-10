@@ -1,46 +1,64 @@
 <?php
 require_once __DIR__ . "/cors.php";
-date_default_timezone_set("Asia/Kolkata");
 header("Content-Type: application/json");
+date_default_timezone_set("Asia/Kolkata");
 
-if ($_SERVER["REQUEST_METHOD"] === "OPTIONS") exit;
+$file = "leaderboard_online.json";
 
-$file = __DIR__ . "/leaderboard_online.json";
+// POST → Save new score
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
-if ($_SERVER["REQUEST_METHOD"] === "GET") {
+    $input = json_decode(file_get_contents("php://input"), true);
 
-    if (!file_exists($file)) {
-        echo json_encode([]);
-        exit;
-    }
+    if (!$input) { echo "Invalid JSON"; exit; }
 
-    echo file_get_contents($file);
-    exit;
-}
+    // Real timeTaken from frontend (can be 0)
+    $timeTaken = isset($input["timeTaken"]) ? (int)$input["timeTaken"] : 0;
 
-// POST → Save score
-$raw = file_get_contents("php://input");
-$data = json_decode($raw, true);
+    // Date/time of attempt
+    $date = date("Y-m-d H:i");
 
-if (!isset($data["name"], $data["score"], $data["categoryName"], $data["difficulty"])) {
-    echo json_encode(["error" => "Missing fields"]);
-    exit;
-}
-
-$lb = file_exists($file) ? json_decode(file_get_contents($file), true) : [];
-if (!is_array($lb)) $lb = [];
-
-$lb[] = [
-    "name" => $data["name"],
-    "score" => (int)$data["score"],
-    "category" => $data["categoryName"],
-    "difficulty" => $data["difficulty"],
-    "time" => date("Y-m-d H:i")
+    // Prepare entry (old logic + extended fields)
+    $newRow = [
+    "name"       => $input["name"],
+    "score"      => $input["score"],
+    "total"      => $input["total"],     // ⭐ ADD THIS LINE
+    "category"   => $input["category"],
+    "difficulty" => $input["difficulty"],
+    "time"       => $timeTaken . " sec",
+    "datetime"   => $date
 ];
 
-// Sort by highest score
-usort($lb, fn($a, $b) => $b["score"] - $a["score"]);
 
-file_put_contents($file, json_encode($lb, JSON_PRETTY_PRINT));
+    // Read existing
+    $old = [];
+    if (file_exists($file)) {
+        $old = json_decode(file_get_contents($file), true);
+    }
+    if (!is_array($old)) $old = [];
 
-echo json_encode(["success" => true, "leaderboard" => $lb]);
+    // Add entry
+    array_unshift($old, $newRow);
+
+    // Sort — High score first, low time earlier
+    usort($old, function($a, $b){
+        if ($b["score"] != $a["score"]) {
+            return $b["score"] - $a["score"];
+        }
+
+        // extract numeric seconds from "12 sec"
+        $ta = (int)filter_var($a["time"], FILTER_SANITIZE_NUMBER_INT);
+        $tb = (int)filter_var($b["time"], FILTER_SANITIZE_NUMBER_INT);
+
+        return $ta - $tb;
+    });
+
+    // Save
+    file_put_contents($file, json_encode($old, JSON_PRETTY_PRINT));
+
+    echo "OK";
+    exit;
+}
+
+// GET → return leaderboard
+echo file_exists($file) ? file_get_contents($file) : "[]";

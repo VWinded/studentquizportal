@@ -7,14 +7,21 @@ export default function OnlineQuizTopics({ setPage }) {
   const [selectedCat, setSelectedCat] = useState(null);
   const [difficulty, setDifficulty] = useState("easy");
   const [count, setCount] = useState(10);
+  const [loading, setLoading] = useState(true);
 
   // Load categories from API backend
   useEffect(() => {
-    fetch(API + "/fetch_api_questions.php?get=categories")
-      .then((res) => res.json())
-      .then((data) => setCategories(data.trivia_categories || []))
-      .catch(() => {});
-  }, []);
+  setLoading(true);
+
+  fetch(API + "/fetch_api_questions.php?get=categories")
+    .then((res) => res.json())
+    .then((data) => {
+      setCategories(data.trivia_categories || []);
+      setLoading(false);
+    })
+    .catch(() => setLoading(false));
+}, []);
+
 
   const startOnlineQuiz = () => {
     if (!selectedCat) return alert("Select a category!");
@@ -39,6 +46,7 @@ export default function OnlineQuizTopics({ setPage }) {
       </button>
 
       <h2 className="online-title">🌍 Online Quiz Settings</h2>
+      {loading && <div className="center-text">Loading categories...</div>}
 
       <h3>Select Category</h3>
       <div className="online-category-list">

@@ -15,16 +15,11 @@ export default function OnlineLeaderboard({ setPage }) {
   }, []);
 
   const filtered = rows.filter((r) => {
-    const catMatch =
-      categoryFilter === "all" || r.category === categoryFilter;
-
-    const diffMatch =
-      difficultyFilter === "all" || r.difficulty === difficultyFilter;
-
+    const catMatch = categoryFilter === "all" || r.category === categoryFilter;
+    const diffMatch = difficultyFilter === "all" || r.difficulty === difficultyFilter;
     return catMatch && diffMatch;
   });
 
-  // Extract category list dynamically
   const categories = [...new Set(rows.map((r) => r.category))];
 
   return (
@@ -35,7 +30,6 @@ export default function OnlineLeaderboard({ setPage }) {
 
       <h2 className="online-title">🌍 Online Quiz Leaderboard</h2>
 
-      {/* Filters */}
       <h3>Filter by Category</h3>
       <select
         className="online-select"
@@ -60,7 +54,6 @@ export default function OnlineLeaderboard({ setPage }) {
         <option value="hard">Hard</option>
       </select>
 
-      {/* Leaderboard Table */}
       {filtered.length === 0 ? (
         <p>No scores found.</p>
       ) : (

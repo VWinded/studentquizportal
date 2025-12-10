@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from "react";
 import { API } from "./api";
 
-export default function QuizSetup({ setPage }) {
+export default function QuizSetup({ user, setPage }) {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [difficulty, setDifficulty] = useState("Easy");
 
+  // Timers
   const [questionTime, setQuestionTime] = useState(20);
   const [quizDuration, setQuizDuration] = useState(10);
   const [enableQuestionTimer, setEnableQuestionTimer] = useState(false);
   const [enableQuizTimer, setEnableQuizTimer] = useState(false);
 
-  // ⭐ SINGLE MODE STATE (practice | competition | null)
+  // Mode
   const [mode, setMode] = useState(null);
 
-  // Load categories from backend
+  // Load categories
   useEffect(() => {
     fetch(API + "/quiz.php")
       .then((res) => res.json())
       .then((data) => {
         const raw = data.questions;
-
         const uniqueCategories = [];
+
         raw.forEach((q) => {
           if (!uniqueCategories.find((c) => c.name === q.category)) {
             uniqueCategories.push({ name: q.category, image: q.image });
@@ -32,9 +33,8 @@ export default function QuizSetup({ setPage }) {
       });
   }, []);
 
-  // ⭐ START QUIZ FOR BOTH MODES
   const startQuiz = () => {
-    if (!mode) return alert("Please select a mode first!");
+    if (!mode) return alert("Please select a mode!");
     if (!selectedCategory) return alert("Please select a category!");
 
     const settings = {
@@ -43,7 +43,6 @@ export default function QuizSetup({ setPage }) {
       difficulty,
     };
 
-    // Practice Mode Settings
     if (mode === "practice") {
       settings.enableQuestionTimer = enableQuestionTimer;
       settings.questionTime = enableQuestionTimer ? Number(questionTime) : null;
@@ -52,15 +51,21 @@ export default function QuizSetup({ setPage }) {
       settings.quizDuration = enableQuizTimer ? Number(quizDuration) : null;
     }
 
-    // Competition Mode Settings
     if (mode === "competition") {
-      settings.enableQuestionTimer = false;
-      settings.questionTime = null;
+      if (user.role === "admin") {
+        settings.enableQuestionTimer = enableQuestionTimer;
+        settings.questionTime = enableQuestionTimer ? Number(questionTime) : null;
 
-      settings.enableQuizTimer = true;
-      settings.quizDuration = Number(quizDuration) || 10;
+        settings.enableQuizTimer = true;
+        settings.quizDuration = Number(quizDuration) || 10;
+      } else {
+        settings.enableQuestionTimer = false;
+        settings.questionTime = null;
 
-      // For fixed random order for all players
+        settings.enableQuizTimer = true;
+        settings.quizDuration = quizDuration;
+      }
+
       settings.seed = Date.now();
     }
 
@@ -72,40 +77,35 @@ export default function QuizSetup({ setPage }) {
     <div className="quiz-setup-container">
       <h2>⚙️ Quiz Settings</h2>
 
-      {/* ⭐ MODE SELECTION FIRST */}
+      {/* ⭐ MODE SELECTION */}
       {!mode && (
+        
         <div className="mode-buttons-column">
-          <button
-            className="mode-big-btn"
-            onClick={() => setMode("practice")}
-          >
+          <button className="back-btn" onClick={() => setPage("home")}>
+  ⬅ Back to Home
+</button>
+
+          <button className="mode-big-btn" onClick={() => setMode("practice")}>
             Practice Mode 📝
           </button>
 
-          <button
-            className="mode-big-btn"
-            onClick={() => setMode("competition")}
-          >
+          <button className="mode-big-btn" onClick={() => setMode("competition")}>
             Competition Mode ⚡
           </button>
-           <button
-      className="mode-big-btn"
-      onClick={() => setPage("online-quiz-topics")}
-    >
-      Online Quiz 🌍
-    </button>
-    <button
-  className="mode-big-btn"
-  onClick={() => setPage("live-join")}
->
-  Live Competition 🎯
+
+          <button className="mode-big-btn" onClick={() => setPage("online-quiz-topics")}>
+            Online Quiz 🌍
+          </button>
+          <button className="mode-big-btn" onClick={() => setPage("live-quizzes")}>
+  Live Quizzes 🎯
 </button>
 
-        </div>
 
+          {/* ⭐ LIVE QUIZ BUTTON REMOVED */}
+        </div>
       )}
 
-      {/* ⭐ AFTER MODE SELECTED — SHOW FULL SETTINGS */}
+      {/* ⭐ FULL SETTINGS AFTER MODE SELECT */}
       {mode && (
         <>
           <button className="back-btn" onClick={() => setMode(null)}>
@@ -118,9 +118,7 @@ export default function QuizSetup({ setPage }) {
               <div
                 key={i}
                 className={`category-card ${
-                  selectedCategory?.name === c.name
-                    ? "selected-category"
-                    : ""
+                  selectedCategory?.name === c.name ? "selected-category" : ""
                 }`}
                 onClick={() => setSelectedCategory(c)}
               >
@@ -141,7 +139,7 @@ export default function QuizSetup({ setPage }) {
             <option>Hard</option>
           </select>
 
-          {/* ⭐ PRACTICE MODE ONLY SETTINGS */}
+          {/* ⭐ PRACTICE TIMERS */}
           {mode === "practice" && (
             <>
               <h3>Per-Question Timer</h3>
@@ -149,7 +147,9 @@ export default function QuizSetup({ setPage }) {
                 <input
                   type="checkbox"
                   checked={enableQuestionTimer}
-                  onChange={() => setEnableQuestionTimer(!enableQuestionTimer)}
+                  onChange={() =>
+                    setEnableQuestionTimer(!enableQuestionTimer)
+                  }
                 />
                 Enable per-question timer
               </label>
@@ -184,6 +184,51 @@ export default function QuizSetup({ setPage }) {
                 />
               )}
             </>
+          )}
+
+          {/* ⭐ COMPETITION TIMERS (ADMIN ONLY) */}
+          {mode === "competition" && user.role === "admin" && (
+            <>
+              <h3>Competition – Admin Timer Control 👑</h3>
+
+              <h3>Per-Question Timer</h3>
+              <label className="checkbox-row">
+                <input
+                  type="checkbox"
+                  checked={enableQuestionTimer}
+                  onChange={() =>
+                    setEnableQuestionTimer(!enableQuestionTimer)
+                  }
+                />
+                Enable per-question timer
+              </label>
+
+              {enableQuestionTimer && (
+                <input
+                  type="number"
+                  value={questionTime}
+                  className="timer-input"
+                  onChange={(e) => setQuestionTime(e.target.value)}
+                  placeholder="Seconds per question"
+                />
+              )}
+
+              <h3>Full Quiz Timer (Minutes)</h3>
+              <input
+                type="number"
+                value={quizDuration}
+                className="timer-input"
+                onChange={(e) => setQuizDuration(e.target.value)}
+                placeholder="Minutes for full quiz"
+              />
+            </>
+          )}
+
+          {/* ⭐ STUDENTS CANNOT SEE COMPETITION TIMER */}
+          {mode === "competition" && user.role !== "admin" && (
+            <p className="info-text">
+              ⏱ Admin has already set the quiz timer for competition.
+            </p>
           )}
 
           <button className="main-btn start-btn" onClick={startQuiz}>

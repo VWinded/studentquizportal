@@ -1,6 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import { API } from "./api";
 
 export default function StudentDashboard({ user, setPage }) {
+  const [myAttempts, setMyAttempts] = useState([]);
+
+  useEffect(() => {
+    fetch(API + "/get_attempts.php")
+      .then((res) => res.json())
+      .then((data) => {
+        const mine = data.filter(a => a.user === user.name);
+        setMyAttempts(mine.reverse());
+      });
+  }, [user]);
+
   return (
     <div className="dashboard-wrapper">
       <button className="back-btn" onClick={() => setPage("home")}>
@@ -13,17 +25,20 @@ export default function StudentDashboard({ user, setPage }) {
         <h3>Hello, {user?.name}</h3>
         <p>Role: student</p>
 
-        <p>🎯 Your quiz attempts will appear here.</p>
-        <p>📈 View your performance insights.</p>
+        <h3>Your Quiz Attempts</h3>
 
-        {/* ⭐ NEW — Students can Host Live Quiz */}
-        <button className="dash-btn" onClick={() => setPage("live-host")}>
-          Host Live Quiz
-        </button>
+        {myAttempts.length === 0 ? (
+          <p>No attempts yet.</p>
+        ) : (
+          <ul className="attempt-list">
+            {myAttempts.map((a, i) => (
+              <li key={i}>
+                {a.date} — {a.category} — {a.correct}/{a.total} ({a.percent}%)
+              </li>
+            ))}
+          </ul>
+        )}
 
-        <button className="dash-btn" onClick={() => setPage("live-join")}>
-          Join Live Quiz
-        </button>
 
         <button className="dash-btn" onClick={() => setPage("analytics")}>
           View Analytics

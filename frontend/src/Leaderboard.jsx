@@ -2,32 +2,147 @@ import React, { useEffect, useState } from "react";
 import { API } from "./api";
 
 export default function Leaderboard({ setPage }) {
-  const [rows, setRows] = useState([]);
-  const [activeTab, setActiveTab] = useState("practice"); // ⭐ NEW
+
+  const [practiceRows, setPracticeRows] = useState([]);
+  const [competitionRows, setCompetitionRows] = useState([]);
+  const [onlineRows, setOnlineRows] = useState([]);
+
+  // ⭐ NEW — LIVE QUIZ TABLE
+  const [liveRows, setLiveRows] = useState([]);
+
+  const [activeTab, setActiveTab] = useState("practice");
 
   useEffect(() => {
+
+    // ⭐ PRACTICE + COMPETITION (submit.php)
     fetch(API + "/leaderboard.php")
-      .then((res) => res.json())
-      .then((data) => setRows(data || []));
+      .then(res => res.json())
+      .then(data => {
+        const p = data.filter(r => (r.mode || "practice") === "practice");
+        const c = data.filter(r => (r.mode || "practice") === "competition");
+        setPracticeRows(p);
+        setCompetitionRows(c);
+      })
+      .catch(() => {});
+
+    // ⭐ ONLINE QUIZ
+    fetch(API + "/leaderboard_online.php")
+      .then(res => res.json())
+      .then(data => setOnlineRows(data || []))
+      .catch(() => {});
+
   }, []);
 
-  // ⭐ FILTER rows by mode (practice / competition)
-  const filteredRows = rows.filter((r) =>
-    (r.mode || "practice") === activeTab
-  );
+  // ⭐ NEW — FETCH LIVE QUIZ ATTEMPTS
+  useEffect(() => {
+    fetch(API + "/live_get_attempts.php")
+      .then(res => res.json())
+      .then(data => setLiveRows(data.reverse()))   // latest first
+      .catch(() => {});
+  }, []);
+
+  // ⭐ COMMON RENDER FUNCTION
+  const renderTable = (rows, type) => {
+    if (!rows || rows.length === 0) {
+      return <p>No {type} scores yet.</p>;
+    }
+
+    return (
+      <table className="lb-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Name</th>
+
+            {/* Practice → Score only */}
+            {type === "practice" && <th>Score</th>}
+
+            {/* Competition → Score + timeTaken */}
+            {type === "competition" && (
+              <>
+                <th>Score</th>
+                <th>Time Taken (s)</th>
+              </>
+            )}
+
+            {/* Online quiz → Score/Total + category + difficulty + time */}
+            {type === "online" && (
+              <>
+                <th>Score</th>
+                <th>Category</th>
+                <th>Difficulty</th>
+                <th>Time</th>
+              </>
+            )}
+
+            {/* ⭐ LIVE QUIZ → Score + Platform */}
+            {type === "live" && (
+              <>
+                <th>Score</th>
+                <th>Platform</th>
+              </>
+            )}
+
+            <th>Date / Time</th>
+          </tr>
+        </thead>
+
+        <tbody>
+          {rows.map((r, i) => (
+            <tr key={i} className={i === 0 ? "top-rank" : ""}>
+              <td>{i + 1}</td>
+              <td>{r.user || r.name}</td>
+
+              {/* ⭐ PRACTICE */}
+              {type === "practice" && <td>{r.score}</td>}
+
+              {/* ⭐ COMPETITION */}
+              {type === "competition" && (
+                <>
+                  <td>{r.score}</td>
+                  <td>{r.timeTaken ?? "-"}</td>
+                </>
+              )}
+
+              {/* ⭐ ONLINE */}
+              {type === "online" && (
+                <>
+                  <td>{r.score} / {r.total}</td>
+                  <td>{r.category}</td>
+                  <td>{r.difficulty}</td>
+                  <td>{r.time}</td>
+                </>
+              )}
+
+              {/* ⭐ LIVE QUIZ */}
+              {type === "live" && (
+                <>
+                  <td>{r.score}</td>
+                  <td>{r.platform}</td>
+                </>
+              )}
+
+              {/* ⭐ DATE */}
+              <td>{r.date || r.time || "-"}</td>
+            </tr>
+          ))}
+        </tbody>
+
+      </table>
+    );
+  };
 
   return (
     <div className="leaderboard-card">
 
-      {/* Back button */}
       <button className="back-btn" onClick={() => setPage("home")}>
         ⬅ Back to Home
       </button>
 
       <h2>🏆 Leaderboard</h2>
 
-      {/* ⭐ TABS */}
       <div className="lb-tabs">
+
         <button
           className={`lb-tab ${activeTab === "practice" ? "active" : ""}`}
           onClick={() => setActiveTab("practice")}
@@ -41,44 +156,30 @@ export default function Leaderboard({ setPage }) {
         >
           Competition ⚡
         </button>
+
+        <button
+          className={`lb-tab ${activeTab === "online" ? "active" : ""}`}
+          onClick={() => setActiveTab("online")}
+        >
+          Online Quiz 🌍
+        </button>
+
+        {/* ⭐ NEW — LIVE TAB */}
+        <button
+          className={`lb-tab ${activeTab === "live" ? "active" : ""}`}
+          onClick={() => setActiveTab("live")}
+        >
+          Live Quiz 🎯
+        </button>
+
       </div>
 
-      {/* Empty State */}
-      {filteredRows.length === 0 && (
-        <p>No {activeTab} scores yet.</p>
-      )}
+      {/* RENDER TABS */}
+      {activeTab === "practice"     && renderTable(practiceRows, "practice")}
+      {activeTab === "competition" && renderTable(competitionRows, "competition")}
+      {activeTab === "online"      && renderTable(onlineRows, "online")}
+      {activeTab === "live"        && renderTable(liveRows, "live")}
 
-      {/* Table (your original code, untouched) */}
-      {filteredRows.length > 0 && (
-        <table className="lb-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Name</th>
-              <th>Score</th>
-              {activeTab === "competition" && <th>Time Taken (s)</th>}
-              <th>Date</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            {filteredRows.map((r, i) => (
-              <tr key={i} className={i === 0 ? "top-rank" : ""}>
-                <td>{i + 1}</td>
-                <td>{r.name}</td>
-                <td>{r.score}</td>
-
-                {/* Competition-only column */}
-                {activeTab === "competition" && (
-                  <td>{r.timeTaken ?? "-"}</td>
-                )}
-
-                <td>{r.time}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      )}
     </div>
   );
 }

@@ -14,10 +14,8 @@ import ProtectedRoute from "./ProtectedRoute";
 import { API } from "./api";
 import OnlineQuizTopics from "./OnlineQuizTopics";
 import OnlineLeaderboard from "./OnlineLeaderboard";
-import LiveHostPanel from "./live/LiveHostPanel";
-import LiveJoinRoom from "./live/LiveJoinRoom";
-import LiveLeaderboardLive from "./live/LiveLeaderboardLive";
-import LiveQuizPlay from "./live/LiveQuizPlay";
+import LiveQuizPlatforms from "./LiveQuizPlatforms";
+
 export default function App() {
 
   const [page, setPage] = useState("home");
@@ -48,7 +46,7 @@ export default function App() {
             totalAttempts: data.totalAttempts,
           });
         })
-        .catch(() => {});
+        .catch(() => { });
     };
 
     fetchStats();
@@ -84,7 +82,6 @@ export default function App() {
 
     return () => window.removeEventListener("navigate", handler);
   }, []);
-
 
   return (
     <div>
@@ -149,44 +146,30 @@ export default function App() {
         </ProtectedRoute>
       )}
 
-      {/* ⭐ EDIT QUESTION ROUTE (correct) */}
+      {/* ⭐ EDIT QUESTION ROUTE */}
       {page === "edit-question" && (
         <ProtectedRoute user={user && user.role === "admin"}>
           <AddQuestion setPage={setPage} editId={editId} />
         </ProtectedRoute>
       )}
+
       {page === "online-quiz-topics" && (
+        <ProtectedRoute user={user}>
+          <OnlineQuizTopics setPage={setPage} />
+        </ProtectedRoute>
+      )}
+
+      {page === "online-leaderboard" && (
+        <OnlineLeaderboard setPage={setPage} />
+      )}
+      {page === "live-quizzes" && (
   <ProtectedRoute user={user}>
-    <OnlineQuizTopics setPage={setPage} />
-  </ProtectedRoute>
-)}
-{page === "online-leaderboard" && (
-  <OnlineLeaderboard setPage={setPage} />
-)}
-{page === "live-host" && (
-  <ProtectedRoute user={user && user.role === "admin"}>
-    <LiveHostPanel setPage={setPage} user={user} />
+    <LiveQuizPlatforms user={user} setPage={setPage} />
   </ProtectedRoute>
 )}
 
-{page === "live-join" && (
-  <ProtectedRoute user={user}>
-    <LiveJoinRoom setPage={setPage} user={user} />
-  </ProtectedRoute>
-)}
 
-{page === "live-play" && (
-  <ProtectedRoute user={user}>
-    <LiveQuizPlay setPage={setPage} user={user} />
-  </ProtectedRoute>
-)}
-
-{page === "live-leaderboard" && (
-  <ProtectedRoute user={user}>
-    <LiveLeaderboardLive setPage={setPage} user={user} />
-  </ProtectedRoute>
-)}
-
+      {/* ⭐ LIVE QUIZ ROUTES REMOVED */}
 
       {page === "manage-questions" && (
         <ProtectedRoute user={user && user.role === "admin"}>
@@ -196,7 +179,7 @@ export default function App() {
 
       {page === "quiz-setup" && (
         <ProtectedRoute user={user}>
-          <QuizSetup setPage={setPage} />
+          <QuizSetup user={user} setPage={setPage} />
         </ProtectedRoute>
       )}
 

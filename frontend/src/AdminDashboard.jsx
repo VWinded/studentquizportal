@@ -35,15 +35,6 @@ export default function AdminDashboard({ user, stats, setPage }) {
 
       {/* ACTION ROW 1 */}
       <div className="admin-actions-row">
-        
-        {/* Host Live Quiz */}
-        <div
-          className="admin-action-card action-red"
-          onClick={() => setPage("live-host")}
-        >
-          <h3>🎯 Host Live Quiz</h3>
-          <p>Start a real-time room.</p>
-        </div>
 
         {/* Add Question */}
         <div

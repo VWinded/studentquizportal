@@ -18,8 +18,10 @@ if (!isset($data["name"], $data["score"], $data["category"], $data["total"], $da
 /* -----------------------------------------------------
    ⭐ NEW FIELDS ADDED (without removing old logic)
 ------------------------------------------------------*/
-$mode = $data["mode"] ?? "practice";           // "practice" or "competition"
-$timeTaken = $data["timeTaken"] ?? null;       // seconds taken by user
+$mode      = $data["mode"]      ?? "practice";    // "practice" | "competition" | "online" | "live"
+$timeTaken = $data["timeTaken"] ?? null;          // seconds taken by user
+$email     = $data["email"]     ?? null;          // user email from JWT
+
 if (!is_numeric($timeTaken)) $timeTaken = null;
 
 
@@ -31,16 +33,17 @@ $lbFile = __DIR__ . "/leaderboard.json";
 $lb = file_exists($lbFile) ? json_decode(file_get_contents($lbFile), true) : [];
 if (!is_array($lb)) $lb = [];
 
-// NEW: store mode + timeTaken
+// store mode + timeTaken + email (NEW)
 $lb[] = [
-    "name" => $data["name"],
-    "score" => (int)$data["score"],
-    "time" => date("Y-m-d H:i"),
-    "mode" => $mode,
+    "name"      => $data["name"],
+    "email"     => $email,
+    "score"     => (int)$data["score"],
+    "time"      => date("Y-m-d H:i"),
+    "mode"      => $mode,
     "timeTaken" => $timeTaken
 ];
 
-// ⭐ NEW SORTING LOGIC:
+// ⭐ SORTING LOGIC:
 // → Practice: Highest score first
 // → Competition: Highest score first, lowest timeTaken wins
 usort($lb, function($a, $b) {
@@ -65,7 +68,7 @@ file_put_contents($lbFile, json_encode($lb, JSON_PRETTY_PRINT));
 
 /* -----------------------------------------------------
    2️⃣ SAVE QUIZ ATTEMPT (attempts.json)
-   (Your old logic intact)
+   (Your old logic intact – just extended)
 ------------------------------------------------------*/
 $attemptFile = __DIR__ . "/attempts.json";
 
@@ -78,12 +81,14 @@ if (!is_array($attempts)) $attempts = [];
 $percent = round(($data["correct"] / $data["total"]) * 100);
 
 $attempts[] = [
+    "name"      => $data["name"],
+    "email"     => $email,          // ⭐ NEW: who attempted
     "correct"   => $data["correct"],
     "total"     => $data["total"],
     "percent"   => $percent,
     "category"  => $data["category"],
-    "mode"      => $mode,          // ⭐ NEW
-    "timeTaken" => $timeTaken,     // ⭐ NEW
+    "mode"      => $mode,           // ⭐ NEW
+    "timeTaken" => $timeTaken,      // ⭐ NEW
     "date"      => date("Y-m-d H:i")
 ];
 
@@ -94,7 +99,7 @@ file_put_contents($attemptFile, json_encode($attempts, JSON_PRETTY_PRINT));
    3️⃣ RETURN SUCCESS
 ------------------------------------------------------*/
 echo json_encode([
-    "success" => true,
-    "leaderboard" => $lb,
+    "success"         => true,
+    "leaderboard"     => $lb,
     "analytics_saved" => true
 ]);

@@ -45,20 +45,33 @@ export default function Home({ user, setPage }) {
 
           {!user ? (
             <div className="button-row">
-              <button className="main-btn" onClick={() => setPage("login")}>
+              <button
+                className="main-btn"
+                onClick={() => setPage("login")}
+              >
                 Login
               </button>
-              <button className="main-btn" onClick={() => setPage("register")}>
+
+              <button
+                className="main-btn"
+                onClick={() => setPage("register")}
+              >
                 Register
               </button>
             </div>
           ) : (
             <div className="button-row">
-              <button className="main-btn" onClick={() => setPage("quiz-setup")}>
-  Start Quiz
-</button>
+              <button
+                className="main-btn"
+                onClick={() => setPage("quiz-setup")}
+              >
+                Start Quiz
+              </button>
 
-              <button className="main-btn" onClick={() => setPage("dashboard")}>
+              <button
+                className="main-btn"
+                onClick={() => setPage("dashboard")}
+              >
                 Dashboard
               </button>
             </div>
@@ -137,10 +150,12 @@ export default function Home({ user, setPage }) {
           {/* CALL TO ACTION */}
           <div className="cta-banner">
             <h2>Ready to test your knowledge?</h2>
-            <button className="main-btn" onClick={() => setPage("quiz-setup")}>
-  Start Quiz
-</button>
-
+            <button
+              className="main-btn"
+              onClick={() => setPage("quiz-setup")}
+            >
+              Start Quiz
+            </button>
           </div>
         </>
       )}

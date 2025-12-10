@@ -3,6 +3,7 @@ import { API } from "./api";
 
 export default function Quiz({ user }) {
   const [questions, setQuestions] = useState([]);
+
   const [index, setIndex] = useState(0);
   const [answers, setAnswers] = useState({});
 
@@ -13,11 +14,16 @@ export default function Quiz({ user }) {
 
   const [mode, setMode] = useState("practice");
 
-  // ⭐ NEW – Track time taken for competition ranking
   const [timeTaken, setTimeTaken] = useState(0);
-
-  // ⭐ NEW – Anti-cheat strike count
   const [strikes, setStrikes] = useState(0);
+  const [loadingAPI, setLoadingAPI] = useState(false);
+
+  const getMedal = (percent) => {
+    if (percent >= 90) return "🥇 Gold Medal";
+    if (percent >= 75) return "🥈 Silver Medal";
+    if (percent >= 50) return "🥉 Bronze Medal";
+    return "❌ No Medal – Try Again!";
+  };
 
   const formatHMS = (t) => {
     const h = Math.floor(t / 3600);
@@ -38,6 +44,8 @@ export default function Quiz({ user }) {
     setMode(settings.mode || "practice");
 
     if (settings.mode === "online") {
+      setQuizTimer(999999); // start counting timeTaken
+
       loadAPIQuestions(settings);
       return;
     }
@@ -49,7 +57,6 @@ export default function Quiz({ user }) {
   useEffect(() => {
     if (quizTimer === null || showResult) return;
 
-    // ⭐ NEW – Track time taken
     setTimeTaken((t) => t + 1);
 
     if (quizTimer <= 0) {
@@ -73,7 +80,7 @@ export default function Quiz({ user }) {
     return () => clearInterval(id);
   }, [questionTimer, index, showResult]);
 
-  // ⭐ NEW – ANTI-CHEAT LOGIC (for competition ONLY)
+  // ---------- ANTI-CHEAT ----------
   useEffect(() => {
     if (mode !== "competition") return;
 
@@ -106,18 +113,37 @@ export default function Quiz({ user }) {
 
   // ---------- LOAD API QUESTIONS ----------
   const loadAPIQuestions = async (settings) => {
+    setLoadingAPI(true);
+
     try {
       const url = `${API}/fetch_api_questions.php?category=${settings.categoryId}&difficulty=${settings.difficulty}&count=${settings.count}`;
-      const res = await fetch(url);
-      const data = await res.json();
 
-      setQuestions(data);
-      setQuizTimer(null);
+      const response = await fetch(url);
+      const text = await response.text();
+
+      let json;
+      try {
+        json = JSON.parse(text);
+      } catch {
+        console.error("❌ API returned NON-JSON:", text);
+        setLoadingAPI(false);
+        return;
+      }
+
+      if (!Array.isArray(json) || json.length === 0) {
+        console.warn("API returned empty array");
+        setLoadingAPI(false);
+        return;
+      }
+
+      setQuestions(json);
+      setQuizTimer(999999);
       setQuestionTimer(null);
     } catch (err) {
       console.error("API error:", err);
-      setQuestions([]);
     }
+
+    setLoadingAPI(false);
   };
 
   // ---------- LOAD LOCAL QUESTIONS ----------
@@ -216,10 +242,9 @@ export default function Quiz({ user }) {
     if (index > 0) setIndex(index - 1);
   };
 
-  // ⭐ NEW — Lock answers in competition mode
   const selectOption = (qIndex, optIndex) => {
     if (mode === "competition") {
-      if (answers[qIndex] !== undefined) return; // ALREADY SELECTED
+      if (answers[qIndex] !== undefined) return;
     }
     setAnswers({ ...answers, [qIndex]: optIndex });
   };
@@ -234,7 +259,14 @@ export default function Quiz({ user }) {
     });
 
     const percent = Math.round((correct / questions.length) * 100);
-    setResult({ correct, total: questions.length, percent, timeTaken });
+
+    setResult({
+      correct,
+      total: questions.length,
+      percent,
+      timeTaken,
+      medal: getMedal(percent),
+    });
 
     if (mode === "online") {
       setShowResult("reveal");
@@ -249,38 +281,64 @@ export default function Quiz({ user }) {
     window.dispatchEvent(new Event("quiz_completed"));
 
     try {
-      const settings = JSON.parse(localStorage.getItem("quiz_settings") || "{}");
+      const settings = JSON.parse(
+        localStorage.getItem("quiz_settings") || "{}"
+      );
 
-      const endpoint =
-        settings.mode === "online"
-          ? "/leaderboard_online.php"
-          : settings.mode === "competition"
-          ? "/leaderboard_competition.php"
-          : "/submit.php";
+      // Common payload for all endpoints
+      const payload = {
+        name: user.name,
+        email: user.email, // ⭐ NEW: identify user
+        score: correct,
+        total: questions.length,
+        correct: correct,
+        timeTaken: timeTaken,
+        mode: settings.mode || "practice",
+        category:
+          settings.mode === "online"
+            ? settings.categoryName
+            : questions[0]?.category || "General",
+        difficulty:
+          settings.mode === "online" ? settings.difficulty : undefined,
+      };
 
-      await fetch(API + endpoint, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          name: user.name,
-          score: correct,
-          total: questions.length,
-          correct: correct,
-          timeTaken,
-          category:
-            settings.mode === "online"
-              ? settings.categoryName
-              : questions[0]?.category || "General",
-          difficulty:
-            settings.mode === "online" ? settings.difficulty : undefined,
-        }),
-      });
+      if (settings.mode === "online") {
+        
+        // 1️⃣ Online leaderboard
+        await fetch(API + "/leaderboard_online.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+
+        // 2️⃣ ALSO save into main submit.php (for attempts + analytics)
+        await fetch(API + "/submit.php", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+      } else {
+        const endpoint =
+          settings.mode === "competition"
+            ? "/leaderboard_competition.php"
+            : "/submit.php";
+
+        await fetch(API + endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(payload),
+        });
+      }
     } catch (e) {
       console.error("Error sending result:", e);
     }
   };
 
   // ---------- RENDER ----------
+  if (loadingAPI) {
+    return <div className="center-text">Loading questions...</div>;
+  }
+
   if (questions.length === 0)
     return <div className="center-text">No questions found.</div>;
 
@@ -289,14 +347,24 @@ export default function Quiz({ user }) {
       <div className="quiz-card">
         <h2>📊 Quiz Result</h2>
 
-        <p><b>Score:</b> {result.correct} / {result.total}</p>
-        <p><b>Percentage:</b> {result.percent}%</p>
+        <p>
+          <b>Score:</b> {result.correct} / {result.total}
+        </p>
+        <p>
+          <b>Percentage:</b> {result.percent}%
+        </p>
 
-        {/* ⭐ Competition extra */}
+        {/* ⭐ EMOJI MEDAL */}
+        <h3 style={{ marginTop: "10px" }}>{result.medal}</h3>
+
         {mode === "competition" && (
           <>
-            <p><b>Time Taken:</b> {result.timeTaken}s</p>
-            <p><b>Ranking:</b> Calculated on leaderboard</p>
+            <p>
+              <b>Time Taken:</b> {result.timeTaken}s
+            </p>
+            <p>
+              <b>Ranking:</b> Calculated on leaderboard
+            </p>
           </>
         )}
 
@@ -323,6 +391,8 @@ export default function Quiz({ user }) {
         >
           ⬅ Back to Home
         </button>
+
+        
       </div>
     );
 
@@ -337,9 +407,7 @@ export default function Quiz({ user }) {
       )}
 
       {questionTimer !== null && (
-        <div className="timer small">
-          ⏳ Question Time Left: {questionTimer}s
-        </div>
+        <div className="timer small">⏳ Question Time Left: {questionTimer}s</div>
       )}
 
       <div className="progress-bar">

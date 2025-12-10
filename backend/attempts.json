@@ -1,58 +1,57 @@
 [
     {
+        "name": "Admin",
+        "email": "admin@gmail.com",
         "correct": 1,
         "total": 1,
         "percent": 100,
         "category": "Science",
-        "date": "2025-12-08 12:45"
+        "mode": "practice",
+        "timeTaken": 6,
+        "date": "2025-12-09 23:50"
     },
     {
+        "name": "Admin",
+        "email": "admin@gmail.com",
         "correct": 1,
         "total": 1,
         "percent": 100,
         "category": "Math",
-        "date": "2025-12-08 12:59"
+        "mode": "practice",
+        "timeTaken": 0,
+        "date": "2025-12-09 23:50"
     },
     {
+        "name": "Admin",
+        "email": "admin@gmail.com",
+        "correct": 5,
+        "total": 5,
+        "percent": 100,
+        "category": "General Knowledge",
+        "mode": "online",
+        "timeTaken": 1,
+        "date": "2025-12-10 00:33"
+    },
+    {
+        "name": "Admin",
+        "email": "admin@gmail.com",
+        "correct": 5,
+        "total": 5,
+        "percent": 100,
+        "category": "Science: Gadgets",
+        "mode": "online",
+        "timeTaken": 204,
+        "date": "2025-12-10 00:48"
+    },
+    {
+        "name": "Admin",
+        "email": "admin@gmail.com",
         "correct": 1,
         "total": 1,
         "percent": 100,
-        "category": "Science",
-        "date": "2025-12-08 14:00"
-    },
-    {
-        "correct": 1,
-        "total": 1,
-        "percent": 100,
-        "category": "Science",
-        "date": "2025-12-08 16:23"
-    },
-    {
-        "correct": 1,
-        "total": 1,
-        "percent": 100,
-        "category": "Science",
-        "date": "2025-12-08 22:47"
-    },
-    {
-        "correct": 1,
-        "total": 1,
-        "percent": 100,
-        "category": "Science",
-        "date": "2025-12-08 23:56"
-    },
-    {
-        "correct": 1,
-        "total": 1,
-        "percent": 100,
-        "category": "Science",
-        "date": "2025-12-09 00:02"
-    },
-    {
-        "correct": 1,
-        "total": 1,
-        "percent": 100,
-        "category": "Science",
-        "date": "2025-12-09 00:14"
+        "category": "Math",
+        "mode": "practice",
+        "timeTaken": 0,
+        "date": "2025-12-10 16:23"
     }
 ]
