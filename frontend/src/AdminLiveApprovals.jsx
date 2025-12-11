@@ -8,9 +8,9 @@ export default function AdminLiveApprovals({ setPage }) {
 
   const loadData = () => {
     fetch(API + "/live_get_attempts.php")
-      .then(res => res.json())
-      .then(rows => setData(rows.reverse()))
-      .catch(() => {});
+      .then((res) => res.json())
+      .then((rows) => setData(Array.isArray(rows) ? rows.reverse() : []))
+      .catch(() => setData([]));
   };
 
   useEffect(() => {
@@ -21,7 +21,7 @@ export default function AdminLiveApprovals({ setPage }) {
     await fetch(API + "/live_approve.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, date })
+      body: JSON.stringify({ email, date }),
     });
     loadData();
   };
@@ -30,7 +30,7 @@ export default function AdminLiveApprovals({ setPage }) {
     await fetch(API + "/live_reject.php", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ email, date })
+      body: JSON.stringify({ email, date }),
     });
     loadData();
   };
@@ -48,7 +48,7 @@ export default function AdminLiveApprovals({ setPage }) {
 
     await fetch(API + "/live_import_csv.php", {
       method: "POST",
-      body: formData
+      body: formData,
     });
 
     alert("CSV Imported Successfully");
@@ -59,7 +59,7 @@ export default function AdminLiveApprovals({ setPage }) {
   const filteredRows =
     filter === "all"
       ? data
-      : data.filter(r => (r.status || "pending") === filter);
+      : data.filter((r) => (r.status || "pending") === filter);
 
   return (
     <div className="live-approvals-page">
@@ -70,53 +70,52 @@ export default function AdminLiveApprovals({ setPage }) {
       <h2>📑 Live Quiz Approvals</h2>
 
       {/* ⭐ FILTER BUTTONS GROUPED WITH BETTER ALIGNMENT */}
-<div className="filter-buttons">
-  <button
-    className={filter === "pending" ? "active" : ""}
-    onClick={() => setFilter("pending")}
-  >
-    PENDING
-  </button>
+      <div className="filter-buttons">
+        <button
+          className={filter === "pending" ? "active" : ""}
+          onClick={() => setFilter("pending")}
+        >
+          PENDING
+        </button>
 
-  <button
-    className={filter === "approved" ? "active" : ""}
-    onClick={() => setFilter("approved")}
-  >
-    APPROVED
-  </button>
+        <button
+          className={filter === "approved" ? "active" : ""}
+          onClick={() => setFilter("approved")}
+        >
+          APPROVED
+        </button>
 
-  <button
-    className={filter === "rejected" ? "active" : ""}
-    onClick={() => setFilter("rejected")}
-  >
-    REJECTED
-  </button>
+        <button
+          className={filter === "rejected" ? "active" : ""}
+          onClick={() => setFilter("rejected")}
+        >
+          REJECTED
+        </button>
 
-  <button
-    className={filter === "all" ? "active" : ""}
-    onClick={() => setFilter("all")}
-  >
-    ALL
-  </button>
-</div>
+        <button
+          className={filter === "all" ? "active" : ""}
+          onClick={() => setFilter("all")}
+        >
+          ALL
+        </button>
+      </div>
 
-{/* ⭐ CSV BUTTONS */}
-<div className="csv-buttons">
-  <button className="download-btn" onClick={downloadCSV}>
-    ⬇ Download CSV
-  </button>
+      {/* ⭐ CSV BUTTONS */}
+      <div className="csv-buttons">
+        <button className="download-btn" onClick={downloadCSV}>
+          ⬇ Download CSV
+        </button>
 
-  <label className="import-btn">
-    ⬆ Import CSV
-    <input
-      type="file"
-      accept=".csv"
-      onChange={uploadCSV}
-      style={{ display: "none" }}
-    />
-  </label>
-</div>
-
+        <label className="import-btn">
+          ⬆ Import CSV
+          <input
+            type="file"
+            accept=".csv"
+            onChange={uploadCSV}
+            style={{ display: "none" }}
+          />
+        </label>
+      </div>
 
       <table className="approval-table">
         <thead>
@@ -125,6 +124,7 @@ export default function AdminLiveApprovals({ setPage }) {
             <th>User</th>
             <th>Email</th>
             <th>Platform</th>
+            <th>Subject</th> {/* ADDED */}
             <th>Score</th>
             <th>Date</th>
             <th>Status</th>
@@ -136,58 +136,67 @@ export default function AdminLiveApprovals({ setPage }) {
         <tbody>
           {filteredRows.length === 0 ? (
             <tr>
-              <td colSpan="9" style={{ textAlign: "center" }}>
+              <td colSpan="10" style={{ textAlign: "center" }}>
                 No records found
               </td>
             </tr>
           ) : (
-            filteredRows.map((r, i) => (
-              <tr key={i}>
-                <td>{i + 1}</td>
-                <td>{r.user}</td>
-                <td>{r.email}</td>
-                <td>{r.platform}</td>
-                <td>{r.score}</td>
-                <td>{r.date}</td>
-                <td className={`status ${r.status}`}>{r.status}</td>
+            filteredRows.map((r, i) => {
+              // safe values
+              const score = r.score ?? "-";
+              const total = r.total ?? "-";
+              const subject = r.subject ?? "-";
+              return (
+                <tr key={i}>
+                  <td>{i + 1}</td>
+                  <td>{r.user}</td>
+                  <td>{r.email}</td>
+                  <td>{r.platform}</td>
+                  <td>{subject}</td>
+                  <td>
+                    {score} {total !== "-" && <>/ {total}</>}
+                  </td>
+                  <td>{r.date}</td>
+                  <td className={`status ${r.status}`}>{r.status}</td>
 
-                <td>
-                  {r.proof && r.proof !== "Imported via CSV" ? (
-                    <a
-                      href={`${API}/uploads/live_proofs/${r.proof}`}
-                      target="_blank"
-                      rel="noreferrer"
-                    >
-                      View
-                    </a>
-                  ) : (
-                    r.proof
-                  )}
-                </td>
-
-                <td>
-                  {r.status === "pending" && (
-                    <>
-                      <button
-                        className="approve-btn"
-                        onClick={() => approve(r.email, r.date)}
+                  <td>
+                    {r.proof && r.proof !== "Imported via CSV" ? (
+                      <a
+                        href={`${API}/uploads/live_proofs/${r.proof}`}
+                        target="_blank"
+                        rel="noreferrer"
                       >
-                        Approve
-                      </button>
+                        View
+                      </a>
+                    ) : (
+                      r.proof || "-"
+                    )}
+                  </td>
 
-                      <button
-                        className="reject-btn"
-                        onClick={() => reject(r.email, r.date)}
-                      >
-                        Reject
-                      </button>
-                    </>
-                  )}
+                  <td>
+                    {r.status === "pending" ? (
+                      <>
+                        <button
+                          className="approve-btn"
+                          onClick={() => approve(r.email, r.date)}
+                        >
+                          Approve
+                        </button>
 
-                  {r.status !== "pending" && <span>—</span>}
-                </td>
-              </tr>
-            ))
+                        <button
+                          className="reject-btn"
+                          onClick={() => reject(r.email, r.date)}
+                        >
+                          Reject
+                        </button>
+                      </>
+                    ) : (
+                      <span>—</span>
+                    )}
+                  </td>
+                </tr>
+              );
+            })
           )}
         </tbody>
       </table>

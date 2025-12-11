@@ -14,24 +14,27 @@ $userEmail = $input["user"];
 $role = $input["role"];
 
 // Load attempts.json
-$file = __DIR__ . "/attempts.json";
+$attemptsFile = __DIR__ . "/attempts.json";
+$attempts = file_exists($attemptsFile) ? json_decode(file_get_contents($attemptsFile), true) : [];
+if (!is_array($attempts)) $attempts = [];
 
-if (!file_exists($file)) {
-    echo json_encode([]);
-    exit;
-}
+// ALSO load live_attempts.json (if exists) and merge
+$liveFile = __DIR__ . "/live_attempts.json";
+$liveAttempts = file_exists($liveFile) ? json_decode(file_get_contents($liveFile), true) : [];
+if (!is_array($liveAttempts)) $liveAttempts = [];
 
-$data = json_decode(file_get_contents($file), true);
-if (!is_array($data)) $data = [];
+// Ensure live attempts have the same basic keys as attempts.json (no mutation of original)
+// (we won't modify arrays in-place to avoid surprising side-effects)
+$merged = array_merge($attempts, $liveAttempts);
 
-// ⭐ ADMIN → return ALL attempts
+// ⭐ ADMIN → return ALL attempts (merged)
 if ($role === "admin") {
-    echo json_encode($data);
+    echo json_encode(array_values($merged));
     exit;
 }
 
-// ⭐ STUDENT → return only his attempts
-$userData = array_filter($data, function($a) use ($userEmail) {
+// ⭐ STUDENT → return only his attempts from merged data
+$userData = array_filter($merged, function($a) use ($userEmail) {
     return isset($a["email"]) && $a["email"] === $userEmail;
 });
 

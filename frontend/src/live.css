@@ -296,3 +296,10 @@
   background: orange;
   color: white;
 }
+.field-label {
+  color: #ffffff;     /* Bright white for visibility */
+  font-weight: 600;   /* Professional bold */
+  font-size: 15px;
+  margin-bottom: 6px;
+  display: block;
+}

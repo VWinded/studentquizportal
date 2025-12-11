@@ -1,3 +1,4 @@
+// App.jsx  (replace your existing App.jsx with this)
 import React, { useEffect, useState } from "react";
 import Home from "./Home";
 import Login from "./Login";
@@ -25,7 +26,7 @@ export default function App() {
   const [editId, setEditId] = useState(null);
   const [user, setUser] = useState(null);
 
-  const [themeOpen, setThemeOpen] = useState(false); // Panel toggle
+  const [themeOpen, setThemeOpen] = useState(false);
 
   const [stats, setStats] = useState({
     totalUsers: 0,
@@ -33,9 +34,6 @@ export default function App() {
     totalAttempts: 0,
   });
 
-  // -------------------------------------------------------
-  // LOAD USER + PLATFORM STATS
-  // -------------------------------------------------------
   useEffect(() => {
     const storedUser = localStorage.getItem("user");
     const storedToken = localStorage.getItem("token");
@@ -65,27 +63,18 @@ export default function App() {
     return () => window.removeEventListener("quiz_submitted", handler);
   }, []);
 
-  // -------------------------------------------------------
-  // LOGIN HANDLER
-  // -------------------------------------------------------
   const handleLogin = (data) => {
     setUser(data.user);
     if (data.user.role === "admin") setPage("dashboard");
     else setPage("student-dashboard");
   };
 
-  // -------------------------------------------------------
-  // LOGOUT
-  // -------------------------------------------------------
   const logout = () => {
     localStorage.clear();
     setUser(null);
     setPage("home");
   };
 
-  // -------------------------------------------------------
-  // PAGE NAVIGATION EVENTS
-  // -------------------------------------------------------
   useEffect(() => {
     const handler = (e) => {
       setPage(e.detail);
@@ -94,18 +83,13 @@ export default function App() {
     return () => window.removeEventListener("navigate", handler);
   }, []);
 
-  // -------------------------------------------------------
-  // ⭐ AUTO-CLOSE THEME PANEL WHEN THEME IS SELECTED
-  // -------------------------------------------------------
+  // **NEW**: close theme panel when other components trigger `close_theme_panel`
   useEffect(() => {
     const closeHandler = () => setThemeOpen(false);
     window.addEventListener("close_theme_panel", closeHandler);
     return () => window.removeEventListener("close_theme_panel", closeHandler);
   }, []);
 
-  // -------------------------------------------------------
-  // RENDER
-  // -------------------------------------------------------
   return (
     <>
       <div>
@@ -114,6 +98,9 @@ export default function App() {
 
           <div className="nav-links">
             <button onClick={() => setPage("home")}>Home</button>
+<button onClick={() => setThemeOpen(!themeOpen)}>
+                  Themes
+                </button>
 
             {!user && (
               <>
@@ -132,28 +119,18 @@ export default function App() {
                 )}
 
                 {user.role === "student" && (
-                  <button onClick={() => setPage("student-dashboard")}>
-                    Dashboard
-                  </button>
+                  <button onClick={() => setPage("student-dashboard")}>Dashboard</button>
                 )}
-
-                {/* THEME BUTTON */}
-                <button onClick={() => setThemeOpen(!themeOpen)}>
-                  Themes
-                </button>
-
                 <button onClick={logout}>Logout</button>
               </>
             )}
           </div>
         </nav>
 
-        {/* ROUTER */}
+        {/* ROUTES */}
         {page === "home" && <Home user={user} setPage={setPage} />}
         {page === "login" && <Login onLogin={handleLogin} />}
-        {page === "register" && (
-          <Register onSwitchToLogin={() => setPage("login")} />
-        )}
+        {page === "register" && <Register onSwitchToLogin={() => setPage("login")} />}
 
         {page === "leaderboard" && <Leaderboard setPage={setPage} />}
         {page === "analytics" && <Analytics user={user} setPage={setPage} />}
@@ -233,7 +210,7 @@ export default function App() {
         )}
       </div>
 
-      {/* THEME SWITCHER PANEL */}
+      {/* Theme switcher controlled by state */}
       <ThemeSwitcher open={themeOpen} />
     </>
   );

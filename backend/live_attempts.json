@@ -18,5 +18,32 @@
         "proof": "proof_1765377767_4153.pdf",
         "status": "rejected",
         "date": "2025-12-10 14:42"
+    },
+    {
+        "id": 1765437378,
+        "user": "Raj",
+        "email": "raj09@gmail.com",
+        "platform": "Mentimeter",
+        "score": "9",
+        "total": "10",
+        "percent": 90,
+        "subject": "Physics",
+        "proof": "proof_1765437378_7215.png",
+        "status": "approved",
+        "date": "2025-12-11 07:16"
+    },
+    {
+        "id": 1765442435,
+        "user": "Admin",
+        "email": "admin@gmail.com",
+        "platform": "Kahoot",
+        "score": "10",
+        "total": "10",
+        "percent": 100,
+        "subject": "Science",
+        "proof": "proof_1765442435_5308.png",
+        "status": "pending",
+        "mode": "live",
+        "date": "2025-12-11 08:40"
     }
 ]

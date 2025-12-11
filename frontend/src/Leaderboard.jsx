@@ -1,3 +1,4 @@
+// Leaderboard.jsx
 import React, { useEffect, useState } from "react";
 import { API } from "./api";
 
@@ -35,7 +36,21 @@ export default function Leaderboard({ setPage }) {
 
     fetch(API + "/leaderboard_online.php")
       .then((res) => res.json())
-      .then((data) => setOnlineRows(data || []))
+      .then((data) => {
+        // backend returns array of { name, score, total, category, difficulty, time, datetime }
+        const normalized = Array.isArray(data)
+          ? data.map((r) => ({
+              user: r.name,
+              score: Number(r.score ?? 0),
+              total: Number(r.total ?? r.total ?? 0),
+              category: r.category,
+              difficulty: r.difficulty,
+              time: r.time,
+              date: r.datetime ?? r.time,
+            }))
+          : [];
+        setOnlineRows(normalized);
+      })
       .catch(() => {});
   }, []);
 
@@ -43,8 +58,20 @@ export default function Leaderboard({ setPage }) {
     fetch(API + "/live_get_attempts.php")
       .then((res) => res.json())
       .then((data) => {
-        const approved = data.filter((x) => x.status === "approved");
-        setLiveRows(approved.reverse());
+        // only approved live attempts should show
+        const approved = (Array.isArray(data) ? data : []).filter(
+          (x) => (x.status || "") === "approved"
+        );
+        // normalize structure to match other lists
+        const normalized = approved.map((r) => ({
+          user: r.user,
+          score: Number(r.score ?? 0),
+          total: Number(r.total ?? r.total ?? 0),
+          subject: r.subject,
+          platform: r.platform,
+          date: r.date,
+        }));
+        setLiveRows(normalized.reverse());
       })
       .catch(() => {});
   }, []);
@@ -86,6 +113,8 @@ export default function Leaderboard({ setPage }) {
             {type === "live" && (
               <>
                 <th>Score</th>
+                <th>Total</th>
+                <th>Subject</th>
                 <th>Platform</th>
               </>
             )}
@@ -96,15 +125,29 @@ export default function Leaderboard({ setPage }) {
 
         <tbody>
           {rows.map((r, i) => {
-            const totalQuestions = r.total || r.totalQuestions || r.totalQ || r.score;
+            // compute total robustly from several possible field names
+            const totalQuestions =
+              r.total ??
+              r.totalQuestions ??
+              r.totalQ ??
+              r.max ??
+              r.totalScore ??
+              r.total_possible ??
+              r.maxScore ??
+              (typeof r.score !== "undefined" ? r.score : 0);
 
+            // medal shown only for competition/online
             const medal =
               type === "competition" || type === "online"
-                ? getMedal(r.score, totalQuestions)
+                ? getMedal(Number(r.score ?? 0), Number(totalQuestions))
                 : "";
 
+            // Build a score display as "score / total"
+            const scoreDisplay = `${r.score ?? 0} / ${totalQuestions ?? "-"}`;
+
             return (
-              <tr key={i} className={i === 0 ? "top-rank" : ""}>
+              // removed the special top-rank highlight: no class applied based on index
+              <tr key={i}>
                 <td>{i + 1}</td>
 
                 {(type === "competition" || type === "online") && (
@@ -113,18 +156,24 @@ export default function Leaderboard({ setPage }) {
 
                 <td>{r.user || r.name}</td>
 
-                {type === "practice" && <td>{r.score}</td>}
+                {type === "practice" && (
+                  // practice now shows score/total (robust fallback)
+                  <td>{scoreDisplay}</td>
+                )}
 
                 {type === "competition" && (
                   <>
-                    <td>{r.score}</td>
+                    {/* competition now shows score/total */}
+                    <td>{scoreDisplay}</td>
                     <td>{r.timeTaken ?? "-"}</td>
                   </>
                 )}
 
                 {type === "online" && (
                   <>
-                    <td>{r.score} / {r.total}</td>
+                    <td>
+                      {r.score} {r.total !== undefined && <>/ {r.total}</>}
+                    </td>
                     <td>{r.category}</td>
                     <td>{r.difficulty}</td>
                     <td>{r.time}</td>
@@ -134,6 +183,8 @@ export default function Leaderboard({ setPage }) {
                 {type === "live" && (
                   <>
                     <td>{r.score}</td>
+                    <td>{r.total}</td>
+                    <td>{r.subject || "-"}</td>
                     <td>{r.platform}</td>
                   </>
                 )}

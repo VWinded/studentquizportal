@@ -416,3 +416,47 @@
   transform: scale(1.05);
   background: rgba(20,20,20,0.55);
 }
+/* --- FIX TABLE ALIGNMENT --- */
+
+.sd-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  table-layout: fixed;        /* makes equal-width columns */
+}
+
+.sd-table th,
+.sd-table td {
+  padding: 14px 10px;
+  text-align: center;         /* center align everything as you requested */
+  vertical-align: middle;
+}
+
+.sd-table th {
+  background: rgba(255,255,255,0.15);
+  font-weight: 600;
+  font-size: 1rem;
+}
+
+.sd-table tbody tr:nth-child(even) {
+  background: rgba(255,255,255,0.06);
+}
+
+.sd-table tbody tr:nth-child(odd) {
+  background: rgba(255,255,255,0.12);
+}
+
+.sd-table td {
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* Make the table look more premium */
+.table-card {
+  padding: 20px 30px;
+}
+
+.sd-subtitle {
+  text-align: center;
+  margin-bottom: 18px;
+}

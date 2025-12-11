@@ -19,9 +19,51 @@ export default function StudentDashboard({ user, setPage }) {
                 user.email.trim().toLowerCase())
         );
 
-        setMyAttempts(mine.reverse());
+        // --- NEW: normalize/ensure category for live attempts ---
+        // Do not remove or change your existing logic; just map each row
+        // and if category is missing but the row looks like a live attempt,
+        // set category = "Live". This keeps your other fields intact.
+        const processed = mine.map((r) => {
+          // Detect live-like rows by common signals used in your app/backend:
+          const looksLikeLive =
+            r.type === "live" ||
+            (r.platform && String(r.platform).toLowerCase().includes("menti")) || // Mentimeter shorthand
+            (r.platform && String(r.platform).toLowerCase().includes("live")) ||
+            (r.source && String(r.source).toLowerCase() === "live") ||
+            (r.isLive === true) ||
+            (r.quizType && String(r.quizType).toLowerCase() === "live");
+
+          // If category is missing and row looks like live, set it.
+          const category = r.category ?? (looksLikeLive ? "Live" : r.category);
+
+          // Keep everything else the same but ensure category field exists
+          return {
+            ...r,
+            category,
+          };
+        });
+
+        setMyAttempts(processed.reverse());
       });
   }, [user]);
+
+  // helper to display correct/total robustly
+  const renderScorePair = (a) => {
+    // prefer 'correct', or 'score'
+    const correct = (typeof a.correct !== "undefined" && a.correct !== null && a.correct !== "")
+      ? a.correct
+      : (typeof a.score !== "undefined" && a.score !== null ? a.score : "");
+    // prefer several total field names
+    const total =
+      a.total ??
+      a.totalQuestions ??
+      a.totalQ ??
+      a.max ??
+      a.totalScore ??
+      a.total_possible ??
+      "";
+    return `${correct}/${total}`;
+  };
 
   return (
     <div className="sd-container">
@@ -89,9 +131,10 @@ export default function StudentDashboard({ user, setPage }) {
                 <tr key={i}>
                   <td>{i + 1}</td>
                   <td>{a.date}</td>
-                  <td>{a.category}</td>
+                  <td>{a.category ?? (a.type === "live" ? "Live" : "-")}</td>
                   <td>
-                    {a.correct}/{a.total}
+                    { /* REPLACED display with robust fallback (fix) */ }
+                    {renderScorePair(a)}
                   </td>
                   <td>{a.percent}%</td>
                 </tr>

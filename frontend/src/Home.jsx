@@ -45,7 +45,7 @@ export default function Home({ user, setPage }) {
 
   return (
     <div className="home-wrapper">
-      
+       
       <div className="circle circle1"></div>
       <div className="circle circle2"></div>
 

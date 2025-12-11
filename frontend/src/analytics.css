@@ -1,0 +1,173 @@
+/* analytics.css - layout + overrides to ensure Recharts SVGs are visible */
+
+/* wrapper */
+.analytics-wrapper {
+  padding: 28px 48px;
+  box-sizing: border-box;
+  color: var(--text-main, #fff);
+}
+
+/* back button */
+.back-btn {
+  margin-bottom: 12px;
+  background: var(--accent, #ff9800);
+  color: var(--text-main, #fff);
+  border: none;
+  padding: 8px 12px;
+  border-radius: 12px;
+  cursor: pointer;
+}
+
+/* Title centered */
+.analytics-title {
+  text-align: center;
+  margin: 12px 0 22px 0;
+  font-size: 28px;
+  font-weight: 700;
+}
+
+/* Top cards row */
+.analytics-top-cards {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  margin-bottom: 28px;
+}
+
+/* Generic small card body */
+.small-card-body {
+  min-height: 200px;
+  padding: 18px;
+  border-radius: 14px;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.03);
+  box-shadow: 0 8px 18px rgba(0,0,0,0.18);
+}
+
+/* Charts grid */
+.analytics-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 22px;
+  align-items: start;
+  margin-bottom: 28px;
+}
+
+/* individual chart card */
+.analytics-chart,
+.analytics-card {
+  min-height: 320px;
+  padding: 18px;
+  border-radius: 14px;
+  box-sizing: border-box;
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.03);
+}
+
+
+/* second-row uses two columns: left history + right subject */
+.second-row {
+  grid-template-columns: 1fr 1fr;
+  gap: 22px;
+}
+
+/* responsiveness */
+@media (max-width: 1100px) {
+  .analytics-top-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .analytics-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .second-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 640px) {
+  .analytics-top-cards,
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* === Strong overrides for Recharts visibility (fixes theme css conflicts) === */
+
+/* Ensure recharts wrappers have size and are visible */
+.recharts-wrapper,
+.recharts-responsive-container,
+.recharts-surface {
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 180px !important;
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+}
+
+/* Ensure the SVG surface is present and visible */
+.analytics-chart svg,
+.analytics-chart .recharts-surface,
+.analytics-chart .recharts-wrapper,
+.analytics-chart .recharts-responsive-container {
+  display: block !important;
+  visibility: visible !important;
+  opacity: 1 !important;
+  width: 100% !important;
+  height: 100% !important;
+  min-height: 180px !important;
+}
+
+/* Make axis labels readable on dark backgrounds */
+.analytics-chart .recharts-cartesian-axis-tick text,
+.analytics-chart .recharts-cartesian-axis-tickline,
+.analytics-chart .recharts-cartesian-axis-label,
+.analytics-chart .recharts-tooltip-wrapper,
+.analytics-chart .recharts-label {
+  fill: rgba(255,255,255,0.95) !important;
+  color: rgba(255,255,255,0.95) !important;
+  stroke: none !important;
+}
+
+/* Tooltip style */
+.analytics-chart .recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: rgba(0,0,0,0.75) !important;
+  color: #fff !important;
+  border-radius: 6px !important;
+  padding: 6px !important;
+}
+
+/* Bars / pies / lines visible and not clipped */
+.analytics-chart .recharts-rectangle,
+.analytics-chart .recharts-pie-sector,
+.analytics-chart .recharts-line,
+.analytics-chart .recharts-dot {
+  opacity: 1 !important;
+  stroke-width: 0.9 !important;
+}
+
+/* Don't allow collapse */
+.analytics-chart,
+.analytics-chart .chart-empty,
+.analytics-chart .recharts-wrapper {
+  min-height: 220px !important;
+  height: auto !important;
+}
+
+/* Ensure internal SVG elements visible even if global rule hid them */
+.analytics-chart svg * {
+  visibility: visible !important;
+}
+
+/* Chart headings */
+.analytics-chart h3 {
+  margin: 6px 0 12px 0;
+  color: var(--text-main, #fff) !important;
+  text-align: center;
+}
+
+/* Safe pointer events */
+.analytics-chart .recharts-wrapper,
+.analytics-chart svg {
+  pointer-events: auto !important;
+}
