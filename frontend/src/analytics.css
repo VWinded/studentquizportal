@@ -171,3 +171,17 @@
 .analytics-chart svg {
   pointer-events: auto !important;
 }
+/* Final safety: tooltip text always visible */
+.recharts-default-tooltip,
+.recharts-tooltip-wrapper {
+  color: #fff !important;
+}
+
+.recharts-default-tooltip * {
+  color: #fff !important;
+}
+/* Fix Recharts tooltip text inheritance in light themes */
+.recharts-tooltip-wrapper * {
+  fill: inherit !important;
+  color: inherit !important;
+}

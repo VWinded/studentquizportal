@@ -82,120 +82,112 @@ export default function Leaderboard({ setPage }) {
     }
 
     return (
-      <table className="lb-table">
-        <thead>
-          <tr>
-            <th>#</th>
+  <div className="leaderboard-table-wrapper">
+    <table className="lb-table">
+      <thead>
+        <tr>
+          <th>#</th>
 
-            {/* Medal column ONLY for competition + online */}
-            {(type === "competition" || type === "online") && <th>Medal</th>}
+          {(type === "competition" || type === "online") && <th>Medal</th>}
 
-            <th>Name</th>
+          <th>Name</th>
 
-            {type === "practice" && <th>Score</th>}
+          {type === "practice" && <th>Score</th>}
 
-            {type === "competition" && (
-              <>
-                <th>Score</th>
-                <th>Time Taken (s)</th>
-              </>
-            )}
+          {type === "competition" && (
+            <>
+              <th>Score</th>
+              <th>Time Taken (s)</th>
+            </>
+          )}
 
-            {type === "online" && (
-              <>
-                <th>Score</th>
-                <th>Category</th>
-                <th>Difficulty</th>
-                <th>Time</th>
-              </>
-            )}
+          {type === "online" && (
+            <>
+              <th>Score</th>
+              <th>Category</th>
+              <th>Difficulty</th>
+              <th>Time</th>
+            </>
+          )}
 
-            {type === "live" && (
-              <>
-                <th>Score</th>
-                <th>Total</th>
-                <th>Subject</th>
-                <th>Platform</th>
-              </>
-            )}
+          {type === "live" && (
+            <>
+              <th>Score</th>
+              <th>Total</th>
+              <th>Subject</th>
+              <th>Platform</th>
+            </>
+          )}
 
-            <th>Date / Time</th>
-          </tr>
-        </thead>
+          <th>Date / Time</th>
+        </tr>
+      </thead>
 
-        <tbody>
-          {rows.map((r, i) => {
-            // compute total robustly from several possible field names
-            const totalQuestions =
-              r.total ??
-              r.totalQuestions ??
-              r.totalQ ??
-              r.max ??
-              r.totalScore ??
-              r.total_possible ??
-              r.maxScore ??
-              (typeof r.score !== "undefined" ? r.score : 0);
+      <tbody>
+        {rows.map((r, i) => {
+          const totalQuestions =
+            r.total ??
+            r.totalQuestions ??
+            r.totalQ ??
+            r.max ??
+            r.totalScore ??
+            r.total_possible ??
+            r.maxScore ??
+            (typeof r.score !== "undefined" ? r.score : 0);
 
-            // medal shown only for competition/online
-            const medal =
-              type === "competition" || type === "online"
-                ? getMedal(Number(r.score ?? 0), Number(totalQuestions))
-                : "";
+          const medal =
+            type === "competition" || type === "online"
+              ? getMedal(Number(r.score ?? 0), Number(totalQuestions))
+              : "";
 
-            // Build a score display as "score / total"
-            const scoreDisplay = `${r.score ?? 0} / ${totalQuestions ?? "-"}`;
+          const scoreDisplay = `${r.score ?? 0} / ${totalQuestions ?? "-"}`;
 
-            return (
-              // removed the special top-rank highlight: no class applied based on index
-              <tr key={i}>
-                <td>{i + 1}</td>
+          return (
+            <tr key={i}>
+              <td>{i + 1}</td>
 
-                {(type === "competition" || type === "online") && (
-                  <td style={{ fontSize: "22px" }}>{medal}</td>
-                )}
+              {(type === "competition" || type === "online") && (
+                <td style={{ fontSize: "22px" }}>{medal}</td>
+              )}
 
-                <td>{r.user || r.name}</td>
+              <td>{r.user || r.name}</td>
 
-                {type === "practice" && (
-                  // practice now shows score/total (robust fallback)
+              {type === "practice" && <td>{scoreDisplay}</td>}
+
+              {type === "competition" && (
+                <>
                   <td>{scoreDisplay}</td>
-                )}
+                  <td>{r.timeTaken ?? "-"}</td>
+                </>
+              )}
 
-                {type === "competition" && (
-                  <>
-                    {/* competition now shows score/total */}
-                    <td>{scoreDisplay}</td>
-                    <td>{r.timeTaken ?? "-"}</td>
-                  </>
-                )}
+              {type === "online" && (
+                <>
+                  <td>{r.score}{r.total !== undefined && <> / {r.total}</>}</td>
+                  <td>{r.category}</td>
+                  <td>{r.difficulty}</td>
+                  <td>{r.time}</td>
+                </>
+              )}
 
-                {type === "online" && (
-                  <>
-                    <td>
-                      {r.score} {r.total !== undefined && <>/ {r.total}</>}
-                    </td>
-                    <td>{r.category}</td>
-                    <td>{r.difficulty}</td>
-                    <td>{r.time}</td>
-                  </>
-                )}
+              {type === "live" && (
+                <>
+                  <td>{r.score}</td>
+                  <td>{r.total}</td>
+                  <td>{r.subject || "-"}</td>
+                  <td>{r.platform}</td>
+                </>
+              )}
 
-                {type === "live" && (
-                  <>
-                    <td>{r.score}</td>
-                    <td>{r.total}</td>
-                    <td>{r.subject || "-"}</td>
-                    <td>{r.platform}</td>
-                  </>
-                )}
+              <td>{r.date || r.time || "-"}</td>
+            </tr>
+          );
+        })}
+      </tbody>
+    </table>
+  </div>
+);
 
-                <td>{r.date || r.time || "-"}</td>
-              </tr>
-            );
-          })}
-        </tbody>
-      </table>
-    );
   };
 
   return (

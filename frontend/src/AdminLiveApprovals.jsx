@@ -55,7 +55,6 @@ export default function AdminLiveApprovals({ setPage }) {
     loadData();
   };
 
-  // Filter rows
   const filteredRows =
     filter === "all"
       ? data
@@ -69,38 +68,24 @@ export default function AdminLiveApprovals({ setPage }) {
 
       <h2>📑 Live Quiz Approvals</h2>
 
-      {/* ⭐ FILTER BUTTONS GROUPED WITH BETTER ALIGNMENT */}
       <div className="filter-buttons">
-        <button
-          className={filter === "pending" ? "active" : ""}
-          onClick={() => setFilter("pending")}
-        >
+        <button className={filter === "pending" ? "active" : ""} onClick={() => setFilter("pending")}>
           PENDING
         </button>
 
-        <button
-          className={filter === "approved" ? "active" : ""}
-          onClick={() => setFilter("approved")}
-        >
+        <button className={filter === "approved" ? "active" : ""} onClick={() => setFilter("approved")}>
           APPROVED
         </button>
 
-        <button
-          className={filter === "rejected" ? "active" : ""}
-          onClick={() => setFilter("rejected")}
-        >
+        <button className={filter === "rejected" ? "active" : ""} onClick={() => setFilter("rejected")}>
           REJECTED
         </button>
 
-        <button
-          className={filter === "all" ? "active" : ""}
-          onClick={() => setFilter("all")}
-        >
+        <button className={filter === "all" ? "active" : ""} onClick={() => setFilter("all")}>
           ALL
         </button>
       </div>
 
-      {/* ⭐ CSV BUTTONS */}
       <div className="csv-buttons">
         <button className="download-btn" onClick={downloadCSV}>
           ⬇ Download CSV
@@ -108,12 +93,7 @@ export default function AdminLiveApprovals({ setPage }) {
 
         <label className="import-btn">
           ⬆ Import CSV
-          <input
-            type="file"
-            accept=".csv"
-            onChange={uploadCSV}
-            style={{ display: "none" }}
-          />
+          <input type="file" accept=".csv" onChange={uploadCSV} style={{ display: "none" }} />
         </label>
       </div>
 
@@ -124,7 +104,7 @@ export default function AdminLiveApprovals({ setPage }) {
             <th>User</th>
             <th>Email</th>
             <th>Platform</th>
-            <th>Subject</th> {/* ADDED */}
+            <th>Subject</th>
             <th>Score</th>
             <th>Date</th>
             <th>Status</th>
@@ -142,10 +122,10 @@ export default function AdminLiveApprovals({ setPage }) {
             </tr>
           ) : (
             filteredRows.map((r, i) => {
-              // safe values
               const score = r.score ?? "-";
               const total = r.total ?? "-";
               const subject = r.subject ?? "-";
+
               return (
                 <tr key={i}>
                   <td>{i + 1}</td>
@@ -154,11 +134,10 @@ export default function AdminLiveApprovals({ setPage }) {
                   <td>{r.platform}</td>
                   <td>{subject}</td>
                   <td>
-                    {score} {total !== "-" && <>/ {total}</>}
+                    {score} {total !== "-" && <span>/ {total}</span>}
                   </td>
                   <td>{r.date}</td>
                   <td className={`status ${r.status}`}>{r.status}</td>
-
                   <td>
                     {r.proof && r.proof !== "Imported via CSV" ? (
                       <a
@@ -172,24 +151,16 @@ export default function AdminLiveApprovals({ setPage }) {
                       r.proof || "-"
                     )}
                   </td>
-
                   <td>
                     {r.status === "pending" ? (
-                      <>
-                        <button
-                          className="approve-btn"
-                          onClick={() => approve(r.email, r.date)}
-                        >
+                      <span>
+                        <button className="approve-btn" onClick={() => approve(r.email, r.date)}>
                           Approve
                         </button>
-
-                        <button
-                          className="reject-btn"
-                          onClick={() => reject(r.email, r.date)}
-                        >
+                        <button className="reject-btn" onClick={() => reject(r.email, r.date)}>
                           Reject
                         </button>
-                      </>
+                      </span>
                     ) : (
                       <span>—</span>
                     )}

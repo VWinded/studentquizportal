@@ -1933,4 +1933,144 @@ html.theme-snow .glass-card * {
     font-weight: 800 !important;
     text-shadow: 0px 2px 8px rgba(0,0,0,0.08) !important;
 }
+/* ========================= */
+/* 📱 MOBILE OPTIMIZATION   */
+/* DOES NOT AFFECT DESKTOP */
+/* ========================= */
+
+@media (max-width: 640px) {
+
+  /* ---- Global text size ---- */
+  body {
+    font-size: 15px;
+  }
+
+  h1 { font-size: 22px; }
+  h2 { font-size: 20px; }
+  h3 { font-size: 18px; }
+  h4 { font-size: 16px; }
+
+  p, span, li {
+    font-size: 15px;
+    line-height: 1.6;
+  }
+
+  /* ---- Navbar fixes ---- */
+  .navbar,
+  .top-nav,
+  .nav-buttons {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .navbar button,
+  .nav-buttons button {
+    padding: 8px 12px;
+    font-size: 14px;
+    min-width: auto;
+  }
+
+  /* ---- Cards spacing ---- */
+  .card,
+  .analytics-card,
+  .analytics-chart,
+  .glass-card {
+    padding: 14px;
+    margin: auto;
+  }
+
+  /* ---- Analytics charts ---- */
+  .analytics-chart {
+    min-height: 240px;
+  }
+
+  /* ---- Buttons (touch-friendly) ---- */
+  button {
+    min-height: 44px;
+    border-radius: 12px;
+  }
+
+  /* ---- Dashboard grids ---- */
+  .analytics-grid,
+  .analytics-top-cards {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* ---- Prevent overflow ---- */
+  * {
+    max-width: 100%;
+    box-sizing: border-box;
+  }
+}
+/* =========================================
+   FINAL NAVBAR VISIBILITY RULE (DO NOT MOVE)
+   ========================================= */
+
+/* Mobile: hide navbar buttons, show menu */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none !important;
+  }
+
+  .menu-btn {
+    display: flex !important;
+  }
+}
+
+/* Desktop: show navbar buttons */
+@media (min-width: 769px) {
+  .nav-links {
+    display: flex !important;
+  }
+
+  .menu-btn {
+    display: flex !important;
+  }
+}
+/* 🔧 FIX: allow Recharts SVG to render fully on mobile */
+.analytics-chart {
+  overflow: visible !important;
+}
+.analytics-chart.glass-card {
+  overflow: visible !important;
+}
+/* ===== ACTIVE NAV ITEM ===== */
+.nav-links button.active,
+.side-menu button.active {
+  outline: 1px solid rgba(255, 255, 255, 0.35);
+  box-shadow: 0 0 6px rgba(255, 255, 255, 0.25);
+}
+/* ===== BUTTON INTERACTION ===== */
+button {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+/* ===== HERO PRIMARY CTA ===== */
+.hero-box .main-btn:first-child {
+  font-weight: 600;
+}
+/* ===== NAVBAR SPACING ===== */
+.navbar {
+  padding: 14px 32px;
+}
+/* ===== SIDE MENU OVERLAY ===== */
+.menu-overlay {
+  backdrop-filter: blur(4px);
+}
+.nav-links button.active,
+.side-menu button.active {
+  outline: 2px solid rgba(255,255,255,0.5);
+  background: transparent;
+}
+button {
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+button:active {
+  transform: scale(0.96);
+}
 

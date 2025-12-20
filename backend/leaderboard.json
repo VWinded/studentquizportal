@@ -18,6 +18,14 @@
     {
         "name": "Admin",
         "email": "admin@gmail.com",
+        "score": 2,
+        "time": "2025-12-20 18:41",
+        "mode": "practice",
+        "timeTaken": 0
+    },
+    {
+        "name": "Admin",
+        "email": "admin@gmail.com",
         "score": 1,
         "time": "2025-12-09 23:50",
         "mode": "practice",
@@ -106,5 +114,13 @@
         "timeTaken": 10,
         "mode": "competition",
         "date": "2025-12-10 00:24"
+    },
+    {
+        "name": "Admin",
+        "email": "admin@gmail.com",
+        "score": 1,
+        "time": "2025-12-11 20:37",
+        "mode": "practice",
+        "timeTaken": 20
     }
 ]

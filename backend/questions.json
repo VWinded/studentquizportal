@@ -1,29 +1,2391 @@
 [
-    {
-        "id": 1,
-        "category": "Science",
-        "image": "https:\/\/example.com\/science.jpg",
-        "question": "What is H2O?",
-        "options": [
-            "Oxygen",
-            "Water",
-            "Hydrogen",
-            "Sugar"
-        ],
-        "answerIndex": 1,
-        "difficulty": "Easy"
-    },
-    {
-        "id": 2,
-        "category": "Math",
-        "image": "https:\/\/example.com\/math.jpg",
-        "question": "2 + 2 = ?",
-        "options": [
-            "3",
-            "4",
-            "5",
-            "6"
-        ],
-        "answerIndex": 1
-    }
+  {
+    "id": 1,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "What is H2O commonly known as?",
+    "options": ["Hydrogen", "Oxygen", "Water", "Salt"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 2,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which gas is essential for breathing?",
+    "options": ["Nitrogen", "Oxygen", "Carbon Dioxide", "Hydrogen"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 3,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "What planet is closest to the Sun?",
+    "options": ["Earth", "Venus", "Mercury", "Mars"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 4,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which organ pumps blood in the human body?",
+    "options": ["Lungs", "Brain", "Heart", "Kidney"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 5,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Sun is a?",
+    "options": ["Planet", "Star", "Asteroid", "Comet"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 6,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which vitamin is produced in the body using sunlight?",
+    "options": ["Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D"],
+    "answerIndex": 3,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 7,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which part of a plant absorbs water?",
+    "options": ["Leaf", "Stem", "Root", "Flower"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 8,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "What gas do plants use for photosynthesis?",
+    "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Hydrogen"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 9,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which animal is known as the king of the jungle?",
+    "options": ["Tiger", "Elephant", "Lion", "Leopard"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 10,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "What is the boiling point of water?",
+    "options": ["90°C", "100°C", "110°C", "120°C"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+
+  {
+    "id": 11,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which blood cells help in fighting infections?",
+    "options": ["Red blood cells", "White blood cells", "Platelets", "Plasma"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 12,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which planet is known as the Red Planet?",
+    "options": ["Earth", "Mars", "Jupiter", "Venus"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 13,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "What type of energy is stored in food?",
+    "options": ["Thermal", "Chemical", "Mechanical", "Electrical"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 14,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which organ is responsible for filtering blood?",
+    "options": ["Heart", "Liver", "Kidney", "Lungs"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 15,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "What is the SI unit of force?",
+    "options": ["Joule", "Pascal", "Newton", "Watt"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 16,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which metal is liquid at room temperature?",
+    "options": ["Iron", "Mercury", "Aluminium", "Copper"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 17,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which gas is released during respiration?",
+    "options": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 18,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "What part of the brain controls balance?",
+    "options": ["Cerebrum", "Cerebellum", "Medulla", "Spinal cord"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 19,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which planet has the most moons?",
+    "options": ["Earth", "Mars", "Jupiter", "Venus"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 20,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "What phenomenon causes a rainbow?",
+    "options": ["Reflection", "Refraction", "Dispersion", "Diffraction"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 21,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which law states that pressure is inversely proportional to volume?",
+    "options": ["Newton’s Law", "Boyle’s Law", "Ohm’s Law", "Charles’s Law"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 22,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which part of the atom has no electric charge?",
+    "options": ["Electron", "Proton", "Neutron", "Nucleus"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 23,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which vitamin deficiency causes scurvy?",
+    "options": ["Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 24,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "What is the speed of light approximately?",
+    "options": ["3 × 10⁶ m/s", "3 × 10⁸ m/s", "3 × 10⁴ m/s", "3 × 10² m/s"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 25,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which organelle is known as the powerhouse of the cell?",
+    "options": ["Nucleus", "Ribosome", "Mitochondria", "Golgi body"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 26,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "What type of bond involves sharing of electrons?",
+    "options": ["Ionic", "Covalent", "Metallic", "Hydrogen"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 27,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which gas is mainly responsible for the greenhouse effect?",
+    "options": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Helium"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 28,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which scientist proposed the theory of relativity?",
+    "options": ["Newton", "Einstein", "Galileo", "Tesla"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 29,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "What is the chemical symbol of Sodium?",
+    "options": ["So", "Na", "Sn", "Sd"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 30,
+    "category": "Science",
+    "image": "https://images.unsplash.com/photo-1532187863486-abf9dbad1b69",
+    "question": "Which layer of the atmosphere contains the ozone layer?",
+    "options": ["Troposphere", "Stratosphere", "Mesosphere", "Thermosphere"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },{
+    "id": 31,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "5 + 7 = ?",
+    "options": ["10", "11", "12", "13"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 32,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "10 × 6 = ?",
+    "options": ["50", "60", "70", "80"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 33,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "Square root of 49 is?",
+    "options": ["6", "7", "8", "9"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 34,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "15 − 5 = ?",
+    "options": ["5", "10", "15", "20"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 35,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "Which number is even?",
+    "options": ["3", "5", "7", "8"],
+    "answerIndex": 3,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 36,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "100 ÷ 20 = ?",
+    "options": ["2", "4", "5", "10"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 37,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "Which is the smallest number?",
+    "options": ["2", "5", "1", "9"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 38,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "What is 25% of 100?",
+    "options": ["10", "20", "25", "30"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 39,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "Perimeter of a square with side 5?",
+    "options": ["15", "20", "25", "30"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 40,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "10² equals?",
+    "options": ["20", "50", "100", "1000"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 41,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "What is the value of 3² + 4²?",
+    "options": ["25", "14", "7", "20"],
+    "answerIndex": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 42,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "LCM of 4 and 6 is?",
+    "options": ["6", "12", "24", "18"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 43,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "Which is a prime number?",
+    "options": ["9", "15", "17", "21"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 44,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "Solve: 12 × (5 − 3)",
+    "options": ["12", "18", "24", "30"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 45,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "HCF of 12 and 18?",
+    "options": ["3", "6", "9", "12"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 46,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "If x = 5, what is x² − 1?",
+    "options": ["20", "24", "25", "30"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 47,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "Area of rectangle with length 6 and breadth 4?",
+    "options": ["10", "20", "24", "30"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 48,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "What is 40% of 50?",
+    "options": ["10", "15", "20", "25"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 49,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "Simplify: 3 × 5 + 2",
+    "options": ["17", "21", "25", "15"],
+    "answerIndex": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 50,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "What is the cube of 3?",
+    "options": ["9", "18", "27", "36"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+
+  {
+    "id": 51,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "Solve: (15 ÷ 3) × (4 + 2)",
+    "options": ["20", "25", "30", "40"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 52,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "If a triangle has sides 3, 4, and 5, it is a?",
+    "options": ["Scalene", "Isosceles", "Right-angled", "Equilateral"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 53,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "Value of π (approx)?",
+    "options": ["2.14", "3.14", "4.13", "3.41"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 54,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "Solve: 2³ + 3²",
+    "options": ["11", "13", "17", "19"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 55,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "Sum of first 10 natural numbers?",
+    "options": ["45", "50", "55", "60"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 56,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "If x + 7 = 15, what is x?",
+    "options": ["6", "7", "8", "9"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 57,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "Which angle is greater than 90°?",
+    "options": ["Acute", "Right", "Obtuse", "Straight"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 58,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "What is the median of 2, 5, 8?",
+    "options": ["2", "5", "8", "6"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 59,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "Solve: 7² − 5²",
+    "options": ["14", "20", "24", "28"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 60,
+    "category": "Math",
+    "image": "https://images.unsplash.com/photo-1509228468518-180dd4864904",
+    "question": "If radius of a circle is 7, diameter is?",
+    "options": ["7", "10", "12", "14"],
+    "answerIndex": 3,
+    "difficulty": "Hard"
+  },{
+    "id": 61,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "What does CPU stand for?",
+    "options": ["Central Processing Unit", "Computer Power Unit", "Control Program Unit", "Central Program Utility"],
+    "answerIndex": 0,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 62,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which device is used to input text?",
+    "options": ["Monitor", "Keyboard", "Printer", "Speaker"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 63,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which one is an operating system?",
+    "options": ["HTML", "CSS", "Linux", "JavaScript"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 64,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "What does RAM stand for?",
+    "options": ["Read Access Memory", "Random Access Memory", "Run Access Memory", "Real Access Memory"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 65,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which device displays output?",
+    "options": ["Mouse", "Keyboard", "Monitor", "Scanner"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 66,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which key is used to delete characters?",
+    "options": ["Shift", "Ctrl", "Backspace", "Alt"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 67,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which one is a web browser?",
+    "options": ["Google", "Chrome", "Windows", "Linux"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 68,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "What does WWW stand for?",
+    "options": ["World Wide Web", "Wide World Web", "Web World Wide", "World Web Wide"],
+    "answerIndex": 0,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 69,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which device is used for printing?",
+    "options": ["Monitor", "Printer", "Scanner", "Speaker"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 70,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which storage is permanent?",
+    "options": ["RAM", "Cache", "Hard Disk", "Register"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 71,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which language is used to structure web pages?",
+    "options": ["CSS", "HTML", "Python", "Java"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 72,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "What is the brain of the computer?",
+    "options": ["RAM", "Hard Disk", "CPU", "Monitor"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 73,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which of the following is NOT an input device?",
+    "options": ["Mouse", "Keyboard", "Monitor", "Scanner"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 74,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "What does OS stand for?",
+    "options": ["Open Software", "Operating System", "Online Service", "Output System"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 75,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which one is a search engine?",
+    "options": ["Chrome", "Google", "Windows", "Linux"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 76,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which key combination copies text?",
+    "options": ["Ctrl + V", "Ctrl + C", "Ctrl + X", "Ctrl + Z"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 77,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which software is used to create documents?",
+    "options": ["MS Word", "Paint", "Browser", "Compiler"],
+    "answerIndex": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 78,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which unit measures computer processing speed?",
+    "options": ["Byte", "Hertz", "Pixel", "Meter"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 79,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which device connects a computer to the internet?",
+    "options": ["Printer", "Router", "Scanner", "Speaker"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 80,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which memory is volatile?",
+    "options": ["ROM", "Hard Disk", "RAM", "DVD"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 81,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which data structure follows FIFO?",
+    "options": ["Stack", "Queue", "Tree", "Graph"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 82,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "What does HTTP stand for?",
+    "options": [
+      "HyperText Transfer Protocol",
+      "High Transfer Text Process",
+      "Hyper Tool Transfer Program",
+      "Host Transfer Text Protocol"
+    ],
+    "answerIndex": 0,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 83,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which layer of OSI handles encryption?",
+    "options": ["Transport", "Session", "Presentation", "Network"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 84,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which language is platform-independent?",
+    "options": ["C", "C++", "Java", "Assembly"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 85,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "What is the full form of SQL?",
+    "options": [
+      "Structured Query Language",
+      "Simple Query Language",
+      "Sequential Query Language",
+      "Standard Query Logic"
+    ],
+    "answerIndex": 0,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 86,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which algorithm is used for shortest path?",
+    "options": ["DFS", "BFS", "Dijkstra", "Prim"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 87,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which protocol is used to send emails?",
+    "options": ["FTP", "SMTP", "HTTP", "SNMP"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 88,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "What does DNS translate?",
+    "options": ["IP to Domain", "Domain to IP", "Port to IP", "MAC to IP"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 89,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which is NOT a relational database?",
+    "options": ["MySQL", "PostgreSQL", "MongoDB", "Oracle"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 90,
+    "category": "Computer",
+    "image": "https://images.unsplash.com/photo-1518770660439-4636190af475",
+    "question": "Which sorting algorithm has the best average case?",
+    "options": ["Bubble Sort", "Selection Sort", "Merge Sort", "Insertion Sort"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },{
+    "id": 91,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Capital of India?",
+    "options": ["Mumbai", "Delhi", "Chennai", "Kolkata"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 92,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "National animal of India?",
+    "options": ["Lion", "Tiger", "Elephant", "Leopard"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 93,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "National bird of India?",
+    "options": ["Crow", "Peacock", "Sparrow", "Eagle"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 94,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which day is celebrated as Independence Day in India?",
+    "options": ["Jan 26", "Aug 15", "Oct 2", "Nov 14"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 95,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Currency of India?",
+    "options": ["Dollar", "Euro", "Rupee", "Yen"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 96,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "How many continents are there?",
+    "options": ["5", "6", "7", "8"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 97,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Largest ocean in the world?",
+    "options": ["Atlantic", "Indian", "Pacific", "Arctic"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 98,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Father of the Nation (India)?",
+    "options": ["Jawaharlal Nehru", "Subhash Bose", "Mahatma Gandhi", "B. R. Ambedkar"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 99,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which planet is known as the Red Planet?",
+    "options": ["Earth", "Mars", "Jupiter", "Venus"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 100,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which gas do humans breathe in?",
+    "options": ["Nitrogen", "Carbon Dioxide", "Oxygen", "Hydrogen"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+
+  {
+    "id": 101,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Who was the first Prime Minister of India?",
+    "options": ["Gandhi", "Nehru", "Patel", "Bose"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 102,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which is the longest river in India?",
+    "options": ["Yamuna", "Ganga", "Godavari", "Brahmaputra"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 103,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Who wrote the Indian National Anthem?",
+    "options": ["Bankim Chandra", "Rabindranath Tagore", "Sarojini Naidu", "Subhash Bose"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 104,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which is the smallest continent?",
+    "options": ["Europe", "Australia", "Antarctica", "Africa"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 105,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which country has the largest population?",
+    "options": ["USA", "India", "China", "Russia"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 106,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which instrument measures temperature?",
+    "options": ["Barometer", "Thermometer", "Hygrometer", "Altimeter"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 107,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which desert is the largest in the world?",
+    "options": ["Sahara", "Gobi", "Thar", "Kalahari"],
+    "answerIndex": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 108,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which metal is the best conductor of electricity?",
+    "options": ["Iron", "Copper", "Silver", "Gold"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 109,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Who invented the telephone?",
+    "options": ["Edison", "Graham Bell", "Newton", "Tesla"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 110,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which is the tallest mountain in the world?",
+    "options": ["K2", "Everest", "Kilimanjaro", "Alps"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+
+  {
+    "id": 111,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Who is known as the Iron Man of India?",
+    "options": ["Gandhi", "Nehru", "Sardar Patel", "Bose"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 112,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which Article of Indian Constitution deals with Fundamental Rights?",
+    "options": ["Article 12–35", "Article 36–51", "Article 52–78", "Article 80–90"],
+    "answerIndex": 0,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 113,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which country hosted the first Olympic Games?",
+    "options": ["Italy", "France", "Greece", "USA"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 114,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which planet has the maximum moons?",
+    "options": ["Earth", "Jupiter", "Saturn", "Mars"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 115,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Who was the first woman Prime Minister of India?",
+    "options": ["Sarojini Naidu", "Indira Gandhi", "Pratibha Patil", "Sushma Swaraj"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 116,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which Indian satellite was the first to reach Mars?",
+    "options": ["INSAT", "Chandrayaan-1", "Mangalyaan", "Aryabhata"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 117,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which vitamin deficiency causes night blindness?",
+    "options": ["Vitamin A", "Vitamin B", "Vitamin C", "Vitamin D"],
+    "answerIndex": 0,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 118,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which river flows through Egypt?",
+    "options": ["Amazon", "Nile", "Danube", "Yangtze"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 119,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which gas is used in fire extinguishers?",
+    "options": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 120,
+    "category": "GK",
+    "image": "https://images.unsplash.com/photo-1504711434969-e33886168f5c",
+    "question": "Which country is known as the Land of the Rising Sun?",
+    "options": ["China", "Japan", "Thailand", "Korea"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },{
+    "id": 121,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who was the Father of the Indian Nation?",
+    "options": ["Jawaharlal Nehru", "Subhash Chandra Bose", "Mahatma Gandhi", "B. R. Ambedkar"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 122,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "In which year did India gain independence?",
+    "options": ["1945", "1946", "1947", "1948"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 123,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who was the first Prime Minister of India?",
+    "options": ["Mahatma Gandhi", "Jawaharlal Nehru", "Rajendra Prasad", "Sardar Patel"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 124,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Which empire built the Taj Mahal?",
+    "options": ["Maurya", "Gupta", "Mughal", "Chola"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 125,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who was the first President of India?",
+    "options": ["Jawaharlal Nehru", "Rajendra Prasad", "Radhakrishnan", "Gandhi"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 126,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who wrote the Indian National Anthem?",
+    "options": ["Bankim Chandra", "Rabindranath Tagore", "Sarojini Naidu", "Subhash Bose"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 127,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Which movement was started by Mahatma Gandhi in 1942?",
+    "options": ["Non-Cooperation", "Civil Disobedience", "Quit India", "Swadeshi"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 128,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who was known as the Iron Man of India?",
+    "options": ["Jawaharlal Nehru", "Subhash Bose", "Sardar Patel", "Ambedkar"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 129,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Which British officer opened fire at Jallianwala Bagh?",
+    "options": ["Lord Mountbatten", "General Dyer", "Clive", "Wellesley"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 130,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who founded the Maurya Empire?",
+    "options": ["Ashoka", "Bindusara", "Chandragupta Maurya", "Bimbisara"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+
+  {
+    "id": 131,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who was the last Mughal emperor?",
+    "options": ["Akbar", "Aurangzeb", "Bahadur Shah Zafar", "Shah Jahan"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 132,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Which act transferred power to India in 1947?",
+    "options": ["Government of India Act 1935", "Indian Councils Act", "Indian Independence Act", "Regulating Act"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 133,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who introduced the Doctrine of Lapse?",
+    "options": ["Lord Dalhousie", "Lord Curzon", "Lord Ripon", "Lord Cornwallis"],
+    "answerIndex": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 134,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Battle of Plassey was fought in which year?",
+    "options": ["1757", "1764", "1775", "1781"],
+    "answerIndex": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 135,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who wrote Arthashastra?",
+    "options": ["Kalidasa", "Chanakya", "Panini", "Tulsidas"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 136,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who was the first Governor-General of India?",
+    "options": ["Lord Dalhousie", "Warren Hastings", "Lord Curzon", "Cornwallis"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 137,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "The Revolt of 1857 started from which place?",
+    "options": ["Delhi", "Meerut", "Kanpur", "Lucknow"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 138,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who was known as the Nightingale of India?",
+    "options": ["Annie Besant", "Sarojini Naidu", "Aruna Asaf Ali", "Indira Gandhi"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 139,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Which dynasty built the Khajuraho temples?",
+    "options": ["Maurya", "Gupta", "Chandela", "Chola"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 140,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who led the Dandi March?",
+    "options": ["Nehru", "Gandhi", "Patel", "Bose"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+
+  {
+    "id": 141,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Which Viceroy partitioned Bengal in 1905?",
+    "options": ["Lord Curzon", "Lord Ripon", "Lord Dalhousie", "Lord Canning"],
+    "answerIndex": 0,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 142,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who was the founder of the Gupta Empire?",
+    "options": ["Samudragupta", "Chandragupta I", "Skandagupta", "Ashoka"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 143,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Which treaty ended the First Anglo-Maratha War?",
+    "options": ["Treaty of Salbai", "Treaty of Bassein", "Treaty of Lahore", "Treaty of Seringapatam"],
+    "answerIndex": 0,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 144,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who wrote the book 'Discovery of India'?",
+    "options": ["Gandhi", "Nehru", "Tagore", "Ambedkar"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 145,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Which movement was associated with Indigo farmers?",
+    "options": ["Non-Cooperation", "Indigo Revolt", "Civil Disobedience", "Swadeshi"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 146,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who was the first Indian Governor-General?",
+    "options": ["Rajagopalachari", "Nehru", "Patel", "Rajendra Prasad"],
+    "answerIndex": 0,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 147,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Which ancient university was located in Bihar?",
+    "options": ["Nalanda", "Takshashila", "Vikramshila", "Ujjain"],
+    "answerIndex": 0,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 148,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who introduced the Permanent Settlement?",
+    "options": ["Lord Curzon", "Lord Cornwallis", "Lord Hastings", "Lord Dalhousie"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 149,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Which Indian leader founded the Forward Bloc?",
+    "options": ["Jawaharlal Nehru", "Subhash Chandra Bose", "Bhagat Singh", "Rajendra Prasad"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 150,
+    "category": "History",
+    "image": "https://images.unsplash.com/photo-1566207474742-de921626ad0c",
+    "question": "Who was the author of 'Arthashastra'?",
+    "options": ["Kalidasa", "Chanakya", "Panini", "Vyasa"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },{
+    "id": 151,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which is the largest continent in the world?",
+    "options": ["Africa", "Asia", "Europe", "Antarctica"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 152,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which ocean is the largest?",
+    "options": ["Atlantic", "Indian", "Pacific", "Arctic"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 153,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which country is also called the Land of the Rising Sun?",
+    "options": ["China", "Japan", "Thailand", "South Korea"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 154,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "What is the capital of Karnataka?",
+    "options": ["Mysuru", "Hubballi", "Bengaluru", "Mangaluru"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 155,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which river is the longest in the world?",
+    "options": ["Amazon", "Nile", "Yangtze", "Mississippi"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 156,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which is the smallest continent?",
+    "options": ["Europe", "Australia", "Antarctica", "South America"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 157,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which country has the largest population?",
+    "options": ["USA", "China", "India", "Russia"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 158,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which desert is the largest hot desert?",
+    "options": ["Gobi", "Kalahari", "Thar", "Sahara"],
+    "answerIndex": 3,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 159,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which direction does the Sun rise?",
+    "options": ["North", "South", "East", "West"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 160,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which is the coldest continent?",
+    "options": ["Europe", "Asia", "Antarctica", "Australia"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+
+  {
+    "id": 161,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which latitude is known as the Tropic of Cancer?",
+    "options": ["0°", "23.5° N", "23.5° S", "66.5° N"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 162,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which mountain range separates Europe and Asia?",
+    "options": ["Andes", "Rockies", "Ural", "Alps"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 163,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which river flows through Egypt?",
+    "options": ["Amazon", "Nile", "Tigris", "Indus"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 164,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which country has the longest coastline?",
+    "options": ["USA", "Australia", "Canada", "Russia"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 165,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which plateau is known as the Roof of the World?",
+    "options": ["Deccan Plateau", "Tibetan Plateau", "Patagonian Plateau", "Iranian Plateau"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 166,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which Indian state has the longest coastline?",
+    "options": ["Tamil Nadu", "Kerala", "Andhra Pradesh", "Gujarat"],
+    "answerIndex": 3,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 167,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which layer of the Earth is semi-molten?",
+    "options": ["Crust", "Mantle", "Core", "Lithosphere"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 168,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which type of rainfall is common in coastal areas?",
+    "options": ["Convectional", "Orographic", "Cyclonic", "Frontal"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 169,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which imaginary line divides Earth into Northern and Southern hemispheres?",
+    "options": ["Prime Meridian", "Tropic of Cancer", "Equator", "Arctic Circle"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 170,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which soil is best for cotton cultivation?",
+    "options": ["Alluvial", "Red", "Black", "Laterite"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+
+  {
+    "id": 171,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which wind system reverses its direction seasonally?",
+    "options": ["Trade winds", "Westerlies", "Monsoon winds", "Polar winds"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 172,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which is the deepest ocean trench?",
+    "options": ["Java Trench", "Tonga Trench", "Mariana Trench", "Puerto Rico Trench"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 173,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which latitude receives vertical rays of the sun twice a year?",
+    "options": ["Equator", "Tropic of Cancer", "Tropic of Capricorn", "Arctic Circle"],
+    "answerIndex": 0,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 174,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which Indian river is called the 'Dakshin Ganga'?",
+    "options": ["Krishna", "Cauvery", "Godavari", "Tungabhadra"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 175,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which type of volcano has gentle eruptions?",
+    "options": ["Composite", "Shield", "Cinder cone", "Caldera"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 176,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which ocean current warms Western Europe?",
+    "options": ["Canary Current", "Gulf Stream", "Labrador Current", "Kuroshio Current"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 177,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which country lies on both the Equator and Prime Meridian?",
+    "options": ["Brazil", "Kenya", "Indonesia", "Ghana"],
+    "answerIndex": 3,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 178,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which is the largest delta in the world?",
+    "options": ["Nile Delta", "Mississippi Delta", "Ganga-Brahmaputra Delta", "Mekong Delta"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 179,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which region is known as the 'Granary of the World'?",
+    "options": ["Pampas", "Prairies", "Steppes", "Savanna"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 180,
+    "category": "Geography",
+    "image": "https://images.unsplash.com/photo-1500530855697-b586d89ba3ee",
+    "question": "Which atmospheric layer reflects radio waves?",
+    "options": ["Troposphere", "Stratosphere", "Mesosphere", "Ionosphere"],
+    "answerIndex": 3,
+    "difficulty": "Hard"
+  },{
+    "id": 181,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which sport is known as the Gentleman's Game?",
+    "options": ["Football", "Cricket", "Tennis", "Hockey"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 182,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "How many players are there in a football team?",
+    "options": ["9", "10", "11", "12"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 183,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which country invented cricket?",
+    "options": ["India", "Australia", "England", "South Africa"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 184,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which sport uses a shuttlecock?",
+    "options": ["Tennis", "Badminton", "Squash", "Table Tennis"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 185,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which sport is played at Wimbledon?",
+    "options": ["Cricket", "Football", "Tennis", "Hockey"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 186,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "How many rings are there in the Olympic symbol?",
+    "options": ["4", "5", "6", "7"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 187,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which country hosts the IPL?",
+    "options": ["Australia", "England", "India", "South Africa"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 188,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which sport is associated with the term 'goal'?",
+    "options": ["Cricket", "Football", "Tennis", "Boxing"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 189,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which sport uses a bat and ball?",
+    "options": ["Cricket", "Hockey", "Football", "Tennis"],
+    "answerIndex": 0,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 190,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which sport is P. V. Sindhu associated with?",
+    "options": ["Tennis", "Badminton", "Athletics", "Boxing"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 191,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "How many players are on a basketball team on the court?",
+    "options": ["4", "5", "6", "7"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 192,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which country has won the most FIFA World Cups?",
+    "options": ["Germany", "Argentina", "Brazil", "France"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 193,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "What is the duration of a standard football match?",
+    "options": ["80 minutes", "90 minutes", "100 minutes", "120 minutes"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 194,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which Indian cricketer is known as the Master Blaster?",
+    "options": ["Dhoni", "Virat Kohli", "Sachin Tendulkar", "Kapil Dev"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 195,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "In which sport is the Davis Cup played?",
+    "options": ["Cricket", "Football", "Tennis", "Hockey"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 196,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which country won the Cricket World Cup in 2011?",
+    "options": ["Australia", "Sri Lanka", "India", "England"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 197,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "What is the highest governing body of football?",
+    "options": ["ICC", "FIFA", "IOC", "BCCI"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 198,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which sport includes the term 'alley-oop'?",
+    "options": ["Basketball", "Volleyball", "Handball", "Rugby"],
+    "answerIndex": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 199,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which country hosts the Tour de France?",
+    "options": ["Italy", "Spain", "France", "Belgium"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 200,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which sport uses the term 'love' for zero score?",
+    "options": ["Cricket", "Tennis", "Badminton", "Squash"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 201,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which country won the first Cricket World Cup?",
+    "options": ["India", "Australia", "West Indies", "England"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 202,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which Grand Slam is played on clay courts?",
+    "options": ["Wimbledon", "US Open", "French Open", "Australian Open"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 203,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Who is the first Indian to win an individual Olympic gold medal?",
+    "options": ["Milkha Singh", "Abhinav Bindra", "Neeraj Chopra", "P. T. Usha"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 204,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which country dominates sumo wrestling?",
+    "options": ["China", "Japan", "South Korea", "Thailand"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 205,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "In which year were the first modern Olympics held?",
+    "options": ["1892", "1896", "1900", "1904"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 206,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which cricket format is limited to 20 overs per side?",
+    "options": ["ODI", "Test", "T20", "First-class"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 207,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Who holds the record for most goals in international football?",
+    "options": ["Messi", "Ronaldo", "Pele", "Ali Daei"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 208,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which Indian state is famous for Kalaripayattu?",
+    "options": ["Tamil Nadu", "Kerala", "Karnataka", "Odisha"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 209,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which sport awards the Ballon d'Or?",
+    "options": ["Cricket", "Football", "Hockey", "Basketball"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 210,
+    "category": "Sports",
+    "image": "https://images.unsplash.com/photo-1517649763962-0c623066013b",
+    "question": "Which country hosted the 2016 Summer Olympics?",
+    "options": ["China", "Brazil", "UK", "Japan"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },{
+    "id": 211,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which language is used to build web pages?",
+    "options": ["Python", "HTML", "C++", "Java"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 212,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which symbol is used to end a statement in C?",
+    "options": [":", ".", ";", ","],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 213,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which of the following is a programming language?",
+    "options": ["HTTP", "HTML", "Python", "URL"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 214,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which keyword is used to define a function in Python?",
+    "options": ["func", "define", "def", "function"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 215,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which operator is used for addition?",
+    "options": ["*", "+", "-", "/"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 216,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which language is mainly used for Android development?",
+    "options": ["Swift", "Kotlin", "PHP", "Ruby"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 217,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which data type stores true or false?",
+    "options": ["int", "string", "boolean", "float"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 218,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which language runs in the browser?",
+    "options": ["Java", "C", "JavaScript", "Python"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 219,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "What does IDE stand for?",
+    "options": ["Integrated Development Environment", "Internal Data Engine", "Integrated Design Editor", "Internet Development Engine"],
+    "answerIndex": 0,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 220,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which keyword is used to print output in Python?",
+    "options": ["echo", "write", "print", "output"],
+    "answerIndex": 2,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 221,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which loop executes at least once?",
+    "options": ["for", "while", "do-while", "foreach"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 222,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which data structure uses LIFO?",
+    "options": ["Queue", "Array", "Stack", "Tree"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 223,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which keyword is used to create an object in Java?",
+    "options": ["create", "object", "new", "class"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 224,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which sorting algorithm is fastest on average?",
+    "options": ["Bubble Sort", "Selection Sort", "Merge Sort", "Insertion Sort"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 225,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which symbol is used for single-line comments in Java?",
+    "options": ["#", "//", "/* */", "--"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 226,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which protocol is used for secure web communication?",
+    "options": ["HTTP", "FTP", "HTTPS", "SMTP"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 227,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "What is the output of 5 % 2?",
+    "options": ["1", "2", "0", "3"],
+    "answerIndex": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 228,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which keyword is used for inheritance in Java?",
+    "options": ["inherits", "extends", "implements", "super"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 229,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which data type is used to store decimal numbers?",
+    "options": ["int", "char", "float", "boolean"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 230,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which SQL command is used to retrieve data?",
+    "options": ["INSERT", "UPDATE", "SELECT", "DELETE"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 231,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "What is the time complexity of binary search?",
+    "options": ["O(n)", "O(log n)", "O(n²)", "O(1)"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 232,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which principle supports one interface, many implementations?",
+    "options": ["Encapsulation", "Inheritance", "Polymorphism", "Abstraction"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 233,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which data structure is used in recursion?",
+    "options": ["Queue", "Stack", "Tree", "Graph"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 234,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which normal form removes partial dependency?",
+    "options": ["1NF", "2NF", "3NF", "BCNF"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 235,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which keyword prevents inheritance in Java?",
+    "options": ["static", "final", "private", "protected"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 236,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which algorithm is used for minimum spanning tree?",
+    "options": ["Dijkstra", "Kruskal", "Binary Search", "DFS"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 237,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which HTTP method is idempotent?",
+    "options": ["POST", "PUT", "PATCH", "CONNECT"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 238,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which scheduling algorithm may cause starvation?",
+    "options": ["FCFS", "Round Robin", "Priority Scheduling", "FIFO"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 239,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which layer of OSI handles error detection?",
+    "options": ["Physical", "Data Link", "Network", "Session"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 240,
+    "category": "Programming",
+    "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4",
+    "question": "Which principle means 'divide a program into parts'?",
+    "options": ["Modularity", "Inheritance", "Polymorphism", "Compilation"],
+    "answerIndex": 0,
+    "difficulty": "Hard"
+  },{
+    "id": 241,
+    "category": "Entertainment",
+    "image": "https://images.unsplash.com/photo-1517602302552-471fe67acf66",
+    "question": "Which industry is known as Bollywood?",
+    "options": ["Hollywood", "Indian Film Industry", "Korean Cinema", "British Cinema"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 242,
+    "category": "Entertainment",
+    "image": "https://images.unsplash.com/photo-1517602302552-471fe67acf66",
+    "question": "Which device is used to watch movies at home?",
+    "options": ["Radio", "Television", "Printer", "Scanner"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 243,
+    "category": "Entertainment",
+    "image": "https://images.unsplash.com/photo-1517602302552-471fe67acf66",
+    "question": "Which award is given for excellence in films in India?",
+    "options": ["Oscar", "Grammy", "National Film Award", "Emmy"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 244,
+    "category": "Entertainment",
+    "image": "https://images.unsplash.com/photo-1517602302552-471fe67acf66",
+    "question": "Which platform is mainly used for streaming movies?",
+    "options": ["Netflix", "Google Maps", "Wikipedia", "Dropbox"],
+    "answerIndex": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 245,
+    "category": "Entertainment",
+    "image": "https://images.unsplash.com/photo-1517602302552-471fe67acf66",
+    "question": "Which movie won the Oscar for Best Picture in 2020?",
+    "options": ["1917", "Joker", "Parasite", "Ford v Ferrari"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 246,
+    "category": "Entertainment",
+    "image": "https://images.unsplash.com/photo-1517602302552-471fe67acf66",
+    "question": "Which country produces the most films annually?",
+    "options": ["USA", "India", "China", "UK"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+
+  {
+    "id": 247,
+    "category": "Economy",
+    "image": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e",
+    "question": "What is money mainly used for?",
+    "options": ["Decoration", "Exchange of goods", "Entertainment", "Storage only"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 248,
+    "category": "Economy",
+    "image": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e",
+    "question": "Which institution prints Indian currency?",
+    "options": ["RBI", "SEBI", "SBI", "NITI Aayog"],
+    "answerIndex": 0,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 249,
+    "category": "Economy",
+    "image": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e",
+    "question": "What does GDP stand for?",
+    "options": ["Gross Domestic Product", "Global Development Plan", "Gross Demand Price", "General Domestic Profit"],
+    "answerIndex": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 250,
+    "category": "Economy",
+    "image": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e",
+    "question": "Which sector includes farming?",
+    "options": ["Primary", "Secondary", "Tertiary", "Quaternary"],
+    "answerIndex": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 251,
+    "category": "Economy",
+    "image": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e",
+    "question": "Which policy controls money supply in an economy?",
+    "options": ["Fiscal policy", "Trade policy", "Monetary policy", "Industrial policy"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 252,
+    "category": "Economy",
+    "image": "https://images.unsplash.com/photo-1526304640581-d334cdbbf45e",
+    "question": "Inflation refers to?",
+    "options": ["Rise in prices", "Rise in income", "Fall in demand", "Fall in supply"],
+    "answerIndex": 0,
+    "difficulty": "Hard"
+  },
+
+  {
+    "id": 253,
+    "category": "Environment",
+    "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",
+    "question": "Which gas is essential for life?",
+    "options": ["Oxygen", "Nitrogen", "Carbon Dioxide", "Hydrogen"],
+    "answerIndex": 0,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 254,
+    "category": "Environment",
+    "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",
+    "question": "What do trees absorb from the air?",
+    "options": ["Oxygen", "Carbon Dioxide", "Nitrogen", "Helium"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 255,
+    "category": "Environment",
+    "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",
+    "question": "Which energy source is renewable?",
+    "options": ["Coal", "Petroleum", "Solar", "Natural Gas"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 256,
+    "category": "Environment",
+    "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",
+    "question": "What causes global warming?",
+    "options": ["Deforestation", "Greenhouse gases", "Rainfall", "Earth rotation"],
+    "answerIndex": 1,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 257,
+    "category": "Environment",
+    "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",
+    "question": "Which protocol aims to reduce ozone depletion?",
+    "options": ["Kyoto Protocol", "Paris Agreement", "Montreal Protocol", "Geneva Convention"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 258,
+    "category": "Environment",
+    "image": "https://images.unsplash.com/photo-1500534314209-a25ddb2bd429",
+    "question": "Which biome has the highest biodiversity?",
+    "options": ["Desert", "Tundra", "Rainforest", "Grassland"],
+    "answerIndex": 2,
+    "difficulty": "Hard"
+  },
+
+  {
+    "id": 259,
+    "category": "Art",
+    "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7",
+    "question": "Painting is a form of?",
+    "options": ["Science", "Art", "Technology", "Math"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 260,
+    "category": "Art",
+    "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7",
+    "question": "Which tool is commonly used in painting?",
+    "options": ["Hammer", "Brush", "Spanner", "Drill"],
+    "answerIndex": 1,
+    "difficulty": "Easy"
+  },
+  {
+    "id": 261,
+    "category": "Art",
+    "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7",
+    "question": "Who painted the Mona Lisa?",
+    "options": ["Van Gogh", "Picasso", "Leonardo da Vinci", "Michelangelo"],
+    "answerIndex": 2,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 262,
+    "category": "Art",
+    "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7",
+    "question": "Which art form involves shaping clay?",
+    "options": ["Sculpture", "Painting", "Sketching", "Photography"],
+    "answerIndex": 0,
+    "difficulty": "Medium"
+  },
+  {
+    "id": 263,
+    "category": "Art",
+    "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7",
+    "question": "Cubism is associated with which artist?",
+    "options": ["Van Gogh", "Picasso", "Da Vinci", "Rembrandt"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  },
+  {
+    "id": 264,
+    "category": "Art",
+    "image": "https://images.unsplash.com/photo-1500534623283-312aade485b7",
+    "question": "Which art movement focuses on light and color?",
+    "options": ["Realism", "Impressionism", "Surrealism", "Abstract"],
+    "answerIndex": 1,
+    "difficulty": "Hard"
+  }
 ]

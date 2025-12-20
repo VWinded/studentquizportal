@@ -24,6 +24,54 @@ const COLORS = {
   online: ["#42A5F5", "#F44336"],
   live: ["#FF6B9A", "#F44336"],
 };
+// 🔧 Fully theme-aware tooltip (works in BOTH light & dark themes)
+const ThemeSafeTooltip = ({ active, payload, label }) => {
+  if (!active || !payload || !payload.length) return null;
+
+  // Detect light vs dark page background
+  const isLightTheme = (() => {
+    try {
+      const bg = getComputedStyle(document.body).backgroundColor;
+      const rgb = bg.match(/\d+/g)?.map(Number) || [0, 0, 0];
+      const brightness = (rgb[0] * 299 + rgb[1] * 587 + rgb[2] * 114) / 1000;
+      return brightness > 160; // light background
+    } catch {
+      return false;
+    }
+  })();
+
+  const bgColor = isLightTheme
+    ? "rgba(255,255,255,0.95)"
+    : "rgba(20,20,20,0.95)";
+
+  const textColor = isLightTheme ? "#111" : "#fff";
+  const borderColor = isLightTheme ? "#ddd" : "#333";
+
+  return (
+    <div
+      style={{
+        background: bgColor,
+        color: textColor,
+        padding: "8px 10px",
+        borderRadius: "6px",
+        fontSize: "13px",
+        border: `1px solid ${borderColor}`,
+        boxShadow: "0 6px 16px rgba(0,0,0,0.25)",
+        lineHeight: "1.4",
+      }}
+    >
+      <div style={{ fontWeight: 600, marginBottom: 4 }}>
+        {label}
+      </div>
+      {payload.map((p, i) => (
+        <div key={i}>
+          {p.name}: {p.value}
+        </div>
+      ))}
+    </div>
+  );
+};
+
 
 /** normalizeRaw(raw)
  * Normalize many possible backend row shapes into:
@@ -305,7 +353,7 @@ export default function Analytics({ user, setPage }) {
           <div className="analytics-chart glass-card" style={{ minHeight: 320 }}>
             <h4 style={{ textAlign: "center" }}>{title} — Correct vs Wrong (Latest)</h4>
             {latest ? (
-              <ResponsiveContainer width="100%" height={220}>
+              <ResponsiveContainer width="100%" height={220} minWidth={260}>
                 <PieChart>
                   <Pie data={makePie(latest)} dataKey="value" outerRadius={80} innerRadius={28}>
                     {(makePie(latest) || []).map((entry, i) => (
@@ -322,12 +370,13 @@ export default function Analytics({ user, setPage }) {
           <div className="analytics-chart glass-card" style={{ minHeight: 320 }}>
             <h4 style={{ textAlign: "center" }}>{title} — History (Percent)</h4>
             {history && history.length > 0 ? (
-              <ResponsiveContainer width="100%" height={260}>
+              <ResponsiveContainer width="100%" height={260} minWidth={260}>
+
                 <LineChart data={history}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="date" />
                   <YAxis domain={[0, 100]} />
-                  <Tooltip />
+                  <Tooltip content={<ThemeSafeTooltip />} />
                   <Line type="monotone" dataKey="percent" stroke="#FFB300" strokeWidth={3} dot />
                 </LineChart>
               </ResponsiveContainer>
@@ -339,12 +388,12 @@ export default function Analytics({ user, setPage }) {
           <div className="analytics-chart glass-card" style={{ minHeight: 320 }}>
             <h4 style={{ textAlign: "center" }}>{title} — Subject / Category Performance</h4>
             {subjects && subjects.length > 0 ? (
-              <ResponsiveContainer width="100%" height={260}>
+              <ResponsiveContainer width="100%" height={260} minWidth={260}>
                 <BarChart data={subjects}>
                   <CartesianGrid strokeDasharray="3 3" />
                   <XAxis dataKey="subject" />
                   <YAxis domain={[0, 100]} />
-                  <Tooltip />
+                  <Tooltip content={<ThemeSafeTooltip />} />
                   <Bar dataKey="percent" fill={COLORS[colorKey][0] || "#90CAF9"} radius={[6, 6, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>

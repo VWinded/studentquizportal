@@ -361,3 +361,412 @@ body.CleanWhite {
   --accent: #0068ff;
   --navbar-bg: #ffffff;
 }
+/* Prevent edge bleed */
+body {
+  overflow-x: hidden;
+}
+
+/* Menu button */
+.menu-toggle {
+  background: none;
+  border: none;
+  font-size: 26px;
+  color: #fff;
+  cursor: pointer;
+  margin-left: auto;
+}
+
+/* Transparent glass side menu */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: -280px;
+  width: 280px;
+  height: 100%;
+  background: rgba(20, 30, 60, 0.65);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  z-index: 3000;
+  transition: left 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  pointer-events: none;
+}
+
+.side-menu.open {
+  left: 0;
+  pointer-events: auto;
+}
+
+.side-menu button {
+  padding: 12px;
+  border-radius: 10px;
+  background: rgba(255, 165, 0, 0.85);
+  color: #fff;
+  text-align: left;
+}
+
+.close-menu {
+  background: none;
+  font-size: 18px;
+  align-self: flex-end;
+}
+
+/* Overlay */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 2500;
+}
+/* ===== MENU BUTTON ===== */
+.menu-btn {
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--text-main);
+  margin-left: auto;
+}
+
+/* ===== OVERLAY ===== */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.35);
+  z-index: 998;
+}
+
+/* ===== SIDE MENU ===== */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  padding: 20px;
+  z-index: 999;
+
+  background: rgba(255,255,255,0.08);
+  backdrop-filter: blur(12px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.side-menu button {
+  background: transparent;
+  border: none;
+  text-align: left;
+  font-size: 16px;
+  cursor: pointer;
+  color: var(--text-main);
+}
+
+/* Close button */
+.close-btn {
+  align-self: flex-end;
+  font-size: 18px;
+}
+/* ===========================
+   MENU BUTTON (TOP BAR)
+=========================== */
+.menu-btn {
+  margin-left: 16px;
+  background: transparent;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: var(--text-main, #fff);
+}
+
+/* Keep menu button aligned properly */
+.navbar {
+  display: flex;
+  align-items: center;
+}
+
+/* Prevent nav overlap */
+.nav-links {
+  margin-left: auto;
+}
+
+/* ===========================
+   OVERLAY
+=========================== */
+.menu-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35);
+  z-index: 998;
+}
+
+/* ===========================
+   SIDE MENU (GLASS / TRANSPARENT)
+=========================== */
+.side-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px;
+  height: 100vh;
+  padding: 20px;
+  z-index: 999;
+
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ===========================
+   SIDE MENU BUTTONS (TEXT ONLY)
+=========================== */
+.side-menu button {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  color: var(--text-main, #fff) !important;
+  font-size: 16px;
+  font-weight: 500;
+
+  padding: 6px 0;
+  text-align: left;
+  cursor: pointer;
+}
+
+/* Close button */
+.close-btn {
+  align-self: flex-end;
+  font-size: 18px;
+}
+
+/* ===========================
+   REMOVE ORANGE EDGE BUG
+=========================== */
+body,
+html {
+  overflow-x: hidden;
+}
+
+/* Prevent side artifacts */
+.side-menu * {
+  outline: none;
+}
+
+/* ===========================
+   MOBILE ONLY (OPTIONAL)
+=========================== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+}
+/* Overlay should NOT block menu clicks */
+.menu-overlay {
+  pointer-events: auto;
+  z-index: 998;
+}
+
+/* Side menu must be above overlay AND clickable */
+.side-menu {
+  z-index: 999;
+  pointer-events: auto;
+}
+
+/* Ensure menu buttons receive clicks */
+.side-menu button {
+  pointer-events: auto;
+}
+/* ===============================
+   ENSURE CARD BOUNDARIES VISIBLE
+   (ALL THEMES)
+================================ */
+
+/* Common card containers */
+.glass-card,
+.analytics-card,
+.analytics-chart,
+.dashboard-card,
+.student-card,
+.small-card-body {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  backdrop-filter: blur(8px);
+}
+
+/* Light theme override */
+[data-theme="light"] .glass-card,
+[data-theme="light"] .analytics-card,
+[data-theme="light"] .dashboard-card {
+  border: 1px solid rgba(0, 0, 0, 0.12);
+}
+/* ===============================
+   MENU ICON VISIBILITY RULES
+================================ */
+
+/* Menu icon always visible */
+.menu-btn {
+  display: block;
+  background: transparent;
+  border: none;
+  font-size: 22px;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+/* Mobile: hide navbar buttons */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none !important;
+  }
+}
+/* ===== Platform Statistics Cards (ALL THEMES SAFE) ===== */
+.platform-stats .stat-card {
+  border-radius: 16px;
+  transition: all 0.3s ease;
+}
+
+/* 🔵 DARK THEMES — force visible borders */
+body.theme-dark .platform-stats .stat-card,
+body.theme-ocean .platform-stats .stat-card,
+body.theme-neo-blue .platform-stats .stat-card {
+  border: 1.5px solid rgba(120, 180, 255, 0.35);
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.35),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+}
+
+/* ⚪ LIGHT THEMES — softer border */
+body.theme-light .platform-stats .stat-card,
+body.theme-snow .platform-stats .stat-card {
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+}
+/* ===== MOBILE NAVBAR BEHAVIOR ===== */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+
+  .menu-btn {
+    display: block;
+  }
+}
+
+/* ===== DESKTOP ===== */
+@media (min-width: 769px) {
+  .menu-btn {
+    display: block; /* you asked to keep it */
+  }
+}
+/* =========================================
+   MOBILE: HIDE ALL NAVBAR ITEMS EXCEPT MENU
+   ========================================= */
+@media (max-width: 768px) {
+
+  /* 🔥 Kill EVERYTHING inside navbar */
+  .navbar * {
+    display: none !important;
+  }
+
+  /* ✅ Bring back logo */
+  .navbar .logo {
+    display: flex !important;
+    align-items: center;
+  }
+
+  /* ✅ Bring back menu button ONLY */
+  .navbar .menu-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    margin-left: auto;
+    z-index: 2000;
+  }
+}
+@media (max-width: 768px) {
+  .nav-links {
+    display: none !important;
+  }
+}
+/* ===============================
+   NAVBAR VISIBILITY – FINAL FIX
+   =============================== */
+
+/* MENU ICON – ALWAYS VISIBLE */
+.menu-btn {
+  display: inline-flex !important;
+  align-items: center;
+  justify-content: center;
+}
+
+/* NAV LINKS – DESKTOP DEFAULT */
+.nav-links {
+  display: flex !important;
+}
+
+/* MOBILE VIEW ONLY */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none !important;
+  }
+
+  .menu-btn {
+    display: inline-flex !important;
+  }
+}
+/* ===============================
+   LIGHT THEME SIDEMENU BUTTON FIX
+   =============================== */
+.theme-classic-light .side-menu button,
+.theme-pearl .side-menu button,
+.theme-snow .side-menu button {
+  background: transparent !important;
+  color: #222 !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+.theme-classic-light .side-menu button:hover,
+.theme-pearl .side-menu button:hover,
+.theme-snow .side-menu button:hover {
+  background: rgba(0, 0, 0, 0.08) !important;
+}
+
+/* optional active */
+.theme-classic-light .side-menu button.active,
+.theme-pearl .side-menu button.active,
+.theme-snow .side-menu button.active {
+  background: var(--accent-color) !important;
+  color: #fff !important;
+}
+/* ===============================
+   NAVBAR MENU BUTTON ALIGNMENT
+   =============================== */
+
+/* Navbar layout safety */
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Menu button — official placement */
+.menu-btn {
+  margin-left: 12px;
+  margin-right: 16px;
+  align-self: center;
+}
+
+/* Desktop: keep it near logo (like GitHub, Jira, etc.) */
+@media (min-width: 769px) {
+  .menu-btn {
+    position: relative;
+    top: 0;
+    left: 0;
+  }
+}

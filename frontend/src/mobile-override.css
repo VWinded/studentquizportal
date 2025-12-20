@@ -1,0 +1,1523 @@
+/* ACTIVE ONLY WHEN body has .mobile-view */
+/*
+@media (max-width: 768px) {
+  body {
+    overflow-x: hidden;
+  }
+}
+
+body.mobile-view {
+  overflow-x: hidden;
+}*/
+
+/* ===== GLOBAL WIDTH FIX ===== */
+/*body.mobile-view * {
+  max-width: 100%;
+}*/
+
+/* ===== NAVBAR ===== */
+body.mobile-view .nav-links {
+  display: none !important;
+}
+
+/* ===== CONTAINERS ===== */
+body.mobile-view .container,
+body.mobile-view .page,
+body.mobile-view .content {
+  width: 100%;
+  padding: 0 14px;
+}
+
+/* ===== GRIDS → STACK ===== */
+body.mobile-view .stats-grid,
+body.mobile-view .dashboard-grid,
+body.mobile-view .cards,
+body.mobile-view .admin-cards {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 14px;
+}
+
+/* ===== CARDS ===== */
+body.mobile-view .card,
+body.mobile-view .stat-card,
+body.mobile-view .dashboard-card {
+  width: 100% !important;
+  margin: 0 !important;
+}
+
+
+
+/* ===== CHARTS ===== */
+body.mobile-view canvas {
+  width: 100% !important;
+  height: auto !important;
+}
+
+body.mobile-view .chart-container {
+  width: 100%;
+  overflow-x: auto;
+}
+/* ===============================
+   HOME PAGE — MOBILE FIXES ONLY
+   =============================== */
+@media (max-width: 768px) {
+
+  /* GLOBAL SAFETY */
+  .home-wrapper {
+    padding: 0 12px;
+  }
+
+  /* HERO */
+  .hero-container {
+    padding: 20px 0;
+  }
+
+  .hero-box {
+    width: 100%;
+    padding: 20px 16px;
+    border-radius: 16px;
+  }
+
+  .title-text {
+    font-size: 26px;
+    text-align: center;
+  }
+
+  .subtitle {
+    font-size: 14px;
+    text-align: center;
+  }
+
+  .button-row {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .button-row .main-btn {
+    width: 100%;
+  }
+
+  /* PLATFORM STATS */
+  .stats-section {
+    margin-top: 24px;
+  }
+
+  .stats-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .stat-box {
+    width: 100%;
+  }
+
+  /* FEATURE CARDS */
+  .feature-section {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+    margin-top: 24px;
+  }
+
+  .feature-card {
+    width: 100%;
+  }
+
+  /* TOP PERFORMERS */
+  .leader-cards {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .leader-card {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* CTA */
+  .cta-banner {
+    padding: 20px 16px;
+    text-align: center;
+  }
+
+  .cta-banner .main-btn {
+    width: 100%;
+  }
+}
+/* =========================================
+   LEADERBOARD — MOBILE OVERRIDES ONLY
+   ========================================= */
+@media (max-width: 768px) {
+
+  /* Main card */
+  .leaderboard-card {
+    width: 100%;
+    padding: 16px 12px;
+    overflow-x: hidden;
+  }
+
+  /* Tabs: 4 buttons */
+  .lb-tabs {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .lb-tab {
+    width: 100%;
+    font-size: 13px;
+    padding: 10px;
+  }
+
+  /* Table wrapper */
+  .lb-table {
+    /*display: block;*/
+    width: 100%;
+    /*overflow-x: auto;*/
+    white-space: nowrap;
+    border-collapse: collapse;
+  }
+  /* ✅ ONLY table scrolls horizontally */
+.leaderboard-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* force table wider than mobile */
+.leaderboard-table-wrapper .lb-table {
+  min-width: 650px;
+}
+
+
+  /* Table cells */
+  .lb-table th,
+  .lb-table td {
+    padding: 8px 10px;
+    font-size: 13px;
+    text-align: left;
+  }
+
+  /* Medal column size */
+  .lb-table td:nth-child(2),
+  .lb-table th:nth-child(2) {
+    font-size: 18px;
+    text-align: center;
+  }
+
+}
+/* =========================================
+   ADD / EDIT QUESTION — MOBILE FIX
+   ========================================= */
+@media (max-width: 768px) {
+
+  /* Page wrapper */
+  .form-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    margin: 0 auto;
+  }
+
+  /* Inputs & selects */
+  .form-card input,
+  .form-card select {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+    margin-bottom: 12px;
+    box-sizing: border-box;
+  }
+
+  /* Labels */
+  .form-card label {
+    display: block;
+    text-align: left;
+    font-size: 13px;
+    margin: 8px 0 4px;
+  }
+
+  /* Buttons */
+  .form-card .button {
+    width: 100%;
+    padding: 12px;
+    font-size: 15px;
+    margin-top: 10px;
+  }
+
+  /* Back button */
+  .back-btn {
+    display: block;
+    width: 100%;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+}
+/* =========================================
+   ADMIN DASHBOARD — MOBILE FIX
+   ========================================= */
+@media (max-width: 768px) {
+
+  /* Page padding */
+  .admin-dashboard {
+    padding: 14px;
+  }
+
+  /* Title */
+  .page-title {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  /* Welcome box */
+  .welcome-box {
+    width: 100%;
+    margin-bottom: 16px;
+    text-align: center;
+  }
+
+  /* Stats row → stack */
+  .stats-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+    margin-bottom: 18px;
+  }
+
+  .stat-card {
+    width: 100%;
+  }
+
+  /* All action rows → single column */
+  .admin-actions-row {
+    display: grid !important;
+    grid-template-columns: 1fr !important;
+    gap: 14px;
+    margin-bottom: 16px;
+    justify-content: stretch !important;
+  }
+
+  /* Action cards */
+  .admin-action-card {
+    width: 100%;
+    padding: 16px;
+    text-align: center;
+  }
+
+  .admin-action-card h3 {
+    font-size: 16px;
+  }
+
+  .admin-action-card p {
+    font-size: 13px;
+  }
+
+  /* Back button */
+  .back-btn {
+    width: 100%;
+    margin-bottom: 12px;
+    font-size: 14px;
+  }
+}
+/* =========================================
+   ADMIN LIVE APPROVALS — MOBILE FIX
+   ========================================= */
+@media (max-width: 768px) {
+
+  /* Page padding */
+  .live-approvals-page {
+    padding: 14px;
+  }
+
+  .live-approvals-page h2 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  /* Back button */
+  .live-approvals-page .back-btn {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  /* Filter buttons stack */
+  .filter-buttons {
+    display: grid !important;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+    margin-bottom: 14px;
+  }
+
+  .filter-buttons button {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  /* CSV buttons stack */
+  .csv-buttons {
+    display: grid !important;
+    grid-template-columns: 1fr;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+
+  .csv-buttons button,
+  .csv-buttons .import-btn {
+    width: 100%;
+    text-align: center;
+  }
+
+  /* TABLE → horizontal scroll */
+  .approval-table {
+    display: block;
+    width: 100%;
+    overflow-x: auto;
+    white-space: nowrap;
+    border-collapse: collapse;
+  }
+
+  .approval-table thead th {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  .approval-table tbody td {
+    font-size: 13px;
+    padding: 8px;
+  }
+
+  /* Actions buttons stack */
+  .approval-table td span {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .approve-btn,
+  .reject-btn {
+    width: 100%;
+    font-size: 13px;
+  }
+
+  /* Proof links readable */
+  .approval-table a {
+    font-size: 13px;
+  }
+
+  /* Status badge spacing */
+  .status {
+    font-size: 12px;
+    padding: 4px 6px;
+  }
+}
+/* ================================
+   FIX: Recharts invisible on mobile
+   ================================ */
+
+@media (max-width: 768px) {
+
+  /* 1️⃣ Stop clipping on mobile */
+ /* body.mobile-view,
+  body.mobile-view * {
+    overflow: visible !important;
+  }
+
+  /* 2️⃣ Analytics grid must NOT be flex on mobile */
+  .analytics-grid {
+    display: block !important;
+  }
+
+  /* 3️⃣ Each chart card must allow SVG to paint */
+  .analytics-chart,
+  .analytics-card,
+  .glass-card {
+    overflow: visible !important;
+    min-height: 300px !important;
+  }
+
+  /* 4️⃣ Recharts containers MUST have height */
+  .recharts-responsive-container,
+  .recharts-wrapper,
+  .recharts-surface {
+    width: 100% !important;
+    min-height: 240px !important;
+    height: auto !important;
+    overflow: visible !important;
+  }
+
+  /* 5️⃣ SVG itself must be visible */
+  .recharts-wrapper svg {
+    display: block !important;
+    visibility: visible !important;
+    overflow: visible !important;
+  }
+}
+/* ================================
+   FINAL FIX: Recharts invisible on mobile
+   Root cause: min-width: 0px
+   ================================ */
+
+@media (max-width: 768px) {
+
+  /* 1️⃣ Kill the min-width collapse */
+  .recharts-responsive-container {
+    min-width: 100% !important;
+    width: 100% !important;
+  }
+
+  /* 2️⃣ Force SVG to take space */
+  .recharts-wrapper,
+  .recharts-wrapper svg {
+    width: 100% !important;
+    min-width: 100% !important;
+    display: block !important;
+  }
+
+  /* 3️⃣ Ensure parent allows rendering */
+  .analytics-chart,
+  .glass-card {
+    overflow: visible !important;
+  }
+
+  /* 4️⃣ Stop flex/grid from shrinking charts */
+  .analytics-grid {
+    display: block !important;
+  }
+}
+/* ===== Recharts mobile FIX (inline min-width bug) ===== */
+@media (max-width: 768px) {
+
+  /* Force SVG to ignore parent min-width:0 */
+  .recharts-wrapper svg {
+    width: 100% !important;
+    min-width: 100% !important;
+    height: auto !important;
+  }
+
+  /* Ensure wrapper never collapses */
+  .recharts-wrapper {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+}
+/* ================================
+   MOBILE FIX FOR RECHARTS
+   ================================ */
+@media (max-width: 768px) {
+
+  /* DO NOT let flex collapse width */
+  .analytics-grid {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+  }
+
+  /* CRITICAL FIX: restore width for Recharts */
+  .recharts-responsive-container {
+    min-width: 100% !important;   /* 🔥 THIS FIXES IT */
+    width: 100% !important;
+    height: 240px !important;
+    display: block !important;
+  }
+
+  /* Ensure SVG is visible */
+  .recharts-wrapper,
+  .recharts-surface,
+  .recharts-wrapper svg {
+    width: 100% !important;
+    height: 100% !important;
+    overflow: visible !important;
+  }
+
+  /* Chart card must not clip content */
+  .analytics-chart {
+    overflow: visible !important;
+    min-height: 300px !important;
+  }
+
+  /* Safety: prevent flex children shrinking */
+  .analytics-chart > * {
+    flex-shrink: 0 !important;
+  }
+}
+/* FIX: Recharts hidden behind glass card (mobile issue) */
+
+.analytics-chart {
+  position: relative;
+  overflow: visible !important;
+}
+
+/* force svg above glass background */
+.analytics-chart .recharts-wrapper,
+.analytics-chart svg {
+  position: relative;
+  z-index: 2;
+}
+
+/* push glass background behind chart */
+.analytics-chart.glass-card::before {
+  z-index: 0 !important;
+}
+/* 🔥 FIX: Recharts invisible on mobile */
+@media (max-width: 768px) {
+  .recharts-responsive-container > div {
+    width: 100% !important;
+    min-width: 100% !important;
+  }
+
+  .recharts-wrapper {
+    width: 100% !important;
+    height: auto !important;
+  }
+
+  .analytics-chart {
+    overflow: visible !important;
+  }
+}
+/* ✅ Center analytics charts on mobile ONLY */
+@media (max-width: 768px) {
+  /* Center each chart card */
+  .analytics-chart {
+    display: flex !important;
+    flex-direction: column;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  /* Center Recharts container */
+  .recharts-responsive-container {
+    margin: 0 auto !important;
+  }
+
+  /* Ensure SVG itself is centered */
+  .recharts-wrapper,
+  .recharts-surface {
+    margin: 0 auto !important;
+  }
+}
+/* ===============================
+   LIVE QUIZ PLATFORMS — MOBILE
+   =============================== */
+@media (max-width: 768px) {
+
+  /* Main wrapper */
+  .live-platforms {
+    padding: 14px !important;
+  }
+
+  .live-platforms h2 {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 16px;
+  }
+
+  /* Card container */
+  .live-platforms-container {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 16px !important;
+  }
+
+  /* Individual platform card */
+  .live-card {
+    padding: 14px !important;
+    border-radius: 14px;
+  }
+
+  /* Header (icon + name) */
+  .live-header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-bottom: 12px;
+    text-align: center;
+  }
+
+  .live-icon {
+    font-size: 26px;
+  }
+
+  .live-name {
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  /* Buttons container */
+  .live-buttons {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 10px !important;
+  }
+
+  /* Buttons full width */
+  .live-open-btn,
+  .live-attend-btn {
+    width: 100% !important;
+    padding: 12px !important;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
+  /* Back button */
+  .back-btn {
+    width: 100%;
+    margin-bottom: 14px;
+    padding: 10px;
+    font-size: 14px;
+  }
+}
+/* ==================================
+   ONLINE QUIZ LEADERBOARD — MOBILE
+   ================================== */
+@media (max-width: 768px) {
+
+  /* Page container */
+  .online-container {
+    padding: 14px !important;
+  }
+
+  /* Title */
+  .online-title {
+    text-align: center;
+    font-size: 20px;
+    margin-bottom: 14px;
+  }
+
+  /* Back button */
+  .online-container .back-btn {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  /* Filter headings */
+  .online-container h3 {
+    margin-top: 12px;
+    margin-bottom: 6px;
+    font-size: 14px;
+  }
+
+  /* Select dropdowns */
+  .online-select {
+    width: 100% !important;
+    padding: 10px;
+    font-size: 14px;
+    margin-bottom: 10px;
+    border-radius: 8px;
+  }
+
+  /* Table wrapper (horizontal scroll) */
+  .lb-table {
+    width: 100%;
+    
+    white-space: nowrap;
+    border-radius: 10px;
+  }
+  /* ✅ ONLY table scrolls, not page */
+.leaderboard-table-wrapper {
+  width: 100%;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.leaderboard-table-wrapper table {
+  min-width: 650px;   /* forces horizontal scroll */
+}
+
+  /* Table header + cells */
+  .lb-table th,
+  .lb-table td {
+    padding: 8px 10px;
+    font-size: 13px;
+    text-align: center;
+  }
+
+  /* Reduce column width pressure */
+  .lb-table th:nth-child(1),
+  .lb-table td:nth-child(1) {
+    min-width: 40px;
+  }
+
+  .lb-table th:nth-child(2),
+  .lb-table td:nth-child(2) {
+    min-width: 110px;
+    text-align: left;
+  }
+
+  .lb-table th:nth-child(6),
+  .lb-table td:nth-child(6) {
+    min-width: 90px;
+  }
+}
+/* ===============================
+   LOGIN PAGE — MOBILE OVERRIDES
+   =============================== */
+@media (max-width: 768px) {
+
+  /* Page wrapper */
+  .form-container {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 16px;
+  }
+
+  /* Login card */
+  .form-card {
+    width: 100% !important;
+    max-width: 360px;
+    padding: 18px 16px;
+    border-radius: 14px;
+  }
+
+  /* Title */
+  .form-card h2 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  /* Inputs */
+  .form-card input {
+    width: 100% !important;
+    font-size: 14px;
+    padding: 10px 12px;
+    margin-bottom: 12px;
+    border-radius: 8px;
+  }
+
+  /* Login button */
+  .form-card .button {
+    width: 100% !important;
+    padding: 12px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
+  /* Disabled state */
+  .form-card .button:disabled {
+    opacity: 0.7;
+  }
+}
+/* =====================================
+   MANAGE QUESTIONS — MOBILE OVERRIDES
+   ===================================== */
+@media (max-width: 768px) {
+
+  /* Page container */
+  .admin-container {
+    padding: 14px;
+  }
+
+  /* Page title */
+  .admin-container h2 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  /* Each question row */
+  .question-row {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 12px;
+    margin-bottom: 14px;
+    border-radius: 12px;
+  }
+
+  /* Question text */
+  .question-text {
+    font-size: 14px;
+    line-height: 1.4;
+  }
+
+  /* Buttons container */
+  .action-buttons {
+    display: flex;
+    gap: 10px;
+    justify-content: flex-end;
+  }
+
+  /* Edit + Delete buttons */
+  .edit-btn,
+  .delete-btn {
+    flex: 1;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  /* Back button spacing */
+  .back-btn {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+}
+/* =====================================
+   ONLINE QUIZ TOPICS — MOBILE OVERRIDES
+   ===================================== */
+@media (max-width: 768px) {
+
+  /* Main container */
+  .online-container {
+    padding: 14px;
+  }
+
+  /* Title */
+  .online-title {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  /* Section headings */
+  .online-container h3 {
+    font-size: 16px;
+    margin: 14px 0 8px;
+  }
+
+  /* Category list */
+  .online-category-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  /* Category card */
+  .online-cat {
+    padding: 12px;
+    font-size: 14px;
+    text-align: center;
+    border-radius: 10px;
+  }
+
+  /* Selected category */
+  .online-cat.selected {
+    font-weight: 600;
+  }
+
+  /* Select + input */
+  .online-select,
+  .online-input {
+    width: 100%;
+    padding: 10px;
+    font-size: 14px;
+    border-radius: 8px;
+  }
+
+  /* Start button */
+  .online-start-btn {
+    width: 100%;
+    padding: 12px;
+    margin-top: 16px;
+    font-size: 15px;
+    border-radius: 10px;
+  }
+
+  /* Back button */
+  .back-btn {
+    width: 100%;
+    margin-bottom: 12px;
+  }
+
+  /* Loading text */
+  .center-text {
+    font-size: 14px;
+    text-align: center;
+    margin: 10px 0;
+  }
+}
+/* ==============================
+   PROTECTED ROUTE — MESSAGE UI
+   ============================== */
+
+.center-text {
+  min-height: 60vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  text-align: center;
+  padding: 16px;
+
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+
+  color: var(--text-main, #fff);
+}
+
+/* Card-style message (optional enhancement) */
+.center-text::before {
+  content: "";
+}
+
+/* Mobile refinement */
+@media (max-width: 768px) {
+  .center-text {
+    font-size: 14px;
+    padding: 20px;
+  }
+}
+/* ===============================
+   ONLINE QUIZ – MOBILE FIX ONLY
+   =============================== */
+@media (max-width: 600px) {
+
+  /* Category grid: 2 per row */
+  .online-category-list {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  /* Individual category box */
+  .online-cat {
+    padding: 10px 6px;
+    font-size: 13px;
+    border-radius: 10px;
+    text-align: center;
+    line-height: 1.3;
+    min-height: 44px;
+
+    /* prevent huge height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  /* Selected category stays clear */
+  .online-cat.selected {
+    border: 2px solid #4da3ff;
+    background: rgba(77, 163, 255, 0.25);
+  }
+
+  /* Page container spacing */
+  .online-container {
+    padding: 14px;
+  }
+
+  /* Start button full width */
+  .online-start-btn {
+    width: 100%;
+    font-size: 16px;
+    padding: 12px;
+  }
+}
+/* ===============================
+   QUIZ PAGE – MOBILE ONLY
+   =============================== */
+@media (max-width: 600px) {
+
+  /* Main quiz card */
+  .quiz-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    margin: 12px auto;
+    border-radius: 14px;
+  }
+
+  /* Title */
+  .quiz-card h2 {
+    font-size: 20px;
+    text-align: center;
+  }
+
+  /* Timers */
+  .timer {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 6px;
+  }
+
+  .timer.small {
+    font-size: 13px;
+  }
+
+  /* Question text */
+  .question-text {
+    font-size: 15px;
+    line-height: 1.4;
+    margin-bottom: 14px;
+  }
+
+  /* Progress bar */
+  .progress-bar {
+    height: 8px;
+    margin-bottom: 12px;
+  }
+
+  /* Options container */
+  .options-block {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Option box */
+  .option-box {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    border-radius: 12px;
+  }
+
+  /* Checkbox square */
+  .option-box .square {
+    min-width: 22px;
+    height: 22px;
+    font-size: 14px;
+  }
+
+  /* Option text */
+  .option-text {
+    font-size: 14px;
+    line-height: 1.3;
+  }
+
+  /* Navigation buttons */
+  .nav-buttons {
+    display: flex;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .nav-buttons button {
+    flex: 1;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  /* Submit button */
+  .submit-btn {
+    font-size: 15px;
+    padding: 12px;
+  }
+
+  /* Result screen */
+  .quiz-card p {
+    font-size: 14px;
+  }
+
+  .quiz-card h3 {
+    font-size: 18px;
+    text-align: center;
+  }
+
+  /* Home / restart buttons */
+  .quiz-card .button {
+    width: 100%;
+    margin-top: 10px;
+    font-size: 14px;
+    padding: 12px;
+  }
+}
+/* ===============================
+   QUIZ SETUP – MOBILE ONLY
+   =============================== */
+@media (max-width: 600px) {
+
+  /* Main container */
+  .quiz-setup-container {
+    padding: 14px;
+    width: 100%;
+  }
+
+  /* Heading */
+  .quiz-setup-container h2 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 12px;
+  }
+
+  .quiz-setup-container h3 {
+    font-size: 16px;
+    margin-top: 16px;
+    margin-bottom: 8px;
+    text-align: center;
+  }
+
+  /* Mode buttons */
+  .mode-buttons-column {
+    gap: 12px;
+  }
+
+  .mode-big-btn {
+    font-size: 15px;
+    padding: 14px;
+    border-radius: 12px;
+  }
+
+  /* Back button */
+  .back-btn {
+    font-size: 14px;
+    padding: 8px 12px;
+    margin-bottom: 12px;
+  }
+
+  /* ===============================
+     CATEGORY GRID (KEY FIX)
+     =============================== */
+  .category-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 🔥 2 per row */
+    gap: 10px;
+  }
+
+  .category-card {
+    padding: 10px;
+    border-radius: 12px;
+    min-height: 110px;
+  }
+
+  .category-card p {
+    font-size: 13px;
+    margin-top: 6px;
+    line-height: 1.2;
+    text-align: center;
+  }
+
+  .category-img {
+    width: 100%;
+    height: 60px;
+    object-fit: contain;
+  }
+
+  .selected-category {
+    outline: 2px solid #4dabf7;
+  }
+
+  /* Dropdown */
+  .dropdown {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 10px;
+  }
+
+  /* Checkbox rows */
+  .checkbox-row {
+    font-size: 14px;
+    gap: 8px;
+  }
+
+  /* Timer input */
+  .timer-input {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 6px;
+  }
+
+  /* Start button */
+  .main-btn.start-btn {
+    width: 100%;
+    font-size: 16px;
+    padding: 14px;
+    margin-top: 18px;
+    border-radius: 14px;
+  }
+}
+/* ===============================
+   REGISTER / LOGIN – MOBILE ONLY
+   =============================== */
+@media (max-width: 600px) {
+
+  .form-container {
+    min-height: 100vh;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .form-card {
+    width: 100%;
+    max-width: 380px;
+    padding: 18px;
+    border-radius: 14px;
+  }
+
+  .form-card h2 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 14px;
+  }
+
+  .form-card input {
+    width: 100%;
+    font-size: 15px;
+    padding: 12px;
+    margin-bottom: 12px;
+    border-radius: 10px;
+  }
+
+  .form-card .button {
+    width: 100%;
+    font-size: 16px;
+    padding: 14px;
+    border-radius: 12px;
+    margin-top: 6px;
+  }
+
+  .form-card p {
+    font-size: 14px;
+    text-align: center;
+    margin-top: 14px;
+  }
+}
+/* ===============================
+   STUDENT DASHBOARD – MOBILE
+   =============================== */
+@media (max-width: 600px) {
+
+  /* Page padding */
+  .sd-container {
+    padding: 16px 10px;
+  }
+
+  /* Back button */
+  .sd-back-btn {
+    font-size: 14px;
+    padding: 8px 16px;
+  }
+
+  /* Title */
+  .sd-title {
+    font-size: 22px;
+    margin-bottom: 14px;
+  }
+
+  /* Glass cards full width */
+  .sd-glass-card,
+  .sd-glass-card.wide,
+  .sd-glass-card.table-card,
+  .sd-glass-card.action {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    margin: 14px auto;
+  }
+
+  /* Welcome text */
+  .sd-hello {
+    font-size: 18px;
+  }
+
+  .sd-role {
+    font-size: 14px;
+  }
+
+  /* Stats stack vertically */
+  .sd-stats-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .sd-glass-card.stat {
+    width: 100%;
+  }
+
+  .sd-glass-card.stat h3 {
+    font-size: 22px;
+  }
+
+  .sd-glass-card.stat p {
+    font-size: 14px;
+  }
+
+  /* Table card */
+  .table-card {
+    padding: 12px;
+    overflow-x: auto;        /* IMPORTANT */
+  }
+
+  /* Table scrolling fix */
+  .sd-table {
+    min-width: 520px;        /* allows horizontal scroll */
+    font-size: 13px;
+  }
+
+  .sd-table th,
+  .sd-table td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+
+  .sd-subtitle {
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+
+  /* Action buttons stack */
+  .sd-actions {
+    flex-direction: column;
+    gap: 14px;
+  }
+
+  .sd-btn-big {
+    font-size: 15px;
+    padding: 14px;
+  }
+}
+/* ===============================
+   SUBMIT LIVE ATTENDANCE – MOBILE
+   =============================== */
+@media (max-width: 600px) {
+
+  /* Page wrapper */
+  .submit-page {
+    padding: 12px;
+  }
+
+  /* Back button container */
+  .back-container {
+    margin-bottom: 12px;
+  }
+
+  .submit-back-btn {
+    font-size: 14px;
+    padding: 6px 14px;
+  }
+
+  /* Main submit box */
+  .submit-box {
+    width: 100%;
+    max-width: 100%;
+    padding: 16px;
+    border-radius: 16px;
+  }
+
+  /* Title */
+  .submit-box h2 {
+    font-size: 20px;
+    margin-bottom: 12px;
+  }
+
+  /* User / platform info */
+  .submit-box p {
+    font-size: 14px;
+    margin-bottom: 6px;
+  }
+
+  /* Labels */
+  .field-label {
+    font-size: 13px;
+    margin-top: 10px;
+    margin-bottom: 4px;
+  }
+
+  /* Inputs */
+  .input-field,
+  .file-field {
+    width: 100%;
+    font-size: 14px;
+    padding: 10px;
+  }
+
+  /* Buttons area */
+  .submit-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 16px;
+  }
+
+  .submit-btn,
+  .cancel-btn {
+    width: 100%;
+    font-size: 15px;
+    padding: 12px;
+  }
+}
+/* ===============================
+   THEME SWITCHER – MOBILE VIEW
+   =============================== */
+@media (max-width: 600px) {
+
+  /* Panel container */
+  .top-theme-panel {
+    position: fixed;
+    top: 60px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 92%;
+    max-height: 75vh;
+    overflow-y: auto;
+    padding: 16px;
+    border-radius: 18px;
+    z-index: 9999;
+  }
+
+  /* Title */
+  .top-theme-panel h3 {
+    font-size: 18px;
+    margin-bottom: 14px;
+    text-align: center;
+  }
+
+  /* Theme option row */
+  .top-theme-option {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    margin-bottom: 10px;
+    border-radius: 14px;
+    font-size: 15px;
+  }
+
+  /* Increase tap area */
+  .top-theme-option span {
+    flex: 1;
+  }
+
+  /* Color dot */
+  .top-color-dot {
+    width: 18px;
+    height: 18px;
+    min-width: 18px;
+    border-radius: 50%;
+  }
+
+  /* Selected state clarity */
+  .top-theme-option.selected {
+    font-weight: 600;
+  }
+}
+
+/* ✅ MOBILE LEADERBOARD TABLE SCROLL FIX */
+@media (max-width: 768px) {
+
+  /* Do NOT block child scroll */
+  html, body {
+    max-width: 100%;
+  }
+
+  /* Scroll ONLY leaderboard table */
+  .leaderboard-table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .leaderboard-table-wrapper table {
+    min-width: 650px; /* force horizontal scroll */
+  }
+}
