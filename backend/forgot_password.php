@@ -1,12 +1,8 @@
 <?php
-error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
 require_once __DIR__ . "/cors.php";
-header("Content-Type: application/json");
+header("Content-Type: application/json; charset=UTF-8");
 
 require_once __DIR__ . "/vendor/autoload.php";
-
 use PHPMailer\PHPMailer\PHPMailer;
 
 $data = json_decode(file_get_contents("php://input"), true);
@@ -20,19 +16,19 @@ if (!$email) {
 $usersFile = __DIR__ . "/users.json";
 $users = json_decode(file_get_contents($usersFile), true);
 
-$found = false;
+$userFound = false;
+$otp = random_int(100000, 999999);
 
 foreach ($users as &$u) {
   if (($u["email"] ?? "") === $email) {
-    $otp = random_int(100000, 999999);
     $u["otp"] = $otp;
     $u["otp_expiry"] = time() + 600;
-    $found = true;
+    $userFound = true;
     break;
   }
 }
 
-if (!$found) {
+if (!$userFound) {
   echo json_encode(["error" => "Email not found"]);
   exit;
 }
@@ -50,21 +46,19 @@ try {
   $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
   $mail->Port = (int) getenv("SMTP_PORT");
 
-  // ⚠️ MUST be a verified Brevo sender
   $mail->setFrom("no-reply@studentquizportal.com", "Student Quiz Portal");
   $mail->addAddress($email);
 
   $mail->isHTML(true);
   $mail->Subject = "Password Reset OTP";
-  $mail->Body = "
-    <h3>Password Reset</h3>
-    <p>Your OTP is:</p>
-    <h2>$otp</h2>
-    <p>Valid for 10 minutes.</p>
-  ";
+  $mail->Body = "<h2>Your OTP: $otp</h2><p>Valid for 10 minutes</p>";
 
   $mail->send();
+
   echo json_encode(["success" => true]);
+  exit;
+
 } catch (Exception $e) {
-  echo json_encode(["error" => "Mail failed: " . $mail->ErrorInfo]);
+  echo json_encode(["error" => "Mail error"]);
+  exit;
 }
