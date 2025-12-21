@@ -46,12 +46,28 @@ export default function Login({ onLogin }) {
       <div className="form-card">
         <h2>Login</h2>
 
-        <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
-        <input type="password" placeholder="Password" onChange={(e) => setPassword(e.target.value)} />
+        <input
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
+
+        <input
+          type="password"
+          placeholder="Password"
+          onChange={(e) => setPassword(e.target.value)}
+        />
 
         <button disabled={loading} onClick={login} className="button">
           {loading ? "Logging in…" : "Login"}
         </button>
+
+        {/* ✅ ONLY ADDED PART – NOTHING ELSE CHANGED */}
+        <p
+          style={{ marginTop: "10px", cursor: "pointer", color: "#ffcc00" }}
+          onClick={() => window.location.href = "/forgot-password"}
+        >
+          Forgot password?
+        </p>
       </div>
     </div>
   );

@@ -1,0 +1,13 @@
+# Frontend build
+frontend/dist/
+
+# Backend sensitive files
+backend/mail_config.php
+backend/test_mail.php
+
+# PHPMailer vendor (do not push)
+backend/vendor/
+
+# Environment files
+.env
+.env.production

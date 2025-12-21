@@ -20,6 +20,8 @@ import AdminLiveApprovals from "./AdminLiveApprovals";
 import SubmitLiveAttendance from "./SubmitLiveAttendance";
 import ThemeSwitcher from "./ThemeSwitcher";
 import "./theme-override.css";
+import ForgotPassword from "./ForgotPassword";
+import ResetPassword from "./ResetPassword";
 
 export default function App() {
   const [page, setPage] = useState("home");
@@ -212,6 +214,9 @@ console.log("isMobileView =", isMobileView, "window.innerWidth =", window.innerW
         {page === "register" && <Register onSwitchToLogin={() => setPage("login")} />}
         {page === "leaderboard" && <Leaderboard setPage={setPage} />}
         {page === "analytics" && <Analytics user={user} setPage={setPage} />}
+        {page === "forgot-password" && <ForgotPassword />}
+{page === "reset-password" && <ResetPassword />}
+
         {page === "dashboard" && (
           <ProtectedRoute user={user && user.role === "admin"}>
             <Dashboard setPage={setPage} user={user} stats={stats} />
