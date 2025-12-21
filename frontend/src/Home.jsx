@@ -75,9 +75,19 @@ export default function Home({ user, setPage }) {
                 Start Quiz
               </button>
 
-              <button className="main-btn" onClick={() => setPage("dashboard")}>
-                Dashboard
-              </button>
+             <button
+  className="main-btn"
+  onClick={() =>
+    setPage(
+      user.role === "admin"
+        ? "dashboard"
+        : "student-dashboard"
+    )
+  }
+>
+  Dashboard
+</button>
+
             </div>
           )}
         </div>

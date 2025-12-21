@@ -21,7 +21,6 @@ import SubmitLiveAttendance from "./SubmitLiveAttendance";
 import ThemeSwitcher from "./ThemeSwitcher";
 import "./theme-override.css";
 import ForgotPassword from "./ForgotPassword";
-import ResetPassword from "./ResetPassword";
 
 export default function App() {
   const [page, setPage] = useState("home");
@@ -93,7 +92,7 @@ useEffect(() => {
   const handleLogin = (data) => {
     setUser(data.user);
     if (data.user.role === "admin") setPage("dashboard");
-    else setPage("student-dashboard");
+    else setPage("home");
   };
 
   const logout = () => {
@@ -215,7 +214,7 @@ console.log("isMobileView =", isMobileView, "window.innerWidth =", window.innerW
         {page === "leaderboard" && <Leaderboard setPage={setPage} />}
         {page === "analytics" && <Analytics user={user} setPage={setPage} />}
         {page === "forgot-password" && <ForgotPassword />}
-{page === "reset-password" && <ResetPassword />}
+
 
         {page === "dashboard" && (
           <ProtectedRoute user={user && user.role === "admin"}>

@@ -30,7 +30,9 @@ export default function Login({ onLogin, setPage }) {
       localStorage.setItem("token", data.token);
       if (data.user) localStorage.setItem("user", JSON.stringify(data.user));
       if (data.role) localStorage.setItem("role", data.role);
-      onLogin(data);
+
+      onLogin(data);          // ✅ keep existing logic
+      setPage("home");        // ✅ NEW: always go to Home page
     } else {
       alert(data.error || "Invalid login");
     }
@@ -43,7 +45,10 @@ export default function Login({ onLogin, setPage }) {
       <div className="form-card">
         <h2>Login</h2>
 
-        <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
+        <input
+          placeholder="Email"
+          onChange={(e) => setEmail(e.target.value)}
+        />
         <input
           type="password"
           placeholder="Password"

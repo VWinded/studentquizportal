@@ -1,43 +1,23 @@
-import React, { useState } from "react";
-import { API } from "./api";
+import React from "react";
 
 export default function ForgotPassword() {
-  const [email, setEmail] = useState("");
-
-  const sendOtp = async () => {
-    try {
-      const res = await fetch(API + "/forgot_password.php", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email }),
-      });
-
-      const data = await res.json();
-
-      // ✅ REQUIRED SAFETY CHECK
-      if (!res.ok || data.error) {
-        alert(data.error || "Failed to send OTP");
-        return;
-      }
-
-      alert("OTP sent to email");
-      localStorage.setItem("resetEmail", email);
-      window.dispatchEvent(new CustomEvent("navigate", { detail: "reset" }));
-
-    } catch (err) {
-      alert("Network error. Try again.");
-    }
-  };
-
   return (
     <div className="form-card">
-      <h2>Forgot Password</h2>
-      <input
-        placeholder="Email"
-        value={email}
-        onChange={(e) => setEmail(e.target.value)}
-      />
-      <button onClick={sendOtp}>Send OTP</button>
+      <h2>Password Assistance 🔐</h2>
+
+      <p style={{ marginTop: "10px", lineHeight: "1.6" }}>
+        Password reset via email is currently unavailable for this application.
+      </p>
+
+      <p style={{ marginTop: "12px", fontSize: "14px", opacity: 0.85 }}>
+        Please contact the system administrator for assistance
+        <br />
+        or create a new account if you no longer have access.
+      </p>
+
+      <p style={{ marginTop: "16px", fontSize: "13px", opacity: 0.7 }}>
+        ℹ️ For security reasons, automated password recovery has been disabled.
+      </p>
     </div>
   );
 }
