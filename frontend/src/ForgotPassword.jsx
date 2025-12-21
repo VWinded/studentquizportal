@@ -1,6 +1,6 @@
 import React from "react";
 
-export default function ForgotPassword({ setPage }) {
+export default function ForgotPassword() {
   return (
     <div className="form-card forgot-card">
       <h2>Password Assistance 🔐</h2>
@@ -14,7 +14,7 @@ export default function ForgotPassword({ setPage }) {
         please submit a request using the form below.
       </p>
 
-      {/* 🔹 GOOGLE FORM BUTTON */}
+      {/* ✅ GOOGLE FORM BUTTON */}
       <button
         className="button request-btn"
         style={{ marginTop: "16px" }}
@@ -32,16 +32,16 @@ export default function ForgotPassword({ setPage }) {
         ℹ️ Requests are reviewed manually by the administrator.
       </p>
 
-      {/* 🔹 NAVIGATION BUTTONS */}
-      <div style={{ marginTop: "18px", display: "flex", gap: "10px", justifyContent: "center" }}>
-        <button className="button secondary-btn" onClick={() => setPage("login")}>
-          🔙 Back to Login
-        </button>
-
-        <button className="button secondary-btn" onClick={() => setPage("home")}>
-          🏠 Home
-        </button>
-      </div>
+      {/* ✅ SAFE HOME BUTTON */}
+      <button
+        className="button secondary-btn"
+        style={{ marginTop: "18px" }}
+        onClick={() => {
+          window.location.href = "/";
+        }}
+      >
+        🏠 Home
+      </button>
     </div>
   );
 }
