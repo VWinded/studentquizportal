@@ -100,17 +100,20 @@ export default function Home({ user, setPage }) {
     Student accounts are managed by the administrator.
     <br />
     For permanent access or account updates,
-    <span
-      style={{ color: "#ffcc00", cursor: "pointer" }}
-      onClick={() =>
-        window.open(
-          "https://forms.gle/mAUfC8vNhUA1VwNK6",
-          "_blank"
-        )
-      }
-    >
-      {" "}submit a request here 📝
-    </span>
+    <div style={{ marginTop: "10px" }}>
+  <button
+    className="request-link-btn"
+    onClick={() =>
+      window.open(
+        "https://forms.gle/mAUfC8vNhUA1VwNK6",
+        "_blank"
+      )
+    }
+  >
+    📝 Request Permanent Access
+  </button>
+</div>
+
   </p>
 )}
 

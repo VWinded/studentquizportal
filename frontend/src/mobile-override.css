@@ -1574,3 +1574,9 @@ body.mobile-view .chart-container {
     padding: 10px;
   }
 }
+@media (max-width: 600px) {
+  .request-link-btn {
+    width: 100%;
+    font-size: 15px;
+  }
+}
