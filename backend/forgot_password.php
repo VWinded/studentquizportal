@@ -52,7 +52,9 @@ foreach ($users as &$u) {
       $mail->Port = (int) getenv("SMTP_PORT");
 
       // IMPORTANT: Gmail requires SAME email here
-      $mail->setFrom(getenv("SMTP_USER"), getenv("SMTP_USER"));
+      $mail->setFrom("studentquizportal01@gmail.com", "Student Quiz Portal");
+      $mail->addReplyTo("studentquizportal01@gmail.com", "Student Quiz Portal");
+
       $mail->addAddress($email);
 
       $mail->isHTML(true);
