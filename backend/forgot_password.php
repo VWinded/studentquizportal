@@ -40,24 +40,35 @@ foreach ($users as &$u) {
     $resetLink = "https://studentquizportal.netlify.app/reset-password?token=$token";
 
     try {
-      $mail = new PHPMailer(true);
-      $mail->isSMTP();
-      $mail->Host = getenv("SMTP_HOST");
-      $mail->SMTPAuth = true;
-      $mail->Username = getenv("SMTP_USER");
-      $mail->Password = getenv("SMTP_PASS");
-      $mail->SMTPSecure = "tls";
-      $mail->Port = getenv("SMTP_PORT");
+    $mail = new PHPMailer(true);
+    $mail->isSMTP();
+    $mail->Host = getenv("SMTP_HOST");
+    $mail->SMTPAuth = true;
+    $mail->Username = getenv("SMTP_USER");
+    $mail->Password = getenv("SMTP_PASS");
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = (int) getenv("SMTP_PORT");
 
-      $mail->setFrom(getenv("SMTP_USER"), "Student Quiz Portal");
-      $mail->addAddress($email);
-      $mail->Subject = "Reset your password";
-      $mail->Body = "Click this link to reset your password:\n\n$resetLink";
-      $mail->send();
-    } catch (Exception $e) {
-      echo json_encode(["error" => "Email send failed"]);
-      exit;
-    }
+    $mail->setFrom(getenv("SMTP_USER"), "Student Quiz Portal");
+    $mail->addAddress($email);
+
+    $mail->Subject = "Reset your password";
+    $mail->Body = "Click the link below to reset your password:\n\n$resetLink";
+
+    $mail->send();
+
+    echo json_encode(["success" => true]);
+    exit;
+
+} catch (Exception $e) {
+    http_response_code(500);
+    echo json_encode([
+        "error" => "Email failed to send",
+        "details" => $mail->ErrorInfo
+    ]);
+    exit;
+}
+
 
     echo json_encode([
       "success" => true,
