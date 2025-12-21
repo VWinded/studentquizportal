@@ -61,6 +61,7 @@ foreach ($users as &$u) {
     exit;
 
 } catch (Exception $e) {
+    error_log("MAIL ERROR: " . $mail->ErrorInfo);
     http_response_code(500);
     echo json_encode([
         "error" => "Email failed to send",
@@ -68,6 +69,7 @@ foreach ($users as &$u) {
     ]);
     exit;
 }
+
 
 
     echo json_encode([
