@@ -1,4 +1,7 @@
 <?php
+error_reporting(0);
+ini_set('display_errors', 0);
+
 require_once __DIR__ . "/cors.php";
 header("Content-Type: application/json");
 
@@ -13,7 +16,13 @@ if (!$token || !$password) {
 }
 
 $usersFile = __DIR__ . "/users.json";
+if (!file_exists($usersFile)) {
+  echo json_encode(["error" => "User database not found"]);
+  exit;
+}
+
 $users = json_decode(file_get_contents($usersFile), true);
+if (!is_array($users)) $users = [];
 
 foreach ($users as &$u) {
   if (
