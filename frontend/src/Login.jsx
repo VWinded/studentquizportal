@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { API } from "./api";
 
-export default function Login({ onLogin }) {
+export default function Login({ onLogin, setPage }) {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [loading, setLoading] = useState(false);
@@ -27,12 +27,9 @@ export default function Login({ onLogin }) {
     }
 
     if (data.success) {
-      // store token and user
       localStorage.setItem("token", data.token);
       if (data.user) localStorage.setItem("user", JSON.stringify(data.user));
       if (data.role) localStorage.setItem("role", data.role);
-
-      // pass the full response to App so it can set user and page
       onLogin(data);
     } else {
       alert(data.error || "Invalid login");
@@ -46,11 +43,7 @@ export default function Login({ onLogin }) {
       <div className="form-card">
         <h2>Login</h2>
 
-        <input
-          placeholder="Email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
+        <input placeholder="Email" onChange={(e) => setEmail(e.target.value)} />
         <input
           type="password"
           placeholder="Password"
@@ -61,10 +54,10 @@ export default function Login({ onLogin }) {
           {loading ? "Logging in…" : "Login"}
         </button>
 
-        {/* ✅ ONLY ADDED PART – NOTHING ELSE CHANGED */}
+        {/* ✅ CORRECT FOR YOUR APP */}
         <p
           style={{ marginTop: "10px", cursor: "pointer", color: "#ffcc00" }}
-          onClick={() => window.location.href = "/forgot-password"}
+          onClick={() => setPage("forgot-password")}
         >
           Forgot password?
         </p>

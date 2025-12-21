@@ -210,7 +210,7 @@ console.log("isMobileView =", isMobileView, "window.innerWidth =", window.innerW
 
         {/* ROUTES (UNCHANGED) */}
         {page === "home" && <Home user={user} setPage={setPage} />}
-        {page === "login" && <Login onLogin={handleLogin} />}
+        {page === "login" && <Login onLogin={handleLogin} setPage={setPage} />}
         {page === "register" && <Register onSwitchToLogin={() => setPage("login")} />}
         {page === "leaderboard" && <Leaderboard setPage={setPage} />}
         {page === "analytics" && <Analytics user={user} setPage={setPage} />}
