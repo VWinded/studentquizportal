@@ -32,25 +32,30 @@ foreach ($users as &$u) {
     file_put_contents($usersFile, json_encode($users, JSON_PRETTY_PRINT));
 
     $mail = new PHPMailer(true);
-    $mail->isSMTP();
-    $mail->Host = getenv("SMTP_HOST");
-    $mail->SMTPAuth = true;
-    $mail->Username = getenv("SMTP_USER");
-    $mail->Password = getenv("SMTP_PASS");
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = (int) getenv("SMTP_PORT");
+$mail->isSMTP();
+$mail->Host = getenv("SMTP_HOST");
+$mail->SMTPAuth = true;
+$mail->Username = getenv("SMTP_USER");
+$mail->Password = getenv("SMTP_PASS");
+$mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+$mail->Port = (int) getenv("SMTP_PORT");
 
-    $mail->setFrom(getenv("SMTP_USER"), "Student Quiz Portal");
-    $mail->addAddress($email);
-    $mail->isHTML(true);
+$mail->setFrom(
+  "no-reply@studentquizportal.netlify.app",
+  "Student Quiz Portal"
+);
+$mail->addAddress($email);
 
-    $mail->Subject = "Password Reset OTP";
-    $mail->Body = "<h3>Your OTP is: <b>$otp</b></h3><p>Valid for 10 minutes</p>";
+$mail->isHTML(true);
+$mail->CharSet = "UTF-8";
 
-    $mail->send();
-
-    echo json_encode(["success" => true]);
-    exit;
+$mail->Subject = "Password Reset – Student Quiz Portal";
+$mail->Body = "
+  <h3>Password Reset</h3>
+  <p>Your OTP / reset info is below:</p>
+  <p><b>$otp</b></p>
+  <p>Valid for 10 minutes.</p>
+";
   }
 }
 
