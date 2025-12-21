@@ -1,5 +1,5 @@
 <?php
-header("Access-Control-Allow-Origin: https://beamish-flan-197137.netlify.app");
+header("Access-Control-Allow-Origin: https://studentquizportal.netlify.app");
 header("Access-Control-Allow-Headers: Authorization, Content-Type");
 header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
 
