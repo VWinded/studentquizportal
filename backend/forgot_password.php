@@ -10,6 +10,7 @@ require_once __DIR__ . "/vendor/PHPMailer/SMTP.php";
 require_once __DIR__ . "/vendor/PHPMailer/Exception.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\Exception;
 
 $data = json_decode(file_get_contents("php://input"), true);
 $email = trim($data["email"] ?? "");
@@ -31,60 +32,58 @@ if (!is_array($users)) $users = [];
 foreach ($users as &$u) {
   if (($u["email"] ?? "") === $email) {
 
+    // Generate token
     $token = bin2hex(random_bytes(16));
     $u["reset_token"] = $token;
-    $u["reset_expiry"] = time() + 900;
+    $u["reset_expiry"] = time() + 900; // 15 minutes
 
     file_put_contents($usersFile, json_encode($users, JSON_PRETTY_PRINT));
 
     $resetLink = "https://studentquizportal.netlify.app/reset-password?token=$token";
 
     try {
-    $mail = new PHPMailer(true);
-    $mail->isSMTP();
-    $mail->Host = getenv("SMTP_HOST");
-    $mail->SMTPAuth = true;
-    $mail->Username = getenv("SMTP_USER");
-    $mail->Password = getenv("SMTP_PASS");
-    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-    $mail->Port = (int) getenv("SMTP_PORT");
+      $mail = new PHPMailer(true);
+      $mail->isSMTP();
+      $mail->Host = getenv("SMTP_HOST");
+      $mail->SMTPAuth = true;
+      $mail->Username = getenv("SMTP_USER");
+      $mail->Password = getenv("SMTP_PASS");
+      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+      $mail->Port = (int) getenv("SMTP_PORT");
 
-    $mail->setFrom(getenv("SMTP_USER"), "Student Quiz Portal");
-    $mail->addAddress($email);
+      // IMPORTANT: Gmail requires SAME email here
+      $mail->setFrom(getenv("SMTP_USER"), getenv("SMTP_USER"));
+      $mail->addAddress($email);
 
-    $mail->Subject = "Reset your password";
-    $mail->Body = "Click the link below to reset your password:\n\n$resetLink";
+      $mail->isHTML(true);
+      $mail->CharSet = "UTF-8";
 
-   if (!$mail->send()) {
-  echo json_encode([
-    "error" => "Mail failed: " . $mail->ErrorInfo
-  ]);
-  exit;
-}
+      $mail->Subject = "Password Reset – Student Quiz Portal";
+      $mail->Body = "
+        <h3>Password Reset</h3>
+        <p>Click the link below to reset your password:</p>
+        <p><a href='$resetLink'>$resetLink</a></p>
+        <p>This link expires in 15 minutes.</p>
+      ";
 
-echo json_encode(["success" => true]);
-exit;
+      if (!$mail->send()) {
+        error_log("MAIL ERROR: " . $mail->ErrorInfo);
+        echo json_encode(["error" => "Mail send failed"]);
+        exit;
+      }
 
-} catch (Exception $e) {
-    error_log("MAIL ERROR: " . $mail->ErrorInfo);
-    http_response_code(500);
-    echo json_encode([
-        "error" => "Email failed to send",
-        "details" => $mail->ErrorInfo
-    ]);
-    exit;
-}
+      echo json_encode(["success" => true]);
+      exit;
 
-
-
-    echo json_encode([
-      "success" => true,
-      "message" => "If the email exists, a reset link has been sent."
-    ]);
-    exit;
+    } catch (Exception $e) {
+      error_log("MAIL EXCEPTION: " . $e->getMessage());
+      echo json_encode(["error" => "Email failed"]);
+      exit;
+    }
   }
 }
 
+// Security-safe response
 echo json_encode([
   "success" => true,
   "message" => "If the email exists, a reset link has been sent."
