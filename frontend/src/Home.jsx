@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { API } from "./api";
 import "./styles.css";
 import "./theme-override.css";
+
 export default function Home({ user, setPage }) {
   const [stats, setStats] = useState({
     totalUsers: 0,
@@ -45,7 +46,6 @@ export default function Home({ user, setPage }) {
 
   return (
     <div className="home-wrapper">
-       
       <div className="circle circle1"></div>
       <div className="circle circle2"></div>
 
@@ -70,25 +70,51 @@ export default function Home({ user, setPage }) {
               </button>
             </div>
           ) : (
-            <div className="button-row">
-              <button className="main-btn" onClick={() => setPage("quiz-setup")}>
-                Start Quiz
-              </button>
+            <>
+              <div className="button-row">
+                <button
+                  className="main-btn"
+                  onClick={() => setPage("quiz-setup")}
+                >
+                  Start Quiz
+                </button>
 
-             <button
-  className="main-btn"
-  onClick={() =>
-    setPage(
-      user.role === "admin"
-        ? "dashboard"
-        : "student-dashboard"
-    )
-  }
->
-  Dashboard
-</button>
+                <button
+                  className="main-btn"
+                  onClick={() =>
+                    setPage(
+                      user.role === "admin"
+                        ? "dashboard"
+                        : "student-dashboard"
+                    )
+                  }
+                >
+                  Dashboard
+                </button>
+              </div>
+            {user && user.role === "student" && (
+  <p className="student-info-text">
 
-            </div>
+    🔒 <b>Account Information</b>
+    <br />
+    Student accounts are managed by the administrator.
+    <br />
+    For permanent access or account updates,
+    <span
+      style={{ color: "#ffcc00", cursor: "pointer" }}
+      onClick={() =>
+        window.open(
+          "https://forms.gle/mAUfC8vNhUA1VwNK6",
+          "_blank"
+        )
+      }
+    >
+      {" "}submit a request here 📝
+    </span>
+  </p>
+)}
+
+            </>
           )}
         </div>
       </div>
@@ -111,13 +137,11 @@ export default function Home({ user, setPage }) {
                 <p>Total Questions</p>
               </div>
 
-              {/* ⭐ FIXED → Admin sees total attempts, student sees their attempts */}
               <div className="stat-box">
                 <h3>
                   {user.role === "admin"
-                    ? stats.totalAttempts    // Admin → all attempts
-                    : userAttempts           // Student → only his attempts
-                  }
+                    ? stats.totalAttempts
+                    : userAttempts}
                 </h3>
                 <p>Quizzes Attempted</p>
               </div>

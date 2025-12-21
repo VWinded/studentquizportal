@@ -34,7 +34,13 @@ export default function Register({ onSwitchToLogin }) {
       }
 
       if (data.success) {
-        alert("Registered successfully! Now login.");
+        alert(
+  "✅ Registration successful!\n\n" +
+  "You can now log in and use the application.\n\n" +
+  "ℹ️ Note: This account is for temporary use.\n" +
+  "For permanent access, please contact the administrator."
+);
+
 
         // Redirect to login page
         if (onSwitchToLogin) {

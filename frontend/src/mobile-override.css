@@ -1555,3 +1555,22 @@ body.mobile-view .chart-container {
     background: rgba(255,255,255,0.08);
   }
 }
+/* ===============================
+   MOBILE FIXES
+================================ */
+@media (max-width: 768px) {
+  .forgot-card {
+    padding: 18px;
+    margin: 20px;
+  }
+
+  .student-info-text {
+    font-size: 13px;
+    padding: 0 10px;
+  }
+
+  .request-btn {
+    font-size: 14px;
+    padding: 10px;
+  }
+}

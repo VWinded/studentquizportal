@@ -2073,4 +2073,37 @@ button {
 button:active {
   transform: scale(0.96);
 }
+/* ===============================
+   STUDENT ACCOUNT INFO (HOME)
+================================ */
+.student-info-text {
+  margin-top: 18px;
+  font-size: 14px;
+  text-align: center;
+  opacity: 0.9;
+  line-height: 1.6;
+}
+
+.student-info-text span {
+  color: #ffcc00;
+  font-weight: 500;
+  transition: opacity 0.2s ease;
+}
+
+.student-info-text span:hover {
+  opacity: 0.8;
+}
+
+/* ===============================
+   FORGOT PASSWORD CARD
+================================ */
+.forgot-card {
+  max-width: 420px;
+  margin: auto;
+}
+
+.request-btn {
+  width: 100%;
+  font-size: 15px;
+}
 
