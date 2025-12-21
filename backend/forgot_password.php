@@ -1,4 +1,5 @@
 <?php
+ob_start(); 
 require_once __DIR__ . "/cors.php";
 header("Content-Type: application/json; charset=UTF-8");
 
@@ -14,6 +15,7 @@ $email = trim($data["email"] ?? "");
 
 if (!$email) {
     echo json_encode(["error" => "Email required"]);
+    ob_end_flush();
     exit;
 }
 
@@ -34,6 +36,7 @@ foreach ($users as &$u) {
 
 if (!$userFound) {
     echo json_encode(["error" => "Email not found"]);
+    ob_end_flush();
     exit;
 }
 
@@ -66,6 +69,7 @@ try {
     $mail->send();
 
     echo json_encode(["success" => true]);
+    ob_end_flush();
     exit;
 
 } catch (Exception $e) {
