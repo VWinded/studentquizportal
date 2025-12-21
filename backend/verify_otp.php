@@ -1,15 +1,20 @@
 <?php
-error_reporting(0);
-ini_set('display_errors', 0);
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
 
 require_once __DIR__ . "/cors.php";
 header("Content-Type: application/json");
 
 $data = json_decode(file_get_contents("php://input"), true);
 
-$email = $data["email"] ?? "";
-$otp = $data["otp"] ?? "";
+$email = trim($data["email"] ?? "");
+$otp = trim($data["otp"] ?? "");
 $password = $data["password"] ?? "";
+
+if (!$email || !$otp || !$password) {
+  echo json_encode(["error" => "Missing data"]);
+  exit;
+}
 
 $usersFile = __DIR__ . "/users.json";
 $users = json_decode(file_get_contents($usersFile), true);
