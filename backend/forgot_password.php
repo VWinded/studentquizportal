@@ -10,83 +10,48 @@ require_once __DIR__ . "/vendor/PHPMailer/SMTP.php";
 require_once __DIR__ . "/vendor/PHPMailer/Exception.php";
 
 use PHPMailer\PHPMailer\PHPMailer;
-use PHPMailer\PHPMailer\Exception;
 
 $data = json_decode(file_get_contents("php://input"), true);
 $email = trim($data["email"] ?? "");
 
 if (!$email) {
-  echo json_encode(["error" => "Email is required"]);
+  echo json_encode(["error" => "Email required"]);
   exit;
 }
 
 $usersFile = __DIR__ . "/users.json";
-if (!file_exists($usersFile)) {
-  echo json_encode(["error" => "User database not found"]);
-  exit;
-}
-
 $users = json_decode(file_get_contents($usersFile), true);
-if (!is_array($users)) $users = [];
 
 foreach ($users as &$u) {
   if (($u["email"] ?? "") === $email) {
 
-    // Generate token
-    $token = bin2hex(random_bytes(16));
-    $u["reset_token"] = $token;
-    $u["reset_expiry"] = time() + 900; // 15 minutes
+    $otp = random_int(100000, 999999);
+    $u["otp"] = $otp;
+    $u["otp_expiry"] = time() + 600; // 10 minutes
 
     file_put_contents($usersFile, json_encode($users, JSON_PRETTY_PRINT));
 
-    $resetLink = "https://studentquizportal.netlify.app/reset-password?token=$token";
+    $mail = new PHPMailer(true);
+    $mail->isSMTP();
+    $mail->Host = getenv("SMTP_HOST");
+    $mail->SMTPAuth = true;
+    $mail->Username = getenv("SMTP_USER");
+    $mail->Password = getenv("SMTP_PASS");
+    $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+    $mail->Port = (int) getenv("SMTP_PORT");
 
-    try {
-      $mail = new PHPMailer(true);
-      $mail->isSMTP();
-      $mail->Host = getenv("SMTP_HOST");
-      $mail->SMTPAuth = true;
-      $mail->Username = getenv("SMTP_USER");
-      $mail->Password = getenv("SMTP_PASS");
-      $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
-      $mail->Port = (int) getenv("SMTP_PORT");
+    $mail->setFrom(getenv("SMTP_USER"), "Student Quiz Portal");
+    $mail->addAddress($email);
+    $mail->isHTML(true);
 
-      // IMPORTANT: Gmail requires SAME email here
-      $mail->setFrom("studentquizportal01@gmail.com", "Student Quiz Portal");
-      $mail->addReplyTo("studentquizportal01@gmail.com", "Student Quiz Portal");
+    $mail->Subject = "Password Reset OTP";
+    $mail->Body = "<h3>Your OTP is: <b>$otp</b></h3><p>Valid for 10 minutes</p>";
 
-      $mail->addAddress($email);
+    $mail->send();
 
-      $mail->isHTML(true);
-      $mail->CharSet = "UTF-8";
-
-      $mail->Subject = "Password Reset – Student Quiz Portal";
-      $mail->Body = "
-        <h3>Password Reset</h3>
-        <p>Click the link below to reset your password:</p>
-        <p><a href='$resetLink'>$resetLink</a></p>
-        <p>This link expires in 15 minutes.</p>
-      ";
-
-      if (!$mail->send()) {
-        error_log("MAIL ERROR: " . $mail->ErrorInfo);
-        echo json_encode(["error" => "Mail send failed"]);
-        exit;
-      }
-
-      echo json_encode(["success" => true]);
-      exit;
-
-    } catch (Exception $e) {
-      error_log("MAIL EXCEPTION: " . $e->getMessage());
-      echo json_encode(["error" => "Email failed"]);
-      exit;
-    }
+    echo json_encode(["success" => true]);
+    exit;
   }
 }
 
-// Security-safe response
-echo json_encode([
-  "success" => true,
-  "message" => "If the email exists, a reset link has been sent."
-]);
+echo json_encode(["success" => true]);
