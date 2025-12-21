@@ -15,12 +15,12 @@ const themes = [
 ];
 
 export default function ThemeSwitcher({ open }) {
-  const [activeTheme, setActiveTheme] = useState("OceanDefault");
+  const [activeTheme, setActiveTheme] = useState("NeoBlueDark");
 
   // Load saved theme on mount
   // ThemeSwitcher.jsx - only the relevant bits to replace
 useEffect(() => {
-  const saved = localStorage.getItem("theme") || "OceanDefault";
+  const saved = localStorage.getItem("theme") || "NeoBlueDark";
   setActiveTheme(saved);
 
   // remove any theme class from both html and body, then add the saved one

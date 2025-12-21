@@ -766,12 +766,14 @@ body.mobile-view .chart-container {
 
   /* Page wrapper */
   .form-container {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 16px;
-  }
+  min-height: calc(100vh - 64px); /* subtract mobile navbar */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  margin: 0;
+}
+
 
   /* Login card */
   .form-card {
@@ -779,6 +781,8 @@ body.mobile-view .chart-container {
     max-width: 360px;
     padding: 18px 16px;
     border-radius: 14px;
+    margin-top: 0 !important;
+  transform: translateY(-12px);
   }
 
   /* Title */
@@ -1239,18 +1243,22 @@ body.mobile-view .chart-container {
 @media (max-width: 600px) {
 
   .form-container {
-    min-height: 100vh;
-    padding: 16px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+  min-height: calc(100vh - 64px); /* subtract mobile navbar */
+  padding: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+}
+
 
   .form-card {
     width: 100%;
     max-width: 380px;
     padding: 18px;
     border-radius: 14px;
+    margin-top: 0 !important;
+  transform: translateY(-12px);
   }
 
   .form-card h2 {
