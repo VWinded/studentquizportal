@@ -1529,3 +1529,29 @@ body.mobile-view .chart-container {
     min-width: 650px; /* force horizontal scroll */
   }
 }
+/* ===============================
+   FORGOT & RESET PASSWORD – MOBILE
+   =============================== */
+@media (max-width: 768px) {
+
+  .form-help-text {
+    font-size: 14px;
+    text-align: center;
+    margin-bottom: 14px;
+    opacity: 0.9;
+  }
+
+  .secondary-btn {
+    margin-top: 10px;
+    background: transparent;
+    border: 1px solid rgba(255,255,255,0.3);
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 14px;
+  }
+
+  .secondary-btn:hover {
+    background: rgba(255,255,255,0.08);
+  }
+}
