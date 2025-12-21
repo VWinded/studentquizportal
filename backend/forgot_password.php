@@ -55,10 +55,15 @@ foreach ($users as &$u) {
     $mail->Subject = "Reset your password";
     $mail->Body = "Click the link below to reset your password:\n\n$resetLink";
 
-    $mail->send();
+   if (!$mail->send()) {
+  echo json_encode([
+    "error" => "Mail failed: " . $mail->ErrorInfo
+  ]);
+  exit;
+}
 
-    echo json_encode(["success" => true]);
-    exit;
+echo json_encode(["success" => true]);
+exit;
 
 } catch (Exception $e) {
     error_log("MAIL ERROR: " . $mail->ErrorInfo);
