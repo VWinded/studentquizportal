@@ -29,6 +29,12 @@ The system follows a **secure, role-based architecture** with  **admin-controlle
 
 ---
 
+### 👨‍🎓 Student Dashboard
+**Student Dashboard (After Login)**
+![Student Dashboard](screenshots/student-dashboard.png)
+
+---
+
 ### 🧠 Quiz Flow & Modes
 **Quiz Modes Selection**
 ![Quiz Modes](screenshots/quiz-modes.png)
@@ -222,4 +228,4 @@ This project is ideal for:
 > This project prioritizes **stability**, **security**, and **real-world constraints** over unnecessary complexity.  
 > Every design choice is intentional and defendable during **viva or interviews**.
 
-✨ **Feel free to fork, explore, and enhance!**✨
+**✨ Feel free to fork, explore, and enhance!✨**
