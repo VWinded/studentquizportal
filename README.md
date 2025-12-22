@@ -35,6 +35,12 @@ The system follows a **secure, role-based architecture** with  **admin-controlle
 
 ---
 
+### 👑 Admin Dashboard
+**Admin Dashboard**
+![Admin Dashboard](screenshots/admin-dashboard.png)
+
+---
+
 ### 🧠 Quiz Flow & Modes
 **Quiz Modes Selection**
 ![Quiz Modes](screenshots/quiz-modes.png)
@@ -60,9 +66,6 @@ The system follows a **secure, role-based architecture** with  **admin-controlle
 ---
 
 ### 👑 Admin Management
-**Admin Dashboard**
-![Admin Dashboard](screenshots/admin-dashboard.png)
-
 **User & Quiz Approval Panel**
 ![Admin Approvals](screenshots/admin-approvals.png)
 
@@ -81,11 +84,14 @@ The system follows a **secure, role-based architecture** with  **admin-controlle
 ---
 
 ### 📱 Mobile View
+
 **Mobile – Public Home**
 ![Mobile Public Home](screenshots/mobile-home-public.png)
 
+
 **Mobile – Student Home**
 ![Mobile Student Home](screenshots/mobile-home-user.png)
+
 
 **Mobile – Student Dashboard**
 ![Mobile Dashboard](screenshots/mobile-dashboard.png)
