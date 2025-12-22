@@ -231,6 +231,13 @@ This project is ideal for:
 
 ---
 
+## 📄 License
+
+This project is licensed under the **MIT License**.  
+See the [LICENSE](LICENSE) file for details.
+
+---
+
 ## ⭐ Final Note
 
 > This project prioritizes **stability**, **security**, and **real-world constraints** over unnecessary complexity.  
