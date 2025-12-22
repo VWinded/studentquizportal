@@ -78,10 +78,10 @@ The system follows a **secure, role-based architecture** with  **admin-controlle
 **Mobile – Public Home**
 ![Mobile Public Home](screenshots/mobile-home-public.png)
 
-**Mobile – Home**
+**Mobile – Student Home**
 ![Mobile Student Home](screenshots/mobile-home-user.png)
 
-**Mobile – Dashboard**
+**Mobile – Student Dashboard**
 ![Mobile Dashboard](screenshots/mobile-dashboard.png)
 
 ---
