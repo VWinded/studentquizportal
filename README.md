@@ -18,42 +18,70 @@ The system follows a **secure, role-based architecture** with  **admin-controlle
 ## 🖼️ Application Preview
 
 ### 🏠 Home Pages
+**Public Home (Before Login)**
 ![Public Home (Before Login)](screenshots/home-public.png)
+
+**Student Home (After Login)**
 ![Student Home (After Login)](screenshots/home-user.png)
+
+**Admin Home Page(After Login)**
+![Admin Home](screenshots/admin-home.png)
 
 ---
 
 ### 🧠 Quiz Flow & Modes
+**Quiz Modes Selection**
 ![Quiz Modes](screenshots/quiz-modes.png)
+
+**Quiz Topics View**
 ![Quiz Topics](screenshots/quiz-topic.png)
+
+**Quiz Start Screen**
 ![Quiz Start](screenshots/quiz-start.png)
+
+**Quiz Result Summary**
 ![Result](screenshots/result.png)
 
 ---
 
 ### 📊 General Features
+**Leaderboard View**
 ![Leaderboard](screenshots/leaderboard.png)
+
+**Performance Analytics**
 ![Analytics](screenshots/analytics.png)
 
 ---
 
 ### 👑 Admin Management
-![Admin Home](screenshots/admin-home.png)
+**Admin Dashboard**
 ![Admin Dashboard](screenshots/admin-dashboard.png)
+
+**User & Quiz Approval Panel**
 ![Admin Approvals](screenshots/admin-approvals.png)
+
+**Add New Quiz Question**
 ![Add Questions](screenshots/add-questions.png)
+
+**Manage Existing Questions**
 ![Manage Questions](screenshots/manage-question.png)
 
 ---
 
 ### 🎨 Theme Support
+**Theme Selector (Light / Dark)**
 ![Theme Selector](screenshots/themes.png)
 
 ---
 
 ### 📱 Mobile View
+**Mobile – Public Home**
 ![Mobile Public Home](screenshots/mobile-home-public.png)
+
+**Mobile – Home**
 ![Mobile Student Home](screenshots/mobile-home-user.png)
+
+**Mobile – Dashboard**
 ![Mobile Dashboard](screenshots/mobile-dashboard.png)
 
 ---
