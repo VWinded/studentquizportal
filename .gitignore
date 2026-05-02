@@ -9,3 +9,6 @@ backend/test_mail.php
 # Environment files
 .env
 .env.production
+
+.frontend/node_modules
+.temp
