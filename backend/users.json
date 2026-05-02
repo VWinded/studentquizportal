@@ -17,5 +17,11 @@
         "email": "ravi09@gmail.com",
         "password": "$2y$10$lIoD/Hchm10Hege9cxDtHuJ1N7y/VNXvhIkFxVaA5e/8O0WsMTEh.",
         "role": "student"
+    },
+    {
+        "name": "name123",
+        "email": "name@gmail.com",
+        "password": "$2y$12$zx2rOvxuDs5pHuvGZf.X4.siK0P9nmSMpkbM/mwAIsZuvZCbMMMXm",
+        "role": "student"
     }
 ]

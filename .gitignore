@@ -12,3 +12,12 @@ backend/test_mail.php
 
 .frontend/node_modules
 .temp
+backend/users.json
+frontend/node_modules/.vite/deps_temp_6c585ec1/chunk-NYOODPWI.js
+frontend/node_modules/.vite/deps_temp_6c585ec1/chunk-NYOODPWI.js.map
+frontend/node_modules/.vite/deps_temp_6c585ec1/chunk-XVMOOHHS.js
+frontend/node_modules/.vite/deps_temp_6c585ec1/chunk-XVMOOHHS.js.map
+frontend/node_modules/.vite/deps_temp_6c585ec1/package.json
+frontend/node_modules/.vite/deps_temp_6c585ec1/react-dom_client.js
+/frontend/node_modules/.vite/deps_temp_6c585ec1
+/frontend/node_modules
